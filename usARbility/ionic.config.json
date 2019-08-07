@@ -1,0 +1,7 @@
+{
+  "name": "usARbility",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

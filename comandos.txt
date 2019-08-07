@@ -1,0 +1,5 @@
+INICIAR APLICACION WEB
+	> ionic serve 
+	
+CREAR NUEVA PAGINA
+	> ionic generate page ...
