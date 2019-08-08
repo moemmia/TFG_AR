@@ -1,10 +1,11 @@
 .description{
-  overflow :hidden;
+  overflow: scroll;
   margin: auto;
   border-bottom: 3px solid #3880ff;
-  background-color: rgba(0,0,0,0.05);
+  background-color: rgba(56,128,255,0.1);
   transition: max-height 0.5s ease-in-out;
-  max-height:150px;
+  max-height: 300px;
+  padding: 0 1vh;
 }
 
 .description[hide="true"] {
@@ -14,4 +15,16 @@
 .expand-button{
   width: 100%;
   height: 100%;
+}
+
+#eval-button{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  left: 0;
+}
+
+ion-list{
+  padding-bottom: 5vh;
 }
