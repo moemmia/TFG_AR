@@ -3,3 +3,6 @@ INICIAR APLICACION WEB
 	
 CREAR NUEVA PAGINA
 	> ionic generate page ...
+	
+GENERAR APK ANDROID
+	> ionic cordova build android

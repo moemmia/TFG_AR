@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -37,7 +38,7 @@ export class HomePage implements OnInit{
 
   ngOnInit(){
     //Comprobar si el usuario ya esta logueado, y en caso afirmativo pasar a la siguiente página.
-    this.showTab("log-in");
+    this.showTab("evaluate");
   }
 
 }

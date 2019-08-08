@@ -7,6 +7,10 @@ const routes: Routes = [
   { path: 'register', loadChildren: './home/tabs/register/register.module#RegisterPageModule' },
   { path: 'login', loadChildren: './home/tabs/login/login.module#LoginPageModule' },
   { path: 'evaluate', loadChildren: './home/tabs/evaluate/evaluate.module#EvaluatePageModule' },
+  { path: 'main', loadChildren: './main/main.module#MainPageModule' },
+  { path: 'eval-selection', loadChildren: './eval-selection/eval-selection.module#EvalSelectionPageModule' },
+  { path: 'evaluation', loadChildren: './evaluation/evaluation.module#EvaluationPageModule' },
+  { path: 'statistics', loadChildren: './statistics/statistics.module#StatisticsPageModule' },
 ];
 
 @NgModule({

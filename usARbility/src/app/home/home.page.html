@@ -20,7 +20,12 @@
 
 <ion-content padding center text-center id="body">
   <div class="content" id="evaluate">
-    <ion-button expand="block"> Evaluate </ion-button>
+    <ion-list>
+      <ion-item id="code-bar">
+        <ion-input placeholder="Enter your app code here..." type="text"> </ion-input>
+        <ion-button item-right> Evaluate </ion-button> <p> or <a href="main"> test the app </a> </p>
+      </ion-item>
+    </ion-list>
   </div>
 
   <div class="content" id="log-in">
@@ -36,7 +41,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-button expand="block"> Sign in </ion-button>
+    <ion-button expand="block"> Log in </ion-button>
   </div>
 
   <div class="content" id="register">
