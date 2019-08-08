@@ -11,7 +11,7 @@ export class EvalSelectionPage implements OnInit {
   constructor() { }
 
   show(id){
-      $("#"+id+"-text").attr("hidden",!$("#"+id+"-text").attr("hidden"));
+      $("#"+id+"-text").attr("hide",$("#"+id+"-text").attr("hide")=="true"?false:true);
   }
 
   ngOnInit(){
