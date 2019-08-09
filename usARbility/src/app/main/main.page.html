@@ -1,6 +1,31 @@
+<ion-menu side="start">
+      <ion-header>
+        <ion-toolbar translucent>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" ><ion-icon name="person" slot="start"></ion-icon>Profile</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" ><ion-icon name="settings" slot="start"></ion-icon>Settings</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" href="home"><ion-icon name="exit" slot="start"></ion-icon>Sign out</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+
 <ion-header>
   <ion-toolbar>
-
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -8,5 +33,4 @@
     <ion-button expand="block" href="eval-selection"> Evaluate </ion-button>
     <ion-button expand="block"> Statistics </ion-button>
     <ion-button expand="block"> My Evaluations </ion-button>
-    <ion-button expand="block" href="home"> Exit </ion-button>
 </ion-content>
