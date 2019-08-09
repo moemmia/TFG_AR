@@ -7,6 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPage implements OnInit {
 
+  menuitems= [
+    {
+      name:'Profile',
+      icon:'person',
+      url:'main#'
+    },
+    {
+      name:'Settings',
+      icon:'settings',
+      url:'main#'
+    },
+    {
+      name:'Sign out',
+      icon:'exit',
+      url:'home'
+    }
+  ];
+
+
+
   constructor() {
   }
 

@@ -6,15 +6,11 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-item>
-            <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" ><ion-icon name="person" slot="start"></ion-icon>Profile</ion-button>
-          </ion-item>
-          <ion-item>
-            <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" ><ion-icon name="settings" slot="start"></ion-icon>Settings</ion-button>
-          </ion-item>
-          <ion-item>
-            <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" href="home"><ion-icon name="exit" slot="start"></ion-icon>Sign out</ion-button>
-          </ion-item>
+          <div *ngFor="let m of menuitems">
+            <ion-item>
+              <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" href={{m.url}}><ion-icon name={{m.icon}} slot="start"></ion-icon>{{m.name}}</ion-button>
+            </ion-item>
+          </div>
         </ion-list>
       </ion-content>
     </ion-menu>
