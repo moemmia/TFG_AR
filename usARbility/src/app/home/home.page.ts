@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,7 +9,7 @@ import * as $ from 'jquery';
 })
 export class HomePage implements OnInit{
 
-  constructor() {}
+  constructor(private fire: AngularFireAuth) {}
 
   showTab(id){
     //Seleccionar boton pulsado
@@ -40,4 +41,33 @@ export class HomePage implements OnInit{
     this.showTab("evaluate");
   }
 
+  register(email,password,repeatpassword){
+      this.fire.auth.createUserWithEmailAndPassword(email,password)
+      .then( data => {
+        console.log('got data',data);
+      })
+      .catch( error => {
+        console.log('got error',error);
+      });
+  }
+
+  login() {
+    this.afAuth.auth.signInWithEmailAndPassword(email,password)
+    .then( data => {
+      console.log('got data',data);
+    })
+    .catch( error => {
+      console.log('got error',error);
+    });
+  }
+
+  loginAnon(){
+    firebase.auth().signInAnonymously()
+    .then( data => {
+      console.log('got data',data);
+    })
+    .catch( error => {
+      console.log('got error',error);
+    });
+  }
 }
