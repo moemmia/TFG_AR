@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 
@@ -9,7 +10,7 @@ import * as $ from 'jquery';
 })
 export class HomePage implements OnInit{
 
-  constructor(private fire: AngularFireAuth) {}
+  constructor(private fire: AngularFireAuth, public alertController: AlertController) {}
 
   showTab(id){
     //Seleccionar boton pulsado
@@ -41,23 +42,38 @@ export class HomePage implements OnInit{
     this.showTab("evaluate");
   }
 
-  register(email,password,repeatpassword){
-      this.fire.auth.createUserWithEmailAndPassword(email,password)
-      .then( data => {
-        console.log('got data',data);
-      })
-      .catch( error => {
-        console.log('got error',error);
-      });
+  async showError(error){
+     const alert = await this.alertController.create({
+      header: 'Error',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  register(){
+      if($("#register_password").val() == $("#register_rep_password").val()){
+        this.fire.auth.createUserWithEmailAndPassword($("#register_email").val(),$("#register_password").val())
+        .then( data => {
+            console.log('got data',data);
+        })
+        .catch( error => {
+            this.showError(error.message);
+        });
+      }
+      else{
+        this.showError("'password' and 'repeated password' must be equal");
+      }
   }
 
   login() {
-    this.afAuth.auth.signInWithEmailAndPassword(email,password)
+    this.fire.auth.signInWithEmailAndPassword($("#log_email").val(),$("#log_password").val())
     .then( data => {
       console.log('got data',data);
     })
     .catch( error => {
-      console.log('got error',error);
+      this.showError(error.message);
     });
   }
 
@@ -67,7 +83,7 @@ export class HomePage implements OnInit{
       console.log('got data',data);
     })
     .catch( error => {
-      console.log('got error',error);
+      this.showError(error.message)
     });
   }
 }
