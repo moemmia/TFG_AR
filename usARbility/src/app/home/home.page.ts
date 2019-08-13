@@ -78,7 +78,7 @@ export class HomePage implements OnInit{
   }
 
   loginAnon(){
-    firebase.auth().signInAnonymously()
+    this.fire.auth.signInAnonymously()
     .then( data => {
       console.log('got data',data);
     })
