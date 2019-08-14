@@ -10,7 +10,7 @@ export class DarkThemer{
 
     public constructor(private rendererFactory: RendererFactory2, private storage: Storage){
       this.renderer = rendererFactory.createRenderer(null, null);
-      this.storage.get('dark-theme').then(value =>{
+      this.storage.get('darkmode').then(value =>{
         this.setDarkScheme(value);
       });
     }
