@@ -3,11 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'main', loadChildren: './main/main.module#MainPageModule' },
-  { path: 'eval-selection', loadChildren: './eval-selection/eval-selection.module#EvalSelectionPageModule' },
-  { path: 'evaluation', loadChildren: './evaluation/evaluation.module#EvaluationPageModule' },
-  { path: 'statistics', loadChildren: './statistics/statistics.module#StatisticsPageModule' },
+  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'main', loadChildren: './pages/main/main.module#MainPageModule' },
+  { path: 'eval-selection', loadChildren: './pages/eval-selection/eval-selection.module#EvalSelectionPageModule' },
+  { path: 'evaluation', loadChildren: './pages/evaluation/evaluation.module#EvaluationPageModule' },
+  { path: 'statistics', loadChildren: './pages/statistics/statistics.module#StatisticsPageModule' },
+  { path: 'options', loadChildren: './pages/options/options.module#OptionsPageModule' },
 ];
 
 @NgModule({

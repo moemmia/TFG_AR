@@ -17,12 +17,12 @@ export class MainPage implements OnInit {
     {
       name:'Settings',
       icon:'settings',
-      url:'main#'
+      url:'/options'
     },
     {
       name:'Sign out',
       icon:'exit',
-      url:'home'
+      url:'/home'
     }
   ];
 

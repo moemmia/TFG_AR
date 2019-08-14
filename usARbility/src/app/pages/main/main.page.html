@@ -8,7 +8,7 @@
         <ion-list>
           <div *ngFor="let m of menuitems">
             <ion-item>
-              <ion-button class="menu-button" color="dark" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" href={{m.url}}><ion-icon name={{m.icon}} slot="start"></ion-icon>{{m.name}}</ion-button>
+              <ion-button class="menu-button" color="primary" expand="full" shape="poly"  fill="clear" class="expand-button" expand="full" routerLink={{m.url}} routerDirection="root"><ion-icon name={{m.icon}} slot="start"></ion-icon>{{m.name}}</ion-button>
             </ion-item>
           </div>
         </ion-list>
@@ -26,7 +26,7 @@
 </ion-header>
 
 <ion-content padding center text-center id="body">
-    <ion-button expand="block" href="eval-selection"> Evaluate </ion-button>
+    <ion-button expand="block" routerLink="/eval-selection" routerDirection="root"> Evaluate </ion-button>
     <ion-button expand="block"> Statistics </ion-button>
     <ion-button expand="block"> My Evaluations </ion-button>
 </ion-content>
