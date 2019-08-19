@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-main',
@@ -12,31 +14,35 @@ export class MainPage implements OnInit {
     {
       name:'Profile',
       icon:'person',
-      url:'main#'
+      click: ()=>{}
     },
     {
       name:'Settings',
       icon:'settings',
-      url:'/options'
+      click: ()=>{this.navigate("/options")}
     },
     {
       name:'Sign out',
       icon:'exit',
-      url:'/home'
+      click: ()=>{this.logout()}
     }
   ];
 
-
-
-  constructor(private fire: AngularFireAuth) {
+  constructor(private fire: AngularFireAuth, private router: Router) {
   }
 
   ngOnInit(){
 
   }
 
+  navigate(url){
+    this.router.navigateByUrl(url);
+  }
+
   logout() {
-    this.fire.auth.signOut();
+    this.fire.auth.signOut().then( data => {
+          this.navigate('/home');
+    })
   }
 
 }

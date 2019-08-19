@@ -8,7 +8,7 @@ import * as $ from 'jquery';
 })
 export class EvalSelectionPage implements OnInit {
 
-  lorem = "Lorem ipsum dolor sit amet consectetur adipiscing elit posuere odio, lectus sollicitudin nulla commodo curae ultricies rutrum eu per mus, diam quisque ac iaculis semper dignissim arcu gravida. Netus morbi augue enim litora auctor magna elementum ullamcorper, inceptos in ut habitant mus a sociis montes himenaeos, dapibus purus rhoncus nam lacus molestie laoreet. Tellus aenean inceptos feugiat convallis nec ac vehicula erat lacinia, nunc tincidunt laoreet fringilla porttitor senectus fames cum vestibulum sollicitudin, gravida magnis felis arcu aptent tristique pulvinar ultrices.";
+  lorem = "Lorem ipsum dolor sit amet consectetur adipiscing elit class metus aliquet, platea ullamcorper nibh aptent placerat varius sociis lobortis. Euismod volutpat sollicitudin ultricies donec nec eu tincidunt proin senectus, cum conubia fusce himenaeos faucibus mattis risus iaculis, ut litora netus suscipit ac sagittis potenti vulputate.";
 
   list = [
     {
