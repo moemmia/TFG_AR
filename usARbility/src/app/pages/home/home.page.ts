@@ -39,14 +39,12 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit(){
-    var user = this.fireAuth.auth.currentUser;
-    console.log(user);
-    if (user) {
-      this.router.navigateByUrl('/main');
-    } else {
-      this.showTab("evaluate");
-    }
-
+    this.showTab("evaluate");
+    this.fireAuth.auth.onAuthStateChanged((user) => {
+     if (user) {
+       this.router.navigateByUrl('/main');
+     }
+    });
   }
 
   async showError(error){
