@@ -25,6 +25,12 @@
   left: 0;
 }
 
+ion-icon{
+    position: absolute;
+    left: 85%;
+    color: var(--ion-color-primary);
+}
+
 ion-list{
   padding-bottom: 10vh;
 }

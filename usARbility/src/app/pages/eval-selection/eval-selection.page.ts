@@ -42,6 +42,7 @@ export class EvalSelectionPage implements OnInit {
 
   show(id){
       $("#"+id+"-text").attr("hide",$("#"+id+"-text").attr("hide")=="true"?false:true);
+      $("#"+id+"-arrow").attr("name",$("#"+id+"-text").attr("hide")=="true"?"arrow-dropdown":"arrow-dropup");
   }
 
   ngOnInit(){

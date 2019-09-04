@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import * as $ from 'jquery';
 
 @Component({
@@ -14,7 +15,7 @@ export class MainPage implements OnInit {
     {
       name:'Profile',
       icon:'person',
-      click: ()=>{}
+      click: ()=>{this.navigate("/profile")}
     },
     {
       name:'Settings',
@@ -28,7 +29,7 @@ export class MainPage implements OnInit {
     }
   ];
 
-  constructor(private fire: AngularFireAuth, private router: Router) {
+  constructor(private fire: AngularFireAuth, private router: Router,private menu: MenuController) {
   }
 
   ngOnInit(){
@@ -37,6 +38,7 @@ export class MainPage implements OnInit {
 
   navigate(url){
     this.router.navigateByUrl(url);
+    this.menu.close();
   }
 
   logout() {

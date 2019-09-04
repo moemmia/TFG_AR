@@ -10,7 +10,7 @@
   <ion-list>
     <div *ngFor="let e of list">
     <ion-item lines="none">
-            <ion-button shape="poly" strong size="large" fill="clear" class="expand-button" expand="full" (click)="show(e.name)">{{e.title}}</ion-button>
+            <ion-button  shape="poly" strong size="large" fill="clear" class="expand-button" expand="full" (click)="show(e.name)">{{e.title}}</ion-button><ion-icon id="{{e.name}}-arrow" name="arrow-dropdown"></ion-icon>
             <ion-toggle slot="start" name={{e.name}} color="primary" checked></ion-toggle>
     </ion-item>
       <p hide="true" class="description" id="{{e.name}}-text"> <br>{{e.text}}<br>&nbsp; </p>
