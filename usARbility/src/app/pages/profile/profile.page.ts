@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(private fireAuth: AngularFireAuth) { }
+
+  email = " ";
 
   ngOnInit() {
+    let user=this.fireAuth.auth.currentUser;
+    if(user!=null){
+      this.email = this.fireAuth.auth.currentUser.email;
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) => {
+       if (user) {
+         user.email;
+       }
+      });
+    }
+  }
+
+  resetPassword(){
+    let user=this.fireAuth.auth.currentUser;
+    if(user){
+      this.fireAuth.auth.sendPasswordResetEmail(user.email);
+    }
+
   }
 
 }
