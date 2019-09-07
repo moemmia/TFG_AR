@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import * as $ from 'jquery';
 
 @Component({
@@ -29,7 +29,7 @@ export class MainPage implements OnInit {
     }
   ];
 
-  constructor(private fire: AngularFireAuth, private router: Router,private menu: MenuController) {
+  constructor(private fire: AngularFireAuth, private router: Router,private menu: MenuController, public alertController: AlertController) {
   }
 
   ngOnInit(){

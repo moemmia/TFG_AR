@@ -5,6 +5,10 @@
     </ion-buttons>
     <ion-title>Evaluation</ion-title>
   </ion-toolbar>
+  <ion-item lines="full">
+    <ion-input clearOnEdit="false" placeholder="Enter your app code here..." type="text"> </ion-input>
+    <ion-icon (click)="search()"  id="search"  slot="end" name="search"></ion-icon>
+  </ion-item>
 </ion-header>
 
 <ion-content padding center text-center id="body">
