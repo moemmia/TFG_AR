@@ -11,9 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { IonicStorageModule } from '@ionic/storage';
 import { DarkThemer } from './tools/darkthemer';
-
+import {AppFacade} from './tools/appfacade';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAq8hqdgiy5IZbpJ9BhLhlQUYt9VW0kqRU",
@@ -33,13 +34,15 @@ const firebaseConfig = {
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)],
-  providers: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule
+  ], providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFireAuth,
-    DarkThemer
+    DarkThemer,
+    AppFacade
   ],
   bootstrap: [AppComponent]
 })

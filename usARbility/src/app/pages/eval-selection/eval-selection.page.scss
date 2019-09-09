@@ -2,7 +2,7 @@
   overflow: scroll;
   margin: auto;
   border-bottom: 3px solid var(--ion-color-primary);
-  background-color: rgba(56,128,255,0.1);
+  background-image: linear-gradient(var(--ion-background-color), rgba(56,128,255,0.1));
   transition: max-height 0.5s ease-in-out;
   max-height: 300px;
   padding: 0 1vh;

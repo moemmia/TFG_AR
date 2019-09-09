@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions, PickerButton } from '@ionic/core';
 import { Router } from '@angular/router';
+import {AppFacade, App} from '../../tools/appfacade';
 import * as $ from 'jquery';
 
 @Component({
@@ -11,7 +12,23 @@ import * as $ from 'jquery';
 })
 export class EvalAppPage implements OnInit {
 
-  constructor(private pickerCtrl: PickerController, private router: Router) { }
+  userApps: Array<Object> = [];
+
+  constructor(private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade) {
+    appfacade.getAppsCreatedByCurrentUser().snapshotChanges().subscribe(
+      x => {
+        this.userApps = [];
+        x.forEach( app => {
+          let data:any = app.payload.doc.data();
+          let obj = {
+            value: app.payload.doc.id,
+            text: data.name
+          }
+          this.userApps.push(obj);
+        });
+      }
+    );
+  }
 
   ngOnInit() {
   }
@@ -38,11 +55,7 @@ export class EvalAppPage implements OnInit {
       columns: [
         {
           name: 'apps',
-          options: [
-            { text: 'Your App1', value: 'A' },
-            { text: 'Your App2', value: 'B' },
-            { text: 'Your App3', value: 'C' }
-          ]
+          options: this.userApps
         }
       ]
     };

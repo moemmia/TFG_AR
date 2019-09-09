@@ -6,6 +6,16 @@
     <ion-title>My Apps</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
 
+<ion-content padding center text-center id="body">
+  <ion-list>
+    <div *ngFor="let e of userApps">
+      <ion-button  shape="poly" fill="solid" strong size="large" class="expand-button" expand="full" (click)="show(e.id)">{{e.name}}</ion-button>
+    </div>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

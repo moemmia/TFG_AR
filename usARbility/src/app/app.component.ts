@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {DarkThemer} from './tools/darkthemer';
+import { DarkThemer } from './tools/darkthemer';
+import { AppFacade } from './tools/appfacade';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private darkthemer: DarkThemer
+    private darkthemer: DarkThemer,
+    private appfacade: AppFacade
   ) {
     this.initializeApp();
   }
