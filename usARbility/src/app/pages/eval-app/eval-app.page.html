@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main"></ion-back-button>
+    </ion-buttons>
+    <ion-title>App Selection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item id="text" lines="full">
+      <ion-input clearOnEdit="false" placeholder="Enter an app code here..." type="text"> </ion-input>
+      <!--<ion-icon (click)="search()"  id="search"  slot="end" name="arrow-dropdown"></ion-icon>-->
+    </ion-item>
+    <ion-item id="button-left" lines="none">
+      <ion-button (click)="search()"> Your apps </ion-button>
+    </ion-item>
+    <ion-item id="button-right" lines="none">
+      <ion-button (click)="next()"> Next </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
