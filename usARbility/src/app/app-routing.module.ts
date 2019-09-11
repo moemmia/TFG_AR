@@ -12,6 +12,9 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'eval-app', loadChildren: './pages/eval-app/eval-app.module#EvalAppPageModule' },
   { path: 'apps', loadChildren: './pages/apps/apps.module#AppsPageModule' },
+  { path: 'login', loadChildren: './pages/home/login/login.module#LogInPageModule' },
+  { path: 'register', loadChildren: './pages/home/register/register.module#RegisterPageModule' },
+  { path: 'evaluate', loadChildren: './pages/home/evaluate/evaluate.module#EvaluatePageModule' },
 ];
 
 @NgModule({

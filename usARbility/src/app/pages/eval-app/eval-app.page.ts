@@ -48,7 +48,7 @@ export class EvalAppPage implements OnInit {
         {
           text: 'Select',
           handler: (selected) => {
-                $("ion-input").val(selected.apps.value);
+                $("#appId").val(selected.apps.value);
           }
         }
       ],

@@ -1,69 +1,24 @@
 <ion-header>
+
+</ion-header>
+
+<ion-content padding center text-center id="body">
+  <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button (click)="showTab('evaluate')" tab="evaluate" class="tab" id="tab-button-evaluate" aria-selected="true" selected="selected">
+      <ion-tab-button tab="evaluate">
         <ion-icon name="construct"></ion-icon>
         <ion-label>Evaluate</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button (click)="showTab('log-in')" tab="log-in" class="tab" id="tab-button-log-in">
+      <ion-tab-button  tab="login">
         <ion-icon name="person"></ion-icon>
         <ion-label>Log in</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button (click)="showTab('register')" tab="register" class="tab" id="tab-button-register">
+      <ion-tab-button  tab="register">
         <ion-icon name="person-add"></ion-icon>
         <ion-label>Register</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
-</ion-header>
-
-<ion-content padding center text-center id="body">
-  <div class="content" id="evaluate">
-    <ion-list>
-      <ion-item lines="full">
-        <ion-input clearOnEdit="false" placeholder="Enter your app code here..." type="text"> </ion-input>
-      </ion-item>
-      <ion-item id="code-buttons" lines="none">
-        <ion-button> Evaluate </ion-button>
-        <p>&nbsp; or &nbsp; <a routerLink="/main" routerDirection="root"> test the app </a> </p>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <div class="content" id="log-in">
-    <ion-title></ion-title>
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating"> Email </ion-label>
-        <ion-input clearOnEdit="false" placeholder="example@domain.com" pattern="email"  id="log_email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating"> Password </ion-label>
-        <ion-input clearOnEdit="false" placeholder="password" type="password" id="log_password"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <ion-button expand="block" (click)="login()"> Log in </ion-button>
-  </div>
-
-  <div class="content" id="register">
-    <ion-title></ion-title>
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating"> Email </ion-label>
-        <ion-input clearOnEdit="false" placeholder="example@domain.com" pattern="email" id="register_email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating"> Password </ion-label>
-        <ion-input clearOnEdit="false" placeholder="password" type="password" id="register_password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating" > Repeat password </ion-label>
-        <ion-input clearOnEdit="false" placeholder="password" type="password" id="register_rep_password"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <ion-button expand="block" (click)="register()"> Register </ion-button>
-  </div>
-
+  </ion-tabs>
 </ion-content>

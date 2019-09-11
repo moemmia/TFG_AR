@@ -3,12 +3,12 @@ ion-content *{
   box-sizing: content-box;
 }
 img{
-  padding-top: 20% !important;
+  width: 100px;
+  height: 100px;
+  margin-top: 10vh !important;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width:35vw;
-  height:35vw;
-  -webkit-border-radius: 50%;
+  -webkit-border-radius: 100px;
   border-radius: 50%;
 }
