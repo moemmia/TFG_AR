@@ -7,13 +7,28 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding center text-center id="body">
+<ion-content center text-center id="body">
   <ion-list>
     <div *ngFor="let e of list">
-    <ion-item lines="none">
-            <ion-button  shape="poly" strong size="large" fill="clear" class="expand-button" expand="full" (click)="show(e.name)">{{e.title}}</ion-button><ion-icon id="{{e.name}}-arrow" name="arrow-dropdown"></ion-icon>
-            <ion-checkbox  slot="start" name={{e.name}} color="primary" checked></ion-checkbox >
-    </ion-item>
+    <ion-grid><ion-row>
+
+      <ion-col size="2">
+        <ion-item id="check" lines="none" class="ion-no-padding">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-checkbox  name={{e.name}} color="primary" checked></ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col >
+        <ion-item  lines="none" (click)="show(e.name)" class="ion-activatable ion-no-padding" >
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-label id="name">
+                  {{e.title}}
+                </ion-label>
+                <ion-icon id="{{e.name}}-arrow" slot="end" color="primary" name="arrow-dropdown"></ion-icon>
+          </ion-item>
+      </ion-col>
+    </ion-row></ion-grid>
+
       <p hide="true" class="description" id="{{e.name}}-text"> <br>{{e.text}}<br>&nbsp; </p>
     </div>
   </ion-list>

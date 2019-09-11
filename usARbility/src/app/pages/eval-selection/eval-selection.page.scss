@@ -26,12 +26,19 @@
   left: 0;
 }
 
-ion-icon{
-    position: absolute;
-    left: 85%;
-    color: var(--ion-color-primary);
+ion-checkbox{
+  margin:0;
 }
 
 ion-list{
   padding-bottom: 10vh;
+}
+
+#check{
+  padding-left: 20%;
+}
+
+#name {
+  text-transform: uppercase;
+  font-weight: bold;
 }

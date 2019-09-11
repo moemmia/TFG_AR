@@ -56,8 +56,4 @@ export class AppsPage implements OnInit {
     await alert.present();
   }
 
-  show(id){
-
-  }
-
 }

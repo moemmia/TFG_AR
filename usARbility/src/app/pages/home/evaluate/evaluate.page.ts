@@ -26,4 +26,14 @@ export class EvaluatePage implements OnInit {
     });
   }
 
+  async showError(error){
+     const alert = await this.alertController.create({
+      header: 'Error',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
 }

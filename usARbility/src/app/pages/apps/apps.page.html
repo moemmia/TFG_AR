@@ -7,10 +7,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding center text-center id="body">
+<ion-content text-center id="body">
   <ion-list>
     <div *ngFor="let e of userApps">
-      <ion-button  shape="poly" fill="solid" strong size="large" class="expand-button" expand="full" (click)="show(e.id)">{{e.name}}</ion-button>
+      <ion-item lines="full" class="ion-activatable ion-no-padding" >
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-label>
+          {{e.name}}
+        </ion-label>
+        <ion-icon slot="end" color="primary" name="create"></ion-icon>
+      </ion-item>
     </div>
   </ion-list>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
