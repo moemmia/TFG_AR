@@ -26,9 +26,9 @@ export class LogInPage implements OnInit {
       });
   }
 
-  async showError(error){
+  async showError(error,header='Error'){
      const alert = await this.alertController.create({
-      header: 'Error',
+      header: header,
       message: error,
       buttons: ['OK']
     });
@@ -45,5 +45,39 @@ export class LogInPage implements OnInit {
       $("#"+id+"_eye").attr("name","eye-off");
     }
   }
+
+  async fpass(){
+    const alert = await this.alertController.create({
+      header: 'Password Reset',
+      inputs: [
+        {
+          name: 'email',
+          type: 'text',
+          placeholder: 'example@domain.com'
+        }],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Confirm',
+          handler: (ref) => {
+            this.fireAuth.auth.sendPasswordResetEmail(ref.email).then( data => {
+                this.showError("email sent successfully to "+ref.email,"Thank you");
+            })
+            .catch( error => {
+                this.showError(error.message);
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
 
 }
