@@ -7,24 +7,11 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AppFacade{
 
-  private currentUserId: string;
+    public constructor(private firestore: AngularFirestore){ }
 
-    public constructor(private firestore: AngularFirestore, private fireAuth: AngularFireAuth){
-      let user=this.fireAuth.auth.currentUser;
-      if(user!=null){
-          this.currentUserId= fireAuth.auth.currentUser.uid
-      }else{
-        this.fireAuth.auth.onAuthStateChanged((user) => {
-         if (user) {
-             this.currentUserId= user.uid
-         }
-        });
-      }
-    }
-
-    public addApp(name){
+    public addApp(name,currentUserId){
       let app = {
-        creator: this.currentUserId,
+        creator: currentUserId,
         name: name
       };
       return this.firestore.collection('apps').add(app);
@@ -35,27 +22,27 @@ export class AppFacade{
     }
 
     public getAppById(id) {
-      return this.firestore.collection('apps/'+id);
+      return this.firestore.doc('apps/'+id);
     }
 
-    public getAppsCreatedByCurrentUser() {
+    public getAppsCreatedByCurrentUser(currentUserId) {
       return this.firestore.collection('apps/', ref =>
-        ref.where('creator', '==', this.currentUserId)
+        ref.where('creator', '==', currentUserId)
       );
     }
 
-    public addEvaluation(appID,results){
+    public addEvaluation(appID,results,currentUserId){
       let evaluation = {
         app: appID,
-        evaluator: this.currentUserId,
+        evaluator: currentUserId,
         results: results
       };
       return this.firestore.collection('evaluations').add(evaluation);
     }
 
-    public getAppsEvaluatedByCurrentUser(){
+    public getAppsEvaluatedByCurrentUser(currentUserId){
       return this.firestore.collection('evaluations', ref =>
-        ref.where('evaluator', '==', this.currentUserId)
+        ref.where('evaluator', '==', currentUserId)
       );
     }
 

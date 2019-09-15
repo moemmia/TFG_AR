@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/home/login/login.module#LogInPageModule' },
   { path: 'register', loadChildren: './pages/home/register/register.module#RegisterPageModule' },
   { path: 'evaluate', loadChildren: './pages/home/evaluate/evaluate.module#EvaluatePageModule' },
+  { path: 'app-config', loadChildren: './pages/app-config/app-config.module#AppConfigPageModule' },
 ];
 
 @NgModule({

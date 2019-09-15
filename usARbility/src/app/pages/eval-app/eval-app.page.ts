@@ -3,6 +3,7 @@ import { PickerController } from '@ionic/angular';
 import { PickerOptions, PickerButton } from '@ionic/core';
 import { Router } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 
 @Component({
@@ -13,9 +14,25 @@ import * as $ from 'jquery';
 export class EvalAppPage implements OnInit {
 
   userApps: Array<Object> = [];
+  currentUserId:string;
 
-  constructor(private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade) {
-    appfacade.getAppsCreatedByCurrentUser().snapshotChanges().subscribe(
+  constructor(private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth) {
+    let user=this.fireAuth.auth.currentUser;
+    if(user!=null){
+      this.currentUserId = this.fireAuth.auth.currentUser.uid;
+      this.loadData();
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) => {
+       if (user) {
+         this.currentUserId = user.uid;
+         this.loadData();
+       }
+      });
+    }
+  }
+
+  loadData(){
+    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().subscribe(
       x => {
         this.userApps = [];
         x.forEach( app => {
@@ -29,6 +46,7 @@ export class EvalAppPage implements OnInit {
       }
     );
   }
+
 
   ngOnInit() {
   }

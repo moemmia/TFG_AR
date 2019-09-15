@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AppFacade, App} from '../../tools/appfacade';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 
 @Component({
@@ -11,9 +13,24 @@ import * as $ from 'jquery';
 export class AppsPage implements OnInit {
 
   userApps: Array<App> = [];
+  currentUserId:string;
+  constructor(private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
+    let user=this.fireAuth.auth.currentUser;
+    if(user!=null){
+      this.currentUserId = this.fireAuth.auth.currentUser.uid;
+      this.loadData();
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) => {
+       if (user) {
+         this.currentUserId = user.uid;
+         this.loadData();
+       }
+      });
+    }
+  }
 
-  constructor(private appfacade:AppFacade, public alertController: AlertController) {
-    appfacade.getAppsCreatedByCurrentUser().snapshotChanges().subscribe(
+  loadData(){
+    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().subscribe(
       x => {
         this.userApps = [];
         x.forEach( app => {
@@ -48,12 +65,16 @@ export class AppsPage implements OnInit {
         }, {
           text: 'Ok',
           handler: (ref) => {
-            this.appfacade.addApp(ref.name);
+            this.appfacade.addApp(ref.name,this.currentUserId);
           }
         }
       ]
     });
     await alert.present();
+  }
+
+  goToAppConfig(id){
+    this.router.navigate(["/app-config", {id:id}]);
   }
 
 }
