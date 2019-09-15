@@ -13,3 +13,9 @@ ion-title {
   height: 100%;
   text-align: center;
 }
+
+.loader div{
+  background: transparent !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}

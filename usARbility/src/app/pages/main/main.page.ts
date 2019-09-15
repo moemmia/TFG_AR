@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { MenuController, AlertController } from '@ionic/angular';
+import { MenuController, AlertController, Platform } from '@ionic/angular';
 import * as $ from 'jquery';
 
 @Component({
@@ -29,7 +29,11 @@ export class MainPage implements OnInit {
     }
   ];
 
-  constructor(private fire: AngularFireAuth, private router: Router,private menu: MenuController, public alertController: AlertController) {
+  constructor(private fire: AngularFireAuth, private router: Router,private menu: MenuController, public alertController: AlertController,
+  private platform: Platform) {
+    platform.backButton.subscribeWithPriority(0,() => {
+      // do nothing
+    })
   }
 
   ngOnInit(){
