@@ -15,6 +15,7 @@
       <!--<ion-icon (click)="search()"  id="search"  slot="end" name="arrow-dropdown"></ion-icon>-->
     </ion-item>
     <ion-item id="button-left" lines="none">
+      <ion-button *ngIf="currentUserId == null" disabled> Your apps </ion-button>
       <ion-button *ngIf="currentUserId" (click)="search()"> Your apps </ion-button>
     </ion-item>
     <ion-item id="button-right" lines="none">

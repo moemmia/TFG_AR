@@ -15,7 +15,7 @@ export class AppConfigPage implements OnInit {
 
   id: any;
   app: App;
-  
+
   constructor(private route: ActivatedRoute, private appfacade:AppFacade) {
     route.params.subscribe(
       (params) => {

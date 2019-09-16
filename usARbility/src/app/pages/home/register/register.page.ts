@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import {LoaderController} from '../../../tools/loadercontroller';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import * as $ from 'jquery';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private fireAuth: AngularFireAuth, public alertController: AlertController, private router: Router) { }
+  constructor(private loaderController: LoaderController, private fireAuth: AngularFireAuth, public alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,11 +20,14 @@ export class RegisterPage implements OnInit {
 
   register(){
       if($("#register_password").val() == $("#register_rep_password").val()){
+        this.loaderController.show();
         this.fireAuth.auth.createUserWithEmailAndPassword($("#register_email").val(),$("#register_password").val())
         .then( data => {
+            this.loaderController.hide();
             this.router.navigateByUrl('/main');
         })
         .catch( error => {
+            this.loaderController.hide();
             this.showError(error.message);
         });
       }

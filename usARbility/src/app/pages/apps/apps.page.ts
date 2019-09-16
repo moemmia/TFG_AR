@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
+import {LoaderController} from '../../tools/loadercontroller';
 
 @Component({
   selector: 'app-apps',
@@ -14,7 +15,8 @@ export class AppsPage implements OnInit {
 
   userApps: Array<App> = [];
   currentUserId:string;
-  constructor(private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
+  constructor(private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
+    this.loaderController.show();
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.currentUserId = this.fireAuth.auth.currentUser.uid;
@@ -40,6 +42,7 @@ export class AppsPage implements OnInit {
         });
       }
     );
+    this.loaderController.hide();
   }
 
   ngOnInit() {

@@ -47,6 +47,7 @@ export class MainPage implements OnInit {
 
   logout() {
     this.fire.auth.signOut().then( data => {
+        //desuscribirse de las cosas
           this.navigate('/home');
     })
   }

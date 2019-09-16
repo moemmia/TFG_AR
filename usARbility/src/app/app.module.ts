@@ -14,7 +14,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { IonicStorageModule } from '@ionic/storage';
 import { DarkThemer } from './tools/darkthemer';
-import {AppFacade} from './tools/appfacade';
+import { AppFacade } from './tools/appfacade';
+import { LoaderController } from './tools/loadercontroller';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAq8hqdgiy5IZbpJ9BhLhlQUYt9VW0kqRU",
@@ -42,7 +43,8 @@ const firebaseConfig = {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFireAuth,
     DarkThemer,
-    AppFacade
+    AppFacade,
+    LoaderController
   ],
   bootstrap: [AppComponent]
 })
