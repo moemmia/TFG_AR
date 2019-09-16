@@ -15,21 +15,7 @@ export class AppsPage implements OnInit {
 
   userApps: Array<App> = [];
   currentUserId:string;
-  constructor(private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
-    this.loaderController.show();
-    let user=this.fireAuth.auth.currentUser;
-    if(user!=null){
-      this.currentUserId = this.fireAuth.auth.currentUser.uid;
-      this.loadData();
-    }else{
-      this.fireAuth.auth.onAuthStateChanged((user) => {
-       if (user) {
-         this.currentUserId = user.uid;
-         this.loadData();
-       }
-      });
-    }
-  }
+  constructor(private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) { }
 
   loadData(){
     this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().subscribe(
@@ -42,10 +28,21 @@ export class AppsPage implements OnInit {
         });
       }
     );
-    this.loaderController.hide();
   }
 
   ngOnInit() {
+    let user=this.fireAuth.auth.currentUser;
+    if(user!=null){
+      this.currentUserId = this.fireAuth.auth.currentUser.uid;
+      this.loadData();
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) => {
+       if (user) {
+         this.currentUserId = user.uid;
+         this.loadData();
+       }
+      });
+    }
   }
 
   async openAdd(){

@@ -4,6 +4,9 @@
       <ion-back-button defaultHref="main"></ion-back-button>
     </ion-buttons>
     <ion-title>My Apps</ion-title>
+    <ion-buttons slot="secondary" class="loader">
+      <ion-spinner *ngIf="userApps == false" name="crescent"></ion-spinner>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -21,7 +24,7 @@
   </ion-list>
 
 
-  <ion-fab *ngIf="currentUserId" vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab *ngIf="currentUserId && userApps" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openAdd()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
