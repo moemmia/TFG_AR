@@ -2,6 +2,10 @@ ion-content *{
   padding: 3% 10%;
   box-sizing: content-box;
 }
+ion-content ion-button{
+  padding-bottom: 0;
+}
+
 img{
   width: 100px;
   height: 100px;

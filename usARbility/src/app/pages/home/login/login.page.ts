@@ -12,7 +12,7 @@ import {LoaderController} from '../../../tools/loadercontroller';
 })
 export class LogInPage implements OnInit {
 
-  constructor(private loaderController: LoaderController, private fireAuth: AngularFireAuth, public alertController: AlertController, private router: Router) { }
+  constructor(private loaderController: LoaderController, private fireAuth: AngularFireAuth, private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }

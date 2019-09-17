@@ -13,7 +13,7 @@ import * as $ from 'jquery';
 })
 export class EvalAppPage implements OnInit {
 
-  userApps: Array<Object> = [];
+  userApps: Array<Object>;
   currentUserId:string;
 
   constructor(private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth) {
