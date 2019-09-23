@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
 import { AlertController } from '@ionic/angular';
+import {DarkThemer} from '../../tools/darkthemer';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 
@@ -17,7 +18,7 @@ export class AppConfigPage implements OnInit {
   id: any;
   app: App;
 
-  constructor(private route: ActivatedRoute, private appfacade:AppFacade) {
+  constructor(private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer) {
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
@@ -51,39 +52,62 @@ export class AppConfigPage implements OnInit {
       datasets: [{
         label: this.app.name,
         radius: 0,
-        backgroundColor: "rgba(22,50,100,0.5)",
+        backgroundColor: this.darkthemer.isDarkScheme()? "rgba(22,50,100,0.8)":"rgba(22,50,100,0.5)",
         data: [65, 75, 70, 80, 60]
-      }, {
-        label: "World Median",
-        radius: 0,
-        backgroundColor: "rgba(71,0,21,0.3)",
-        data: [54, 65, 60, 70, 70]
       }]
     };
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: 'radar',
+      type: 'horizontalBar',
       data: this.marksData,
       options: {
-        legend: {
-            labels: {
-                //fontColor: 'black',
-                fontStyle: "bold",
+        layout: {
+            padding: {
+                left: 10,
+                right: 50,
+                top: 0,
+                bottom: 0
             }
         },
-        scale: {
-            pointLabels :{
-                //fontColor: 'black',
+        tooltips: {
+           enabled: false
+        },
+        borderSkipped: false,
+        legend: {
+          display: false,
+            labels: {
                 fontStyle: "bold"
-            },ticks: {
-                beginAtZero: true,
-                max: '100',
-                callback: function() {return ""},
-                backdropColor: "rgba(0, 0, 0, 0)"
             }
+        },
+        scales: {
+            xAxes: [{
+              ticks: {
+                fontColor: this.darkthemer.isDarkScheme()? 'rgb(194, 194, 194)':'rgb(62, 62, 62)',
+                fontStyle: "bold",
+                beginAtZero: true,
+                max: 100
+              },
+              gridLines: {
+                  color: this.darkthemer.isDarkScheme()? 'rgba(0, 0, 0, 0.3)':'rgba(0, 0, 0, 0.15)',
+              }
+            }],
+            yAxes: [{
+                barPercentage: 0.5,
+                barThickness: 16,
+                minBarLength: 2,
+                ticks: {
+                  fontColor: this.darkthemer.isDarkScheme()? 'rgb(194, 194, 194)':'rgb(62, 62, 62)',
+                  fontStyle: "bold"
+                },
+                gridLines: {
+                    offsetGridLines: false,
+                    color: "rgba(0, 0, 0, 0)"
+                }
+            }]
         },
         aspectRatio: "1.5",
-        responsive: false,
+        pointLabelFontSize : 20
       }
     });
   }
+
 }
