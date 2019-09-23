@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
-import { AlertController } from '@ionic/angular';
+import { MenuController, AlertController } from '@ionic/angular';
 import {DarkThemer} from '../../tools/darkthemer';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
@@ -18,7 +18,7 @@ export class AppConfigPage implements OnInit {
   id: any;
   app: App;
 
-  constructor(private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer) {
+  constructor(private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController) {
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
@@ -42,6 +42,15 @@ export class AppConfigPage implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  openMenu() {
+    this.menu.open('end');
+  }
+
+  show(id){
+      $("#"+id).attr("hide",$("#"+id).attr("hide")=="true"?false:true);
+      $("#"+id+"-arrow").attr("name",$("#"+id).attr("hide")=="true"?"arrow-dropdown":"arrow-dropup");
   }
 
   marksData:any;

@@ -1,9 +1,66 @@
+
+<ion-menu side="end">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Config</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content padding>
+  <ion-list>
+    <div *ngIf="app">
+      <ion-item id="criteriaitem" (click)="show('selectionList')"  class="ion-activatable ion-no-padding">
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-label id="criteria" >Criteria to evaluate</ion-label>
+        <ion-icon id="selectionList-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
+      </ion-item>
+      <ion-list id="selectionList">
+        <ion-item lines="none">
+          <ion-label>Perception</ion-label>
+          <ion-checkbox  name="Perception" color="primary" checked></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Ergonomics</ion-label>
+          <ion-checkbox  name="Ergonomics" color="primary" checked></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Presence</ion-label>
+          <ion-checkbox  name="Presence" color="primary" checked></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Availability</ion-label>
+          <ion-checkbox  name="Availability" color="primary" checked></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Easy to use</ion-label>
+          <ion-checkbox  name="easy" color="primary" checked></ion-checkbox>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button id="save" expand="block"> Save Changes </ion-button>
+        </ion-item>
+      </ion-list>
+      <ion-item id="space" lines="none">
+        <ion-button color="medium" expand="block"> Change Name </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button color="danger" expand="block"> Delete </ion-button>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="apps"></ion-back-button>
     </ion-buttons>
-      <ion-title *ngIf="app">{{app.name}}</ion-title>
+    <ion-title *ngIf="app">{{app.name}}</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="clear" (click)="openMenu()">
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
