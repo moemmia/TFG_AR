@@ -5,7 +5,7 @@
       <ion-title>Config</ion-title>
     </ion-toolbar>
   </ion-header>
-<ion-content padding>
+<ion-content>
   <ion-list>
     <div *ngIf="app">
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="nameChange()">
@@ -23,7 +23,7 @@
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="deleteApp()">
         <ion-ripple-effect></ion-ripple-effect>
         <ion-label> Delete </ion-label>
-        <ion-icon color="primary" name="trash" slot="start"></ion-icon>
+        <ion-icon color="danger" name="trash" slot="start"></ion-icon>
       </ion-item>
     </div>
   </ion-list>
@@ -46,6 +46,12 @@
 </ion-header>
 
 <ion-content  center text-center>
+  <ion-item *ngIf="app" lines="none" id="app-id" class="ion-activatable" (click)="copy()">
+      <ion-ripple-effect></ion-ripple-effect>
+      <ion-label position="floating"> App id </ion-label>
+      <ion-input readonly value={{app.id}}></ion-input>
+      <ion-icon  id="app-share" color="primary" name="share" slot="end"></ion-icon>
+  </ion-item>
   <ion-item lines="none"  class="ion-no-padding">
     <canvas #doughnutCanvas></canvas>
   </ion-item>

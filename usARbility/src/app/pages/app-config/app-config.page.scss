@@ -2,3 +2,16 @@ canvas{
     display: block;
     margin: 0 auto;
 }
+
+ion-menu ion-list{
+  padding-left: 15px;
+}
+
+#app-share{
+  margin-top: 22px;
+}
+
+#app-id{
+    border-bottom: double var(--ion-color-primary);
+    padding-bottom: 2px;
+}

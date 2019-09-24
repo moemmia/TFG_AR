@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
-import { MenuController, AlertController } from '@ionic/angular';
+import { MenuController, AlertController, ToastController  } from '@ionic/angular';
 import {DarkThemer} from '../../tools/darkthemer';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 @Component({
   selector: 'app-app-config',
@@ -18,7 +19,7 @@ export class AppConfigPage implements OnInit {
   id: any;
   app: App;
 
-  constructor(private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private clipboard: Clipboard, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
@@ -48,6 +49,19 @@ export class AppConfigPage implements OnInit {
     this.menu.open('end');
   }
 
+  copy(){
+    this.clipboard.copy(this.app.id);
+    this.presentToast();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Id Copied to clipboard.',
+      duration: 1500
+    });
+    toast.present();
+  }
+
   marksData:any;
 
   chartLoader() {
@@ -56,7 +70,7 @@ export class AppConfigPage implements OnInit {
       datasets: [{
         label: this.app.name,
         radius: 0,
-        backgroundColor: this.darkthemer.isDarkScheme()? "rgba(22,50,100,0.8)":"rgba(22,50,100,0.5)",
+        backgroundColor: "#3880ff",
         data: [65, 75, 70, 80, 60]
       }]
     };

@@ -16,6 +16,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DarkThemer } from './tools/darkthemer';
 import { AppFacade } from './tools/appfacade';
 import { LoaderController } from './tools/loadercontroller';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAq8hqdgiy5IZbpJ9BhLhlQUYt9VW0kqRU",
@@ -44,7 +45,8 @@ const firebaseConfig = {
     AngularFireAuth,
     DarkThemer,
     AppFacade,
-    LoaderController
+    LoaderController,
+    Clipboard
   ],
   bootstrap: [AppComponent]
 })
