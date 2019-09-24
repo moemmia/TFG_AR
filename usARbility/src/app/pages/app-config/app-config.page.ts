@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
 import { MenuController, AlertController, ToastController  } from '@ionic/angular';
 import {DarkThemer} from '../../tools/darkthemer';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
@@ -18,8 +19,11 @@ export class AppConfigPage implements OnInit {
 
   id: any;
   app: App;
+  activeCriteria: Array<string> = [];
+  activeCriteriaValues: Array<number> = [];
+  comments: Array<Comment> = [];
 
-  constructor(private clipboard: Clipboard, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
@@ -31,14 +35,63 @@ export class AppConfigPage implements OnInit {
     );
   }
 
+  show(id){
+      $("#"+id+"-text").attr("hide",$("#"+id+"-text").attr("hide")=="true"?false:true);
+      $("#"+id+"-arrow").attr("name",$("#"+id+"-text").attr("hide")=="true"?"arrow-dropdown":"arrow-dropup");
+  }
+
   loadInfo(){
     this.appfacade.getAppById(this.id).snapshotChanges().subscribe(
       app => {
           let data:any = app.payload.data();
-          console.log(data)
-          this.app = new App( app.payload.id, data.name, data.creator);
+          this.app = new App(app.payload.id, data.name, data.creator);
+          this.activeCriteria = [];
+          this.activeCriteriaValues = [];
+          this.comments = [];
+          let criteria = this.objectToArray(data.criteria);
+          let hasComment=false;
+          criteria.forEach(
+            cr => {
+              if(cr.active){
+                this.activeCriteria.push(cr.name);
+                let value=0;
+                let number=0;
+                let evaluations = this.objectToArray(data.evaluation);
+                evaluations.forEach(
+                  ev => {
+                    value += ev[cr.name];
+                    number ++;
+                    if(!hasComment) {
+                      this.comments.push( new Comment(ev['name'],ev['comment']));
+                      hasComment=true;
+                    }
+                  }
+                );
+                this.activeCriteriaValues.push(value/number);
+              }
+            }
+          );
+
           this.chartLoader();
       });
+  }
+
+  objectToArray(obj) {
+    if (typeof(obj) === 'object') {
+      var keys = Object.keys(obj);
+      var allObjects = keys.every(x => typeof(obj[x]) === 'object');
+      if (allObjects) {
+        return keys.map(x => this.objectToArray(obj[x]));
+      } else {
+        var o = {};
+        keys.forEach(x => {
+          o[x] = this.objectToArray(obj[x])
+        });
+        return o;
+      }
+    } else {
+      return obj;
+    }
   }
 
   ngOnInit() {
@@ -66,12 +119,12 @@ export class AppConfigPage implements OnInit {
 
   chartLoader() {
     this.marksData = {
-      labels: ["Perception", "Ergonomics", "Presence", "Availability", "Easy to use"],
+      labels: this.activeCriteria,
       datasets: [{
         label: this.app.name,
         radius: 0,
         backgroundColor: "#3880ff",
-        data: [65, 75, 70, 80, 60]
+        data: this.activeCriteriaValues
       }]
     };
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
@@ -137,35 +190,35 @@ export class AppConfigPage implements OnInit {
           type: 'checkbox',
           label: 'Perception',
           value: 'perception',
-          checked: true
+          checked: (this.activeCriteria.indexOf("perception") > -1)
         },
         {
           name: 'ergonomics',
           type: 'checkbox',
           label: 'Ergonomics',
           value: 'ergonomics',
-          checked: true
+          checked: (this.activeCriteria.indexOf("ergonomics") > -1)
         },
         {
           name: 'presence',
           type: 'checkbox',
           label: 'Presence',
           value: 'presence',
-          checked: true
+          checked: (this.activeCriteria.indexOf("presence") > -1)
         },
         {
           name: 'availability',
           type: 'checkbox',
           label: 'Availability',
           value: 'availability',
-          checked: true
+          checked: (this.activeCriteria.indexOf("availability") > -1)
         },
         {
           name: 'easy',
           type: 'checkbox',
           label: 'Easy to use',
           value: 'easy',
-          checked: true
+          checked: (this.activeCriteria.indexOf("easy") > -1)
         }
       ],
       buttons: [
@@ -179,7 +232,14 @@ export class AppConfigPage implements OnInit {
         }, {
           text: 'Confirm',
           handler: (ref) => {
-
+            let criteria = {
+              perception: ref.indexOf("perception") > -1,
+              ergonomics: ref.indexOf("ergonomics") > -1,
+              presence: ref.indexOf("presence") > -1,
+              availability: ref.indexOf("availability") > -1,
+              easy: ref.indexOf("easy") > -1,
+            };
+            this.appfacade.changeAppActiveCriteria(this.app.id,criteria);
           }
         }
       ]
@@ -207,7 +267,7 @@ export class AppConfigPage implements OnInit {
         }, {
           text: 'Confirm',
           handler: (ref) => {
-
+            this.appfacade.changeAppName(this.app.id,ref.name);
           }
         }
       ]
@@ -230,7 +290,8 @@ export class AppConfigPage implements OnInit {
         }, {
           text: 'Confirm',
           handler: (ref) => {
-
+            this.appfacade.removeApp(this.app.id);
+            this.router.navigateByUrl("/apps");
           }
         }
       ]
@@ -238,4 +299,15 @@ export class AppConfigPage implements OnInit {
     await alert.present();
   }
 
+}
+
+export class Comment
+{
+  name: string;
+  comment: string;
+
+  public constructor(name,comment){
+    this.comment= comment;
+    this.name= name;
+  }
 }

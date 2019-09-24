@@ -55,8 +55,28 @@
   <ion-item lines="none"  class="ion-no-padding">
     <canvas #doughnutCanvas></canvas>
   </ion-item>
-  <ion-item lines="none"  class="ion-no-padding">
 
+  <ion-item lines="none" class="ion-activatable" (click)="show('info')">
+    <ion-ripple-effect></ion-ripple-effect>
+    <ion-label id="name"> Details </ion-label>
+    <ion-icon id="info-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
   </ion-item>
+  <ion-list  id="info-text">
+    <ion-item lines="none">
 
+    </ion-item>
+  </ion-list>
+
+
+  <ion-item lines="none" class="ion-activatable" (click)="show('comment')">
+    <ion-ripple-effect></ion-ripple-effect>
+    <ion-label id="name"> Comments </ion-label>
+    <ion-icon id="comment-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
+  </ion-item>
+  <ion-list *ngFor="let e of comments" id="comment-text">
+    <ion-item lines="none">
+      <ion-label position="floating"> {{e.name}} </ion-label>
+      <ion-input readonly value={{e.comment}}></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>
