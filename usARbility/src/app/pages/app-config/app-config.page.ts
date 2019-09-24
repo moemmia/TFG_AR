@@ -18,7 +18,7 @@ export class AppConfigPage implements OnInit {
   id: any;
   app: App;
 
-  constructor(private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController) {
+  constructor(private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
@@ -46,11 +46,6 @@ export class AppConfigPage implements OnInit {
 
   openMenu() {
     this.menu.open('end');
-  }
-
-  show(id){
-      $("#"+id).attr("hide",$("#"+id).attr("hide")=="true"?false:true);
-      $("#"+id+"-arrow").attr("name",$("#"+id).attr("hide")=="true"?"arrow-dropdown":"arrow-dropup");
   }
 
   marksData:any;
@@ -117,6 +112,116 @@ export class AppConfigPage implements OnInit {
         pointLabelFontSize : 20
       }
     });
+  }
+
+  async criteriaChange(){
+    const alert = await this.alertController.create({
+      header: 'Change Criteria',
+      inputs: [
+        {
+          name: 'perception',
+          type: 'checkbox',
+          label: 'Perception',
+          value: 'perception',
+          checked: true
+        },
+        {
+          name: 'ergonomics',
+          type: 'checkbox',
+          label: 'Ergonomics',
+          value: 'ergonomics',
+          checked: true
+        },
+        {
+          name: 'presence',
+          type: 'checkbox',
+          label: 'Presence',
+          value: 'presence',
+          checked: true
+        },
+        {
+          name: 'availability',
+          type: 'checkbox',
+          label: 'Availability',
+          value: 'availability',
+          checked: true
+        },
+        {
+          name: 'easy',
+          type: 'checkbox',
+          label: 'Easy to use',
+          value: 'easy',
+          checked: true
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Confirm',
+          handler: (ref) => {
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async nameChange(){
+    const alert = await this.alertController.create({
+      header: 'Change Name',
+      inputs: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: this.app.name
+        }],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Confirm',
+          handler: (ref) => {
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async deleteApp(){
+    const alert = await this.alertController.create({
+      header: 'App Deletion',
+      message: 'Are you sure you want to delete "'+ this.app.name +'"?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Confirm',
+          handler: (ref) => {
+
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }
