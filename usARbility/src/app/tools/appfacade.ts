@@ -106,7 +106,8 @@ export class AppFacade{
               availability: results["availability"],
               easy: results["easy"],
               name: currentUserName,
-              comment: results["comment"]
+              comment: results["comment"],
+              timestamp: firebase.firestore.FieldValue.serverTimestamp()
             }
           }
         });
@@ -148,10 +149,12 @@ export class Comment
 {
   name: string;
   comment: string;
+  date: Date;
 
-  public constructor(name,comment){
+  public constructor(name,comment,date=new Date()){
     this.comment= comment;
     this.name= name;
+    this.date=date;
   }
 }
 

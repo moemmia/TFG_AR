@@ -67,7 +67,6 @@ export class EvalConfigPage implements OnInit {
           let criteria = this.objectToArray(data.criteria);
           let hasComment=false;
           let evaluations = this.objectToArray(data.evaluation);
-          let value=0;
           evaluations.forEach(
               ev => {
                 criteria.forEach(
@@ -76,7 +75,7 @@ export class EvalConfigPage implements OnInit {
                     this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name],this.isValueValid(cr.name, ev[cr.name])));
                     this.criteriaValues.push(ev[cr.name]);
                 });
-                this.comment = new Comment(ev['name'],ev['comment']);
+                this.comment = new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000));
           });
           this.chartLoader();
       });

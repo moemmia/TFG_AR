@@ -11,13 +11,13 @@
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="redoEval()">
         <ion-ripple-effect></ion-ripple-effect>
         <ion-label> Redo Evaluation </ion-label>
-        <ion-icon color="primary" name="create" slot="start"></ion-icon>
+        <ion-icon color="primary" name="redo" slot="start"></ion-icon>
       </ion-item>
 
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="commentChange()">
         <ion-ripple-effect></ion-ripple-effect>
         <ion-label> Change Comment </ion-label>
-        <ion-icon color="primary" name="clipboard" slot="start"></ion-icon>
+        <ion-icon color="primary" name="code-working" slot="start"></ion-icon>
       </ion-item>
 
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="deleteEval()">
@@ -46,6 +46,10 @@
 </ion-header>
 
 <ion-content  center text-center>
+  <ion-item *ngIf="comment" lines="none" id="app-id">
+      <ion-label position="floating"> Date of Evaluation </ion-label>
+      <ion-text readonly ><ion-datetime displayFormat="DDDD MMM D, YYYY" value={{comment.date}}></ion-datetime></ion-text>
+  </ion-item>
 
   <ion-item lines="none"  class="ion-no-padding">
     <canvas #doughnutCanvas></canvas>
@@ -96,8 +100,9 @@
   </ion-item>
   <ion-list id="comment-text">
     <ion-item *ngIf="comment" class="ion-no-padding">
-      <ion-label position="floating"> {{comment.name}} </ion-label>
-      <ion-textarea readonly value={{comment.comment}}></ion-textarea>
+      <ion-label color="primary" position="floating"> {{comment.name}} </ion-label>
+      <ion-textarea autoGrow readonly value={{comment.comment}}></ion-textarea>
+      <br>
     </ion-item>
   </ion-list>
 </ion-content>
