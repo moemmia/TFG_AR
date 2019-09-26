@@ -61,9 +61,35 @@
     <ion-label id="name"> Details </ion-label>
     <ion-icon id="info-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
   </ion-item>
-  <ion-list  id="info-text">
-    <ion-item lines="none">
-
+  <ion-list id="info-text">
+    <ion-item  class="ion-no-padding" lines="none">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            Criteria
+          </ion-col>
+          <ion-col>
+            Value
+          </ion-col>
+          <ion-col>
+            Pass
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let a of activeCriteriaDetails">
+          <ion-col size="6">
+            {{a.name}}
+          </ion-col>
+          <ion-col>
+            {{a.value}}
+          </ion-col>
+          <ion-col *ngIf="a.valid">
+            <ion-icon color="success" name="checkmark"></ion-icon>
+          </ion-col>
+          <ion-col *ngIf="a.valid==false">
+            <ion-icon color="danger" name="close"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
   </ion-list>
 
@@ -73,10 +99,10 @@
     <ion-label id="name"> Comments </ion-label>
     <ion-icon id="comment-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
   </ion-item>
-  <ion-list *ngFor="let e of comments" id="comment-text">
-    <ion-item lines="none">
+  <ion-list id="comment-text">
+    <ion-item *ngFor="let e of comments"  class="ion-no-padding">
       <ion-label position="floating"> {{e.name}} </ion-label>
-      <ion-input readonly value={{e.comment}}></ion-input>
+      <ion-textarea readonly value={{e.comment}}></ion-textarea>
     </ion-item>
   </ion-list>
 </ion-content>

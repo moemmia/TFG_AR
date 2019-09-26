@@ -21,6 +21,7 @@ export class AppConfigPage implements OnInit {
   app: App;
   activeCriteria: Array<string> = [];
   activeCriteriaValues: Array<number> = [];
+  activeCriteriaDetails: Array<CriteriaDetail> = [];
   comments: Array<Comment> = [];
 
   constructor(private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
@@ -47,6 +48,7 @@ export class AppConfigPage implements OnInit {
           this.app = new App(app.payload.id, data.name, data.creator);
           this.activeCriteria = [];
           this.activeCriteriaValues = [];
+          this.activeCriteriaDetails = [];
           this.comments = [];
           let criteria = this.objectToArray(data.criteria);
           let hasComment=false;
@@ -67,6 +69,7 @@ export class AppConfigPage implements OnInit {
                     }
                   }
                 );
+                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value,this.isValueValid(cr.name, value)))
                 this.activeCriteriaValues.push(value/number);
               }
             }
@@ -74,6 +77,10 @@ export class AppConfigPage implements OnInit {
 
           this.chartLoader();
       });
+  }
+
+  isValueValid(name,value){
+    return value >= 50;
   }
 
   objectToArray(obj) {
@@ -309,5 +316,19 @@ export class Comment
   public constructor(name,comment){
     this.comment= comment;
     this.name= name;
+  }
+}
+
+
+export class CriteriaDetail
+{
+  name: string;
+  value: number;
+  valid: boolean;
+
+  public constructor(name,value,valid){
+    this.value= value;
+    this.name= name;
+    this.valid=valid;
   }
 }
