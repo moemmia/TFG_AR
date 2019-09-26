@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Evaluations</ion-title>
+    <ion-buttons slot="secondary" class="loader">
+      <ion-spinner *ngIf="userEvaluatedApps == false" name="crescent"></ion-spinner>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center id="body">
+  <ion-list>
+    <div *ngFor="let e of userEvaluatedApps">
+      <ion-item lines="full" class="ion-activatable ion-no-padding">
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-label>
+          {{e.name}}
+        </ion-label>
+        <ion-icon slot="end" color="primary" name="create"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

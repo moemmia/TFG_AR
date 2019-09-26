@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {AppFacade, App} from '../../tools/appfacade';
+import {AppFacade, App, Comment, CriteriaDetail} from '../../tools/appfacade';
 import { MenuController, AlertController, ToastController  } from '@ionic/angular';
 import {DarkThemer} from '../../tools/darkthemer';
 import { Router } from '@angular/router';
@@ -306,29 +306,4 @@ export class AppConfigPage implements OnInit {
     await alert.present();
   }
 
-}
-
-export class Comment
-{
-  name: string;
-  comment: string;
-
-  public constructor(name,comment){
-    this.comment= comment;
-    this.name= name;
-  }
-}
-
-
-export class CriteriaDetail
-{
-  name: string;
-  value: number;
-  valid: boolean;
-
-  public constructor(name,value,valid){
-    this.value= value;
-    this.name= name;
-    this.valid=valid;
-  }
 }
