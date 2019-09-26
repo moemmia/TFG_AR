@@ -119,7 +119,14 @@ export class AppFacade{
         });
     }
 
-    
+    public changeEvalComment(appID,currentUserId,comment){
+      this.firestore.doc('apps/'+appID).update(
+        {
+          ['evaluation.'+currentUserId+'.comment']: comment
+        });
+    }
+
+
 
 }
 

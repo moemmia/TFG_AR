@@ -1,0 +1,83 @@
+canvas{
+    display: block;
+    margin: 0 auto;
+}
+
+ion-menu ion-list{
+  padding-left: 15px;
+}
+
+#app-share{
+  margin-top: 22px;
+}
+
+#app-id{
+  border-bottom: ridge var(--ion-color-primary);
+  padding-bottom: 2px;
+}
+
+#app-id ion-label{
+  color: var(--ion-color-primary);
+}
+
+#comment-text{
+  overflow: scroll;
+  margin: auto;
+  border-bottom: ridge var(--ion-color-primary);
+  transition: max-height 0.5s ease-in-out;
+  max-height: 300px;
+  padding: 0;
+}
+
+#comment-text[hide="true"] {
+    max-height: 0;
+}
+
+#comment-text ion-item *{
+    padding: 0 5vh;
+}
+
+
+#info-text{
+  overflow: scroll;
+  margin: auto;
+  border-bottom: ridge var(--ion-color-primary);
+  transition: max-height 0.5s ease-in-out;
+  max-height: 300px;
+  padding: 0;
+}
+
+#info-text[hide="true"] {
+    max-height: 0;
+}
+
+
+
+#info-text ion-row:first-child{
+  border-bottom: 2px solid var(--ion-border-color);
+  font-size: small;
+  font-style: italic;
+  box-shadow: 0px -2px 1px var(--ion-border-color);
+}
+
+#info-text ion-row {
+  font-weight: bolder;
+}
+
+#info-text ion-row ion-col:not(:first-child){
+  text-align: center;
+}
+
+#info-text ion-row:last-child {
+  box-shadow: 0px 2px 1px var(--ion-border-color);
+}
+
+#info-text ion-item{
+  padding-left: var(--inner-padding-end)
+}
+
+#info-text ion-grid{
+  padding: 0;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}

@@ -13,12 +13,12 @@
 <ion-content text-center id="body">
   <ion-list>
     <div *ngFor="let e of userEvaluatedApps">
-      <ion-item lines="full" class="ion-activatable ion-no-padding">
+      <ion-item lines="full" class="ion-activatable ion-no-padding" (click)="goToEvalConfig(e.id)">
         <ion-ripple-effect></ion-ripple-effect>
         <ion-label>
           {{e.name}}
         </ion-label>
-        <ion-icon slot="end" color="primary" name="create"></ion-icon>
+        <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>
       </ion-item>
     </div>
   </ion-list>

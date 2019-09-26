@@ -1,0 +1,103 @@
+
+<ion-menu side="end">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Config</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <ion-list>
+    <div *ngIf="app">
+      <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="redoEval()">
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-label> Redo Evaluation </ion-label>
+        <ion-icon color="primary" name="create" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="commentChange()">
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-label> Change Comment </ion-label>
+        <ion-icon color="primary" name="clipboard" slot="start"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="deleteEval()">
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-label> Delete </ion-label>
+        <ion-icon color="danger" name="trash" slot="start"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="my-evaluations"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="app">{{app.name}}</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="clear" (click)="openMenu()">
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  center text-center>
+
+  <ion-item lines="none"  class="ion-no-padding">
+    <canvas #doughnutCanvas></canvas>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-activatable" (click)="show('info')">
+    <ion-ripple-effect></ion-ripple-effect>
+    <ion-label id="name"> Details </ion-label>
+    <ion-icon id="info-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
+  </ion-item>
+  <ion-list id="info-text">
+    <ion-item  class="ion-no-padding" lines="none">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            Criteria
+          </ion-col>
+          <ion-col>
+            Value
+          </ion-col>
+          <ion-col>
+            Pass
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let a of criteriaDetails">
+          <ion-col size="6">
+            {{a.name}}
+          </ion-col>
+          <ion-col>
+            {{a.value}}
+          </ion-col>
+          <ion-col *ngIf="a.valid">
+            <ion-icon color="success" name="checkmark"></ion-icon>
+          </ion-col>
+          <ion-col *ngIf="a.valid==false">
+            <ion-icon color="danger" name="close"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-item lines="none" class="ion-activatable" (click)="show('comment')">
+    <ion-ripple-effect></ion-ripple-effect>
+    <ion-label id="name"> Comment </ion-label>
+    <ion-icon id="comment-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
+  </ion-item>
+  <ion-list id="comment-text">
+    <ion-item *ngIf="comment" class="ion-no-padding">
+      <ion-label position="floating"> {{comment.name}} </ion-label>
+      <ion-textarea readonly value={{comment.comment}}></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

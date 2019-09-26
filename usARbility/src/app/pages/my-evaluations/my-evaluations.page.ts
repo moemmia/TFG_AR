@@ -51,4 +51,8 @@ export class MyEvaluationsPage implements OnInit {
   ngOnInit() {
   }
 
+  goToEvalConfig(id){
+    this.router.navigate(["/eval-config", {id:id}]);
+  }
+
 }

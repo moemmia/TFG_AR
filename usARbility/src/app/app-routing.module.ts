@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'evaluate', loadChildren: './pages/home/evaluate/evaluate.module#EvaluatePageModule' },
   { path: 'app-config', loadChildren: './pages/app-config/app-config.module#AppConfigPageModule' },
   { path: 'my-evaluations', loadChildren: './pages/my-evaluations/my-evaluations.module#MyEvaluationsPageModule' },
+  { path: 'eval-config', loadChildren: './pages/eval-config/eval-config.module#EvalConfigPageModule' },
 ];
 
 @NgModule({
