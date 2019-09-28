@@ -1,7 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="eval-app"></ion-back-button>
+    <ion-buttons  slot="start">
+      <ion-back-button *ngIf="currentUserId" defaultHref="eval-app"></ion-back-button>
+      <ion-back-button *ngIf="!(currentUserId)" defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>Criteria Selection</ion-title>
   </ion-toolbar>
@@ -15,13 +16,13 @@
       <ion-col size="2">
         <ion-item id="check" lines="none" class="ion-no-padding">
           <ion-ripple-effect></ion-ripple-effect>
-          <ion-checkbox  name={{e.name}} color="primary" checked></ion-checkbox>
+          <ion-checkbox  name={{e.name}} color="primary" id="{{e.name}}-check" checked></ion-checkbox>
         </ion-item>
       </ion-col>
       <ion-col >
         <ion-item  lines="none" (click)="show(e.name)" class="ion-activatable ion-no-padding" >
                 <ion-ripple-effect></ion-ripple-effect>
-                <ion-label id="name">
+                <ion-label id="{{e.name}}-name" class="name">
                   {{e.title}}
                 </ion-label>
                 <ion-icon id="{{e.name}}-arrow" slot="end" color="primary" name="arrow-dropdown"></ion-icon>

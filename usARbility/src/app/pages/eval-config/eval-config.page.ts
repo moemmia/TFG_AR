@@ -191,17 +191,17 @@ export class EvalConfigPage implements OnInit {
   }
 
   redoEval(){
-
+    this.router.navigate(["/eval-app", {id:this.id}]);
   }
 
   async commentChange(){
     const alert = await this.alertController.create({
-      header: 'Change Name',
+      header: 'Change Comment',
       inputs: [
         {
           name: 'comment',
           type: 'text',
-          placeholder: this.comment.comment
+          value: this.comment.comment
         }],
       buttons: [
         {

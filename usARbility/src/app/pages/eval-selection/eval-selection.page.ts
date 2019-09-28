@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {AppFacade, CriteriaDetail} from '../../tools/appfacade';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 
 @Component({
@@ -35,10 +38,52 @@ export class EvalSelectionPage implements OnInit {
       title: 'easy to use',
       name: 'easy',
       text: this.lorem
-    }
-  ];
+    }];
 
-  constructor() { }
+  id: any;
+  currentUserId:string;
+
+  constructor(private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
+    let user=this.fireAuth.auth.currentUser;
+    if(user!=null){
+      this.currentUserId = this.fireAuth.auth.currentUser.uid;
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) => {
+       if (user) {
+         this.currentUserId = user.uid;
+       }
+      });
+    }
+
+    route.params.subscribe(
+      (params) => {
+        this.id = params['id'];
+        this.checkCriteria();
+      },
+    );
+  }
+
+  checkCriteria(){
+    this.appfacade.getAppById(this.id).snapshotChanges().subscribe(
+      x => {
+        let data:any =  x.payload.data();
+        let criteria = this.objectToArray(data.criteria);
+        criteria.forEach(
+        cr => {
+          console.log(cr)
+          this.changeList(cr.name,cr.active);
+        });
+      }
+    );
+  }
+
+  changeList(criteria,active){
+    $("#"+criteria+"-check").attr('checked',active);
+    $("#"+criteria+"-check").attr('disabled',!active);
+    if(!active){
+      $("#"+criteria+"-name").attr('color','medium');
+    }
+  }
 
   show(id){
       $("#"+id+"-text").attr("hide",$("#"+id+"-text").attr("hide")=="true"?false:true);
@@ -47,6 +92,24 @@ export class EvalSelectionPage implements OnInit {
 
   ngOnInit(){
 
+  }
+
+  objectToArray(obj) {
+    if (typeof(obj) === 'object') {
+      var keys = Object.keys(obj);
+      var allObjects = keys.every(x => typeof(obj[x]) === 'object');
+      if (allObjects) {
+        return keys.map(x => this.objectToArray(obj[x]));
+      } else {
+        var o = {};
+        keys.forEach(x => {
+          o[x] = this.objectToArray(obj[x])
+        });
+        return o;
+      }
+    } else {
+      return obj;
+    }
   }
 
 }

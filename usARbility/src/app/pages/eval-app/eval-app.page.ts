@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PickerController } from '@ionic/angular';
+import { PickerController, AlertController } from '@ionic/angular';
 import { PickerOptions, PickerButton } from '@ionic/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
@@ -13,10 +14,11 @@ import * as $ from 'jquery';
 })
 export class EvalAppPage implements OnInit {
 
+  id: any;
   userApps: Array<Object>;
   currentUserId:string;
 
-  constructor(private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth) {
+  constructor(private route: ActivatedRoute, private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController) {
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.currentUserId = this.fireAuth.auth.currentUser.uid;
@@ -29,6 +31,12 @@ export class EvalAppPage implements OnInit {
        }
       });
     }
+
+    route.params.subscribe(
+      (params) => {
+        this.id = params['id'];
+      },
+    );
   }
 
   loadData(){
@@ -52,8 +60,21 @@ export class EvalAppPage implements OnInit {
   }
 
   next(){
-    //Comprobar que existe la app y enviar info a la siguiente pagina
-    this.router.navigateByUrl("/eval-selection");
+    let id= $("#appId").val();
+    if(!id){
+      this.showError("you must input the code for the app");
+    }else{
+      let context = this;
+      this.appfacade.getAppById(id).ref.get().then(function(doc) {
+          if (doc.exists) {
+              context.router.navigate(["/eval-selection", {id:id}]);
+          } else {
+              context.showError("there is no app for this code");
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+    }
   }
 
   async search(){
@@ -80,5 +101,16 @@ export class EvalAppPage implements OnInit {
     let picker = await this.pickerCtrl.create(opts);
     picker.present();
   }
+
+  async showError(error){
+     const alert = await this.alertController.create({
+      header: 'Error',
+      message: error,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
 
 }
