@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {AppFacade, CriteriaDetail} from '../../tools/appfacade';
+import { ActivatedRoute, Router } from '@angular/router';
+import {AppFacade, CriteriaDetail, App} from '../../tools/appfacade';
 import {LoaderController} from '../../tools/loadercontroller';
 import { ArrayKit } from '../../tools/arraykit';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ModalController } from '@ionic/angular';
+import { EvaluationPage } from './evaluation/evaluation.page';
+
 import * as $ from 'jquery';
 import { takeWhile } from 'rxjs/operators';
 
@@ -45,10 +48,11 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
 
   id: any;
   currentUserId:string;
+  app: App;
 
   private alive = true;
 
-  constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
+  constructor(private modalController: ModalController, private loaderController: LoaderController, private router: Router,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
     this.loaderController.show();
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
@@ -64,8 +68,13 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
     route.params.pipe(takeWhile(() => this.alive)).subscribe(
       (params) => {
         this.id = params['id'];
-        this.checkCriteria();
-
+        if(this.id){
+          this.checkCriteria();
+        }else{
+          this.loaderController.hide();
+          if(this.fireAuth.auth.currentUser) this.router.navigateByUrl("/main");
+          else  this.router.navigateByUrl("/home");
+        }
       },
     );
   }
@@ -79,10 +88,10 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
     this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
         let data:any =  x.payload.data();
+        this.app = new App(x.payload.id, data.name, data.creator);
         let criteria = this.arraykit.objectToArray(data.criteria);
         criteria.forEach(
         cr => {
-          console.log(cr)
           this.changeList(cr.name,cr.active);
         });
         this.loaderController.hide();
@@ -105,5 +114,22 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
 
   ngOnInit(){
 
+  }
+
+  async startEvaluation(){
+    this.alive = false;
+    const modal = await this.modalController.create({
+      component: EvaluationPage,
+      componentProps: {
+        'perception': $("#perception-check").attr('checked'),
+        'ergonomics': $("#ergonomics-check").attr('checked'),
+        'presence': $("#presence-check").attr('checked'),
+        'availability': $("#availability-check").attr('checked'),
+        'easy': $("#easy-check").attr('checked'),
+        'appname': this.app,
+        'evaluatorId' : this.currentUserId
+      }
+    });
+    return await modal.present();
   }
 }

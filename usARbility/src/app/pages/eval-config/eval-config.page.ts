@@ -40,20 +40,16 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
-    route.params.pipe(takeWhile(() => this.alive)).subscribe(
-      (params) => {
-        this.id = params['id'];
-        this.loadInfo();
-      },
-    );
 
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.currentUserId = this.fireAuth.auth.currentUser.uid;
+      this.loadAll();
     }else{
       this.fireAuth.auth.onAuthStateChanged((user) => {
        if (user) {
          this.currentUserId = user.uid;
+         this.loadAll();
        }
       });
     }
@@ -61,6 +57,21 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
 
   ngOnDestroy() {
     this.alive = false;
+  }
+
+  loadAll(){
+    this.route.params.pipe(takeWhile(() => this.alive)).subscribe(
+      (params) => {
+        this.id = params['id'];
+        if(this.id){
+          this.loadInfo();
+        }else{
+          this.loaderController.hide();
+          if(this.fireAuth.auth.currentUser) this.router.navigateByUrl("/main");
+          else  this.router.navigateByUrl("/home");
+        }
+      },
+    );
   }
 
 
@@ -82,13 +93,15 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
           let evaluations = this.arraykit.objectToArray(data.evaluation);
           evaluations.forEach(
               ev => {
-                criteria.forEach(
-                cr => {
-                    this.criteria.push(cr.name);
-                    this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name],this.isValueValid(cr.name, ev[cr.name])));
-                    this.criteriaValues.push(ev[cr.name]);
-                });
-                this.comment = new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000));
+                if(ev['name'] == this.fireAuth.auth.currentUser.email){
+                  criteria.forEach(
+                  cr => {
+                      this.criteria.push(cr.name);
+                      this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name],this.isValueValid(cr.name, ev[cr.name])));
+                      this.criteriaValues.push(ev[cr.name]);
+                  });
+                  this.comment = new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000));
+                }
           });
           this.chartLoader();
       });

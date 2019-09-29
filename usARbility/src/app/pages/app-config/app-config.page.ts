@@ -6,6 +6,7 @@ import {DarkThemer} from '../../tools/darkthemer';
 import { ArrayKit } from '../../tools/arraykit';
 import {LoaderController} from '../../tools/loadercontroller';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
@@ -29,15 +30,35 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   private alive = true;
 
-  constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     this.loaderController.show();
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
-    route.params.pipe(takeWhile(() => this.alive)).subscribe(
+
+    let user=this.fireAuth.auth.currentUser;
+    if(user!=null){
+       this.loadAll();
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) => {
+       if (user) {
+         this.loadAll();
+       }
+      });
+    }
+  }
+
+  loadAll(){
+    this.route.params.pipe(takeWhile(() => this.alive)).subscribe(
       (params) => {
         this.id = params['id'];
-        this.loadInfo();
+        if(this.id){
+          this.loadInfo();
+        }else{
+          this.loaderController.hide();
+          if(this.fireAuth.auth.currentUser) this.router.navigateByUrl("/main");
+          else  this.router.navigateByUrl("/home");
+        }
       },
     );
   }
@@ -55,6 +76,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
     this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       app => {
           let data:any = app.payload.data();
+          this.isUserPropietary(data.creator);
           this.app = new App(app.payload.id, data.name, data.creator);
           this.activeCriteria = [];
           this.activeCriteriaValues = [];
@@ -87,6 +109,12 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
           this.chartLoader();
       });
+  }
+
+  isUserPropietary(creator){
+    if(this.fireAuth.auth.currentUser.uid != creator){
+        this.router.navigateByUrl('/main');
+    }
   }
 
   isValueValid(name,value){

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Evaluating</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item id="app-name" *ngIf="app" lines="none">
+      <ion-label position="floating"> App </ion-label>
+      <ion-input readonly value={{app.name}}></ion-input>
+  </ion-item>
+
+
+
+  <ion-grid id="buttons">
+    <ion-row id="row-name">
+      <ion-col  align-items-center>
+          <ion-text *ngIf="current"> {{current.name}}</ion-text>
+      </ion-col>
+    </ion-row>
+     <ion-row>
+       <ion-col>
+         <ion-button *ngIf="hasPrev"  shape="poly" strong size="large" fill="solid" expand="full" (click)="prev()"> <ion-icon name="arrow-round-back"></ion-icon> </ion-button>
+         <ion-button *ngIf="hasPrev == false"  shape="poly" strong size="large" fill="solid" expand="full" (click)="dismiss()"> <ion-icon name="close"></ion-icon> </ion-button>
+       </ion-col>
+       <ion-col size="2">
+       </ion-col>
+       <ion-col>
+         <ion-button *ngIf="hasNext" shape="poly" strong size="large" fill="solid" expand="full" (click)="next()"> <ion-icon name="arrow-round-forward"></ion-icon> </ion-button>
+         <ion-button *ngIf="hasNext == false" shape="poly" strong size="large" fill="solid" expand="full" (click)="send()"> <ion-icon name="send"></ion-icon> </ion-button>
+       </ion-col>
+     </ion-row>
+  </ion-grid>
+
+</ion-content>

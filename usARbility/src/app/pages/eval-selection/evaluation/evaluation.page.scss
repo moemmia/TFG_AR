@@ -1,0 +1,31 @@
+#app-name{
+  border-bottom: ridge var(--ion-color-primary);
+  padding-bottom: 2px;
+}
+
+#buttons{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  left: 0;
+  padding: 0;
+}
+
+#buttons *{
+  margin: 0;
+  padding: 0;
+  --box-shadow: none;
+}
+
+#buttons ion-col:not(:first-child):not(:last-child){
+    background: var(--ion-color-primary);
+}
+
+#row-name{
+  background: var(--ion-color-primary-shade);
+  text-align: center;
+  font-size: x-large;
+    font-weight: bold;
+    color: whitesmoke;
+}
