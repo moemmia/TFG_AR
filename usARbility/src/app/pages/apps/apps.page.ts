@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AppFacade, App} from '../../tools/appfacade';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 import {LoaderController} from '../../tools/loadercontroller';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-apps',
   templateUrl: './apps.page.html',
   styleUrls: ['./apps.page.scss'],
 })
-export class AppsPage implements OnInit {
+export class AppsPage implements OnInit, OnDestroy {
 
   userApps: Array<App> = [];
   currentUserId:string;
+
+  private alive = true;
+
   constructor(private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
@@ -30,8 +34,12 @@ export class AppsPage implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.alive = false;
+  }
+
   loadData(){
-    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().subscribe(
+    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
         this.userApps = [];
         x.forEach( app => {

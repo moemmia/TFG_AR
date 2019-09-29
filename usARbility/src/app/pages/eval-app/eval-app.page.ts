@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PickerController, AlertController } from '@ionic/angular';
 import { PickerOptions, PickerButton } from '@ionic/core';
 import { Router } from '@angular/router';
@@ -6,17 +6,20 @@ import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App} from '../../tools/appfacade';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-eval-app',
   templateUrl: './eval-app.page.html',
   styleUrls: ['./eval-app.page.scss'],
 })
-export class EvalAppPage implements OnInit {
+export class EvalAppPage implements OnInit, OnDestroy {
 
   id: any;
   userApps: Array<Object>;
   currentUserId:string;
+
+  private alive = true;
 
   constructor(private route: ActivatedRoute, private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController) {
     let user=this.fireAuth.auth.currentUser;
@@ -32,15 +35,19 @@ export class EvalAppPage implements OnInit {
       });
     }
 
-    route.params.subscribe(
+    route.params.pipe(takeWhile(() => this.alive)).subscribe(
       (params) => {
         this.id = params['id'];
       },
     );
   }
 
+  ngOnDestroy() {
+    this.alive = false;
+  }
+
   loadData(){
-    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().subscribe(
+    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
         this.userApps = [];
         x.forEach( app => {

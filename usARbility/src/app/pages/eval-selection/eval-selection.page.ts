@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, CriteriaDetail} from '../../tools/appfacade';
 import {LoaderController} from '../../tools/loadercontroller';
 import { ArrayKit } from '../../tools/arraykit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-eval-selection',
   templateUrl: './eval-selection.page.html',
   styleUrls: ['./eval-selection.page.scss'],
 })
-export class EvalSelectionPage implements OnInit {
+export class EvalSelectionPage implements OnInit, OnDestroy {
 
   lorem = "Lorem ipsum dolor sit amet consectetur adipiscing elit class metus aliquet, platea ullamcorper nibh aptent placerat varius sociis lobortis. Euismod volutpat sollicitudin ultricies donec nec eu tincidunt proin senectus, cum conubia fusce himenaeos faucibus mattis risus iaculis, ut litora netus suscipit ac sagittis potenti vulputate.";
 
@@ -45,6 +46,8 @@ export class EvalSelectionPage implements OnInit {
   id: any;
   currentUserId:string;
 
+  private alive = true;
+
   constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
     this.loaderController.show();
     let user=this.fireAuth.auth.currentUser;
@@ -58,7 +61,7 @@ export class EvalSelectionPage implements OnInit {
       });
     }
 
-    route.params.subscribe(
+    route.params.pipe(takeWhile(() => this.alive)).subscribe(
       (params) => {
         this.id = params['id'];
         this.checkCriteria();
@@ -67,8 +70,13 @@ export class EvalSelectionPage implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.alive = false;
+  }
+
+
   checkCriteria(){
-    this.appfacade.getAppById(this.id).snapshotChanges().subscribe(
+    this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
         let data:any =  x.payload.data();
         let criteria = this.arraykit.objectToArray(data.criteria);

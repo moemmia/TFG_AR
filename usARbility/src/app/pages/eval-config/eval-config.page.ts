@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, OnDestroy , ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App, Comment, CriteriaDetail} from '../../tools/appfacade';
 import { MenuController, AlertController, ToastController  } from '@ionic/angular';
@@ -10,6 +10,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { takeWhile } from 'rxjs/operators';
+
 
 
 @Component({
@@ -17,7 +19,7 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
   templateUrl: './eval-config.page.html',
   styleUrls: ['./eval-config.page.scss'],
 })
-export class EvalConfigPage implements OnInit {
+export class EvalConfigPage implements OnInit, OnDestroy  {
 
   currentUserId:string;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -30,13 +32,15 @@ export class EvalConfigPage implements OnInit {
   criteriaDetails: Array<CriteriaDetail> = [];
   comment: Comment;
 
+  private alive = true;
+
   constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController, private fireAuth: AngularFireAuth) {
     this.loaderController.show();
 
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
-    route.params.subscribe(
+    route.params.pipe(takeWhile(() => this.alive)).subscribe(
       (params) => {
         this.id = params['id'];
         this.loadInfo();
@@ -55,13 +59,18 @@ export class EvalConfigPage implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.alive = false;
+  }
+
+
   show(id){
       $("#"+id+"-text").attr("hide",$("#"+id+"-text").attr("hide")=="true"?false:true);
       $("#"+id+"-arrow").attr("name",$("#"+id+"-text").attr("hide")=="true"?"arrow-dropdown":"arrow-dropup");
   }
 
   loadInfo(){
-    this.appfacade.getAppById(this.id).snapshotChanges().subscribe(
+    this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       app => {
           let data:any = app.payload.data();
           this.app = new App(app.payload.id, data.name, data.creator);
