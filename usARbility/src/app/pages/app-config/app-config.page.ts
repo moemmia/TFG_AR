@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App, Comment, CriteriaDetail} from '../../tools/appfacade';
 import { MenuController, AlertController, ToastController  } from '@ionic/angular';
 import {DarkThemer} from '../../tools/darkthemer';
+import { ArrayKit } from '../../tools/arraykit';
+import {LoaderController} from '../../tools/loadercontroller';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { Chart } from 'chart.js';
@@ -24,7 +26,8 @@ export class AppConfigPage implements OnInit {
   activeCriteriaDetails: Array<CriteriaDetail> = [];
   comments: Array<Comment> = [];
 
-  constructor(private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+    this.loaderController.show();
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
     };
@@ -50,7 +53,7 @@ export class AppConfigPage implements OnInit {
           this.activeCriteriaValues = [];
           this.activeCriteriaDetails = [];
           this.comments = [];
-          let criteria = this.objectToArray(data.criteria);
+          let criteria = this.arraykit.objectToArray(data.criteria);
           let hasComment=false;
           criteria.forEach(
             cr => {
@@ -58,7 +61,7 @@ export class AppConfigPage implements OnInit {
                 this.activeCriteria.push(cr.name);
                 let value=0;
                 let number=0;
-                let evaluations = this.objectToArray(data.evaluation);
+                let evaluations = this.arraykit.objectToArray(data.evaluation);
                 evaluations.forEach(
                   ev => {
                     value += ev[cr.name];
@@ -81,24 +84,6 @@ export class AppConfigPage implements OnInit {
 
   isValueValid(name,value){
     return value >= 50;
-  }
-
-  objectToArray(obj) {
-    if (typeof(obj) === 'object') {
-      var keys = Object.keys(obj);
-      var allObjects = keys.every(x => typeof(obj[x]) === 'object');
-      if (allObjects) {
-        return keys.map(x => this.objectToArray(obj[x]));
-      } else {
-        var o = {};
-        keys.forEach(x => {
-          o[x] = this.objectToArray(obj[x])
-        });
-        return o;
-      }
-    } else {
-      return obj;
-    }
   }
 
   ngOnInit() {
@@ -186,6 +171,7 @@ export class AppConfigPage implements OnInit {
         pointLabelFontSize : 20
       }
     });
+    this.loaderController.hide();
   }
 
   async criteriaChange(){

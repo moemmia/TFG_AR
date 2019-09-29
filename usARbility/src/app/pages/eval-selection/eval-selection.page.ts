@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, CriteriaDetail} from '../../tools/appfacade';
+import {LoaderController} from '../../tools/loadercontroller';
+import { ArrayKit } from '../../tools/arraykit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 
@@ -43,7 +45,8 @@ export class EvalSelectionPage implements OnInit {
   id: any;
   currentUserId:string;
 
-  constructor(private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
+  constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
+    this.loaderController.show();
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.currentUserId = this.fireAuth.auth.currentUser.uid;
@@ -59,6 +62,7 @@ export class EvalSelectionPage implements OnInit {
       (params) => {
         this.id = params['id'];
         this.checkCriteria();
+
       },
     );
   }
@@ -67,12 +71,13 @@ export class EvalSelectionPage implements OnInit {
     this.appfacade.getAppById(this.id).snapshotChanges().subscribe(
       x => {
         let data:any =  x.payload.data();
-        let criteria = this.objectToArray(data.criteria);
+        let criteria = this.arraykit.objectToArray(data.criteria);
         criteria.forEach(
         cr => {
           console.log(cr)
           this.changeList(cr.name,cr.active);
         });
+        this.loaderController.hide();
       }
     );
   }
@@ -93,23 +98,4 @@ export class EvalSelectionPage implements OnInit {
   ngOnInit(){
 
   }
-
-  objectToArray(obj) {
-    if (typeof(obj) === 'object') {
-      var keys = Object.keys(obj);
-      var allObjects = keys.every(x => typeof(obj[x]) === 'object');
-      if (allObjects) {
-        return keys.map(x => this.objectToArray(obj[x]));
-      } else {
-        var o = {};
-        keys.forEach(x => {
-          o[x] = this.objectToArray(obj[x])
-        });
-        return o;
-      }
-    } else {
-      return obj;
-    }
-  }
-
 }

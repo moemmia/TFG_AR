@@ -16,6 +16,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DarkThemer } from './tools/darkthemer';
 import { AppFacade } from './tools/appfacade';
 import { LoaderController } from './tools/loadercontroller';
+import { ArrayKit } from './tools/arraykit';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 const firebaseConfig = {
@@ -46,6 +47,7 @@ const firebaseConfig = {
     DarkThemer,
     AppFacade,
     LoaderController,
+    ArrayKit,
     Clipboard
   ],
   bootstrap: [AppComponent]
