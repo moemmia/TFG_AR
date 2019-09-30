@@ -138,14 +138,14 @@ export class EvaluationPage implements OnInit {
     };
     if(this.fireAuth.auth.currentUser){
       this.appfacade.addEvaluation(this.app.id, results, this.fireAuth.auth.currentUser.uid, this.fireAuth.auth.currentUser.email);
-      this.dismiss();
       this.router.navigateByUrl("/main");
+      this.dismiss();
     }else{
       this.uniqueDeviceID.get().then(
         uuid => {
           this.appfacade.addEvaluation(this.app.id, results, uuid ,'anonymous');
+          this.router.navigateByUrl("/home");
           this.dismiss();
-          this.router.navigateByUrl("/main");
         }
       )
     }

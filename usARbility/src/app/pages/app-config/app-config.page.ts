@@ -83,7 +83,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
           this.activeCriteriaDetails = [];
           this.comments = [];
           let criteria = this.arraykit.objectToArray(data.criteria);
-          let hasComment=false;
+          let hasComment  = [];
           criteria.forEach(
             cr => {
               if(cr.active){
@@ -96,9 +96,9 @@ export class AppConfigPage implements OnInit, OnDestroy {
                     if(ev[cr.name] > -1){
                       value += ev[cr.name];
                       number ++;
-                      if(!hasComment && ev['comment'] != "") {
+                      if((hasComment.indexOf(ev['name'] + ev['date'].seconds) == -1) && ev['comment'] != "") {
                         this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
-                        hasComment=true;
+                        hasComment.push(ev['name'] + ev['date'].seconds);
                       }
                     }
                   }
@@ -108,7 +108,6 @@ export class AppConfigPage implements OnInit, OnDestroy {
               }
             }
           );
-
           this.chartLoader();
       });
   }

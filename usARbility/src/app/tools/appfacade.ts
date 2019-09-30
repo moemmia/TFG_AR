@@ -102,8 +102,7 @@ export class AppFacade{
     public addEvaluation(appID,results,currentUserId, currentUserName){
       this.firestore.doc('apps/'+appID).update(
         {
-          evaluation: {
-            [currentUserId]: {
+          ['evaluation.'+currentUserId]: {
               perception: results["perception"],
               ergonomics: results["ergonomics"],
               presence: results["presence"],
@@ -114,7 +113,7 @@ export class AppFacade{
               date: firebase.firestore.FieldValue.serverTimestamp()
             }
           }
-        });
+        );
     }
 
     public removeEvaluation(appID,currentUserId){
