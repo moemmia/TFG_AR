@@ -93,11 +93,13 @@ export class AppConfigPage implements OnInit, OnDestroy {
                 let evaluations = this.arraykit.objectToArray(data.evaluation);
                 evaluations.forEach(
                   ev => {
-                    value += ev[cr.name];
-                    number ++;
-                    if(!hasComment) {
-                      this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
-                      hasComment=true;
+                    if(ev[cr.name] > -1){
+                      value += ev[cr.name];
+                      number ++;
+                      if(!hasComment && ev['comment'] != "") {
+                        this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
+                        hasComment=true;
+                      }
                     }
                   }
                 );

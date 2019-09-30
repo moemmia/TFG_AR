@@ -18,14 +18,17 @@
   --box-shadow: none;
 }
 
-#buttons ion-col:not(:first-child):not(:last-child){
+#buttons ion-col{
     background: var(--ion-color-primary);
 }
 
-#row-name{
-  background: var(--ion-color-primary-shade);
-  text-align: center;
-  font-size: x-large;
-    font-weight: bold;
-    color: whitesmoke;
+
+
+ion-list ion-text{
+  padding-left: 9vw;
+  padding-top: 2vh;
+}
+
+ion-title{
+  text-transform: uppercase;
 }

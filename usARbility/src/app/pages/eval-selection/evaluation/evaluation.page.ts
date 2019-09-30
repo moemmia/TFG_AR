@@ -1,9 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild  } from '@angular/core';
 import { NavParams } from '@ionic/angular';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController, IonContent   } from '@ionic/angular';
 import {AppFacade, App} from '../../../tools/appfacade';
 import { ArrayKit } from '../../../tools/arraykit';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import * as $ from 'jquery';
 
 @Component({
@@ -12,6 +15,8 @@ import * as $ from 'jquery';
   styleUrls: ['./evaluation.page.scss'],
 })
 export class EvaluationPage implements OnInit {
+
+  @ViewChild(IonContent ) content: IonContent ;
 
   @Input() perception: boolean;
   @Input() ergonomics: boolean;
@@ -31,7 +36,7 @@ export class EvaluationPage implements OnInit {
 
   private alive = true;
 
-  constructor(public modalController: ModalController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade) {
+  constructor(private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
     this.start();
   }
 
@@ -83,6 +88,7 @@ export class EvaluationPage implements OnInit {
 
     this.hasNext = this.currentNum < this.activeCriteria.length - 1;
     this.hasPrev = this.currentNum > 0;
+    this.content.scrollToTop();
   }
 
   prev(){
@@ -93,12 +99,71 @@ export class EvaluationPage implements OnInit {
     this.hasPrev = this.currentNum > 0;
   }
 
-  send(){
-    this.saveData();
+  async send(){
+    const alert = await this.alertController.create({
+      header: 'Send Your Evaluation',
+      inputs: [
+        {
+          name: 'comment',
+          type: 'text',
+          placeholder: 'Write a comment...'
+        }],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+
+          }
+        }, {
+          text: 'Send',
+          handler: (ref) => {
+            this.saveData(ref.comment);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
-  saveData(){
-    console.log(this.evaluations);
+  async saveData(comment){
+    let results = {
+        perception: this.getResult("perception"),
+        ergonomics: this.getResult("ergonomics"),
+        presence: this.getResult("presence"),
+        availability: this.getResult("availability"),
+        easy: this.getResult("easy"),
+        comment: comment
+    };
+    if(this.fireAuth.auth.currentUser){
+      this.appfacade.addEvaluation(this.app.id, results, this.fireAuth.auth.currentUser.uid, this.fireAuth.auth.currentUser.email);
+      this.dismiss();
+      this.router.navigateByUrl("/main");
+    }else{
+      this.uniqueDeviceID.get().then(
+        uuid => {
+          this.appfacade.addEvaluation(this.app.id, results, uuid ,'anonymous');
+          this.dismiss();
+          this.router.navigateByUrl("/main");
+        }
+      )
+    }
+
+  }
+
+  getResult(from){
+    if(this.activeCriteria.indexOf(from) > -1){
+      let total=0;
+      this.evaluations[from].forEach(
+        q => {
+          total += q.weight * (q.response/100);
+        });
+      return total;
+    }else{
+      return -1;
+    }
+
   }
 
 }

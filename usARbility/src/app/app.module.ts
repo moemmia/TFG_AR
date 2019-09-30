@@ -18,6 +18,7 @@ import { AppFacade } from './tools/appfacade';
 import { LoaderController } from './tools/loadercontroller';
 import { ArrayKit } from './tools/arraykit';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAq8hqdgiy5IZbpJ9BhLhlQUYt9VW0kqRU",
@@ -48,7 +49,8 @@ const firebaseConfig = {
     AppFacade,
     LoaderController,
     ArrayKit,
-    Clipboard
+    Clipboard,
+    UniqueDeviceID
   ],
   bootstrap: [AppComponent]
 })

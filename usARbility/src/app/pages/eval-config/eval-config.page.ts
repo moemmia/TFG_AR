@@ -96,11 +96,14 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
                 if(ev['name'] == this.fireAuth.auth.currentUser.email){
                   criteria.forEach(
                   cr => {
+                    if(ev[cr.name] > -1){
                       this.criteria.push(cr.name);
                       this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name],this.isValueValid(cr.name, ev[cr.name])));
                       this.criteriaValues.push(ev[cr.name]);
+                    }
                   });
-                  this.comment = new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000));
+                  if(ev['comment'] != "")
+                    this.comment = new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000));
                 }
           });
           this.chartLoader();
@@ -201,6 +204,7 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
   }
 
   redoEval(){
+    this.alive = false;
     this.router.navigate(["/eval-app", {id:this.id}]);
   }
 

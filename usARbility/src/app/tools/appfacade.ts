@@ -111,7 +111,7 @@ export class AppFacade{
               easy: results["easy"],
               name: currentUserName,
               comment: results["comment"],
-              timestamp: firebase.firestore.FieldValue.serverTimestamp()
+              date: firebase.firestore.FieldValue.serverTimestamp()
             }
           }
         });
