@@ -121,11 +121,11 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
     const modal = await this.modalController.create({
       component: EvaluationPage,
       componentProps: {
-        'perception': $("#perception-check").attr('checked'),
-        'ergonomics': $("#ergonomics-check").attr('checked'),
-        'presence': $("#presence-check").attr('checked'),
-        'availability': $("#availability-check").attr('checked'),
-        'easy': $("#easy-check").attr('checked'),
+        'perception': $("#perception-check").attr('aria-checked'),
+        'ergonomics': $("#ergonomics-check").attr('aria-checked'),
+        'presence': $("#presence-check").attr('aria-checked'),
+        'availability': $("#availability-check").attr('aria-checked'),
+        'easy': $("#easy-check").attr('aria-checked'),
         'appname': this.app,
         'evaluatorId' : this.currentUserId
       }

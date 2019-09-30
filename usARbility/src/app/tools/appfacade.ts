@@ -57,6 +57,10 @@ export class AppFacade{
       );
     }
 
+    public getEvaluation() {
+      return this.firestore.collection('evaluation/');
+    }
+
     public changeAppName(appID, name){
       this.firestore.doc('apps/'+appID).update({ name: name });
     }

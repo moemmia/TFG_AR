@@ -9,7 +9,15 @@
       <ion-label position="floating"> App </ion-label>
       <ion-input readonly value={{app.name}}></ion-input>
   </ion-item>
+  <ion-list *ngIf="current">
+    <ion-item  class="ion-no-padding" *ngFor=" let e of current.questions">
 
+      <ion-range [(ngModel)]="e.response" id="{{e.num}}-result" min="0" max="100" step="25" snaps="true" ticks="true">
+        <ion-icon size="small" slot="start" name="sad"></ion-icon>
+        <ion-icon slot="end" name="happy"></ion-icon>
+      </ion-range>
+    </ion-item>
+  </ion-list>
 
 
   <ion-grid id="buttons">

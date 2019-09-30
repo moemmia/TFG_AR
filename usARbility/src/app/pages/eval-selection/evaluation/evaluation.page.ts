@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NavParams } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import {AppFacade, App} from '../../../tools/appfacade';
+import { ArrayKit } from '../../../tools/arraykit';
+import { takeWhile } from 'rxjs/operators';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-evaluation',
@@ -19,13 +22,16 @@ export class EvaluationPage implements OnInit {
   @Input() evaluatorId: string;
 
   app: App;
+  activeCriteria = [];
   current: EvaluationPart;
-  currentNum: number;
-  evaluations: Array<EvaluationPart>;
+  currentNum: number = -1;
+  evaluations = [];
   hasPrev:boolean;
   hasNext:boolean;
 
-  constructor(public modalController: ModalController, private navParams: NavParams, private appfacade:AppFacade) {
+  private alive = true;
+
+  constructor(public modalController: ModalController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade) {
     this.start();
   }
 
@@ -33,6 +39,7 @@ export class EvaluationPage implements OnInit {
   }
 
   dismiss() {
+    this.alive = false;
     this.modalController.dismiss({
       'dismissed': true
     });
@@ -40,29 +47,58 @@ export class EvaluationPage implements OnInit {
 
   start(){
     this.app = this.navParams.get('appname');
+    if(this.navParams.get('perception') == "true") this.activeCriteria.push('perception');
+    if(this.navParams.get('ergonomics') == "true") this.activeCriteria.push('ergonomics');
+    if(this.navParams.get('presence') == "true") this.activeCriteria.push('presence');
+    if(this.navParams.get('availability') == "true") this.activeCriteria.push('availability');
+    if(this.navParams.get('easy') == "true") this.activeCriteria.push('easy');
+
     this.hasPrev = false;
-    this.hasNext = true;
+    this.hasNext = this.activeCriteria.length > 1;
+    this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
+      x => {
+        this.evaluations = [];
+        x.forEach( ev => {
+          let qs: Array<Question> = [];
+          let data:any = ev.payload.doc.data();
+          let questions = this.arraykit.objectToArray(data);
+          let num = 0;
+          questions.forEach(
+            q => {
+              qs.push(new Question( q["text"], q["weight"],num));
+              num++;
+            }
+          );
+          this.evaluations[ev.payload.doc.id]= qs;
+        });
+        this.next();
+      }
+    );
 
   }
 
   next(){
+    this.currentNum++;
+    this.current = new EvaluationPart(this.activeCriteria[this.currentNum],this.evaluations[this.activeCriteria[this.currentNum]]);
 
+    this.hasNext = this.currentNum < this.activeCriteria.length - 1;
+    this.hasPrev = this.currentNum > 0;
   }
 
   prev(){
+    this.currentNum--;
+    this.current = new EvaluationPart(this.activeCriteria[this.currentNum],this.evaluations[this.activeCriteria[this.currentNum]]);
 
+    this.hasNext = true;
+    this.hasPrev = this.currentNum > 0;
   }
 
   send(){
-
-  }
-
-  calculate(){
-
+    this.saveData();
   }
 
   saveData(){
-
+    console.log(this.evaluations);
   }
 
 }
@@ -82,12 +118,15 @@ export class EvaluationPart
 export class Question
 {
   text: string;
-  value: number;
+  num: number;
+  weight: number;
   response: number;
 
 
-  public constructor(text,value){
+  public constructor(text,weight,num){
     this.text= text;
-    this.value= value;
+    this.weight= weight;
+    this.num = num;
+    this.response=50;
   }
 }
