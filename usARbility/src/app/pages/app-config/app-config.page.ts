@@ -99,13 +99,14 @@ export class AppConfigPage implements OnInit, OnDestroy {
                     }
                 }
               )
-              this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
+              if(ev['comment'] != "")
+                this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
             }
           );
           criteria.forEach(
             cr => {
               this.activeCriteria.push(cr.name);
-              this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],this.isValueValid(cr.name, value[cr.name])))
+              this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],this.isValueValid(cr.name, value[cr.name]),number[cr.name]))
               this.activeCriteriaValues.push(value[cr.name]/number[cr.name]);
             }
           )

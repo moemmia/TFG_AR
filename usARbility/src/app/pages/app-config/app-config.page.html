@@ -74,6 +74,9 @@
           <ion-col>
             Pass
           </ion-col>
+          <ion-col>
+            Num
+          </ion-col>
         </ion-row>
         <ion-row *ngFor="let a of activeCriteriaDetails">
           <ion-col size="6">
@@ -87,6 +90,9 @@
           </ion-col>
           <ion-col *ngIf="a.valid==false">
             <ion-icon color="danger" name="close"></ion-icon>
+          </ion-col>
+          <ion-col>
+            {{a.num}}
           </ion-col>
         </ion-row>
       </ion-grid>

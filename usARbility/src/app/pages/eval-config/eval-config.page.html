@@ -46,9 +46,9 @@
 </ion-header>
 
 <ion-content  center text-center>
-  <ion-item *ngIf="comment" lines="none" id="app-id">
+  <ion-item *ngIf="date" lines="none" id="app-id">
       <ion-label position="floating"> Date of Evaluation </ion-label>
-      <ion-text readonly ><ion-datetime displayFormat="DDDD MMM D, YYYY" value={{comment.date}}></ion-datetime></ion-text>
+      <ion-text readonly ><ion-datetime displayFormat="DDDD MMM D, YYYY" value={{date}}></ion-datetime></ion-text>
   </ion-item>
 
   <ion-item lines="none"  class="ion-no-padding">

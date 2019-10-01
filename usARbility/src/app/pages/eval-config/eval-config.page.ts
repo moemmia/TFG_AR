@@ -31,6 +31,7 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
   criteriaValues: Array<number> = [];
   criteriaDetails: Array<CriteriaDetail> = [];
   comment: Comment;
+  date: Date;
 
   private alive = true;
 
@@ -102,8 +103,13 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
                       this.criteriaValues.push(ev[cr.name]);
                     }
                   });
-                  if(ev['comment'] != "")
-                    this.comment = new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000));
+                  this.date = new Date(ev['date'].seconds* 1000);
+                  if(ev['comment'] != ""){
+                    this.comment = new Comment(ev['name'],ev['comment'],this.date);
+                  }else{
+                    this.comment = null;
+                  }
+
                 }
           });
           this.chartLoader();
@@ -209,13 +215,15 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
   }
 
   async commentChange(){
+    let comment = this.comment? this.comment.comment:"";
     const alert = await this.alertController.create({
       header: 'Change Comment',
       inputs: [
         {
           name: 'comment',
           type: 'text',
-          value: this.comment.comment
+          value: comment,
+          placeholder: "Write a comment..."
         }],
       buttons: [
         {
