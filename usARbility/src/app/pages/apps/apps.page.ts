@@ -18,6 +18,7 @@ export class AppsPage implements OnInit, OnDestroy {
   currentUserId:string;
 
   private alive = true;
+  private isLoaded:boolean = false;
 
   constructor(private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
     let user=this.fireAuth.auth.currentUser;
@@ -47,6 +48,7 @@ export class AppsPage implements OnInit, OnDestroy {
           let obj = new App( app.payload.doc.id, data.name, data.creator);
           this.userApps.push(obj);
         });
+        this.isLoaded=true;
       }
     );
   }

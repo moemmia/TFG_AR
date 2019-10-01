@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>App Selection</ion-title>
     <ion-buttons slot="secondary" class="loader">
-      <ion-spinner *ngIf="currentUserId && (userApps == false)" name="crescent"></ion-spinner>
+      <ion-spinner *ngIf="isLoaded == false" name="crescent"></ion-spinner>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

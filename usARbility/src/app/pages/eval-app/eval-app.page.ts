@@ -20,6 +20,7 @@ export class EvalAppPage implements OnInit, OnDestroy {
   currentUserId:string;
 
   private alive = true;
+  private isLoaded:boolean = false;
 
   constructor(private route: ActivatedRoute, private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController) {
     let user=this.fireAuth.auth.currentUser;
@@ -58,6 +59,7 @@ export class EvalAppPage implements OnInit, OnDestroy {
           }
           this.userApps.push(obj);
         });
+        this.isLoaded=true;
       }
     );
   }
