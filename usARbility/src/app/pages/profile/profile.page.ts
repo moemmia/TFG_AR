@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import {AppFacade} from '../../tools/appfacade';
+import { Router } from '@angular/router';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +12,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private fireAuth: AngularFireAuth, private alertController: AlertController) {
+  private alive = true;
+
+  constructor(private fireAuth: AngularFireAuth, private alertController: AlertController, private appfacade:AppFacade, private router: Router) {
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.email = this.fireAuth.auth.currentUser.email;
@@ -20,6 +25,10 @@ export class ProfilePage implements OnInit {
        }
       });
     }
+  }
+
+  ngOnDestroy() {
+    this.alive = false;
   }
 
   email = " ";
@@ -61,7 +70,19 @@ export class ProfilePage implements OnInit {
         }, {
           text: 'Confirm',
           handler: (ref) => {
-            this.showMessage("Not Yet Implemented","Error");
+            this.appfacade.getAppsCreatedByCurrentUser(this.fireAuth.auth.currentUser.uid).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
+              x => {
+                x.forEach( app => {
+                  this.appfacade.removeApp(app.payload.doc.id);
+                });
+                let route = this.router;
+                this.fireAuth.auth.currentUser.delete().then( function(){
+                  route.navigateByUrl("/home");
+                });
+                this.alive = false;
+              }
+            );
+
           }
         }
       ]

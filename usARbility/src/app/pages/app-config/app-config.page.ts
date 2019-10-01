@@ -103,7 +103,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
                     }
                   }
                 );
-                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value,this.isValueValid(cr.name, value)))
+                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value/number,this.isValueValid(cr.name, value)))
                 this.activeCriteriaValues.push(value/number);
               }
             }
