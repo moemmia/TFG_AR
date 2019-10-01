@@ -4,7 +4,7 @@ import {AppFacade, CriteriaDetail, App} from '../../tools/appfacade';
 import {LoaderController} from '../../tools/loadercontroller';
 import { ArrayKit } from '../../tools/arraykit';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { EvaluationPage } from './evaluation/evaluation.page';
 
 import * as $ from 'jquery';
@@ -52,7 +52,7 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
 
   private alive = true;
 
-  constructor(private modalController: ModalController, private loaderController: LoaderController, private router: Router,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute) {
+  constructor(private modalController: ModalController, private loaderController: LoaderController, private router: Router,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute, private alertController: AlertController) {
     this.loaderController.show();
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
@@ -117,19 +117,34 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
   }
 
   async startEvaluation(){
-    this.alive = false;
-    const modal = await this.modalController.create({
-      component: EvaluationPage,
-      componentProps: {
-        'perception': $("#perception-check").attr('aria-checked'),
-        'ergonomics': $("#ergonomics-check").attr('aria-checked'),
-        'presence': $("#presence-check").attr('aria-checked'),
-        'availability': $("#availability-check").attr('aria-checked'),
-        'easy': $("#easy-check").attr('aria-checked'),
-        'appname': this.app,
-        'evaluatorId' : this.currentUserId
-      }
+    if( !( ($("#perception-check").attr('aria-checked')== 'true') || ($("#ergonomics-check").attr('aria-checked')== 'true') || ($("#presence-check").attr('aria-checked')== 'true') || ($("#availability-check").attr('aria-checked')== 'true') || ($("#easy-check").attr('aria-checked')== 'true'))){
+      this.showError("You must select at least one criteria");
+    }else{
+      this.alive = false;
+      const modal = await this.modalController.create({
+        component: EvaluationPage,
+        componentProps: {
+          'perception': $("#perception-check").attr('aria-checked'),
+          'ergonomics': $("#ergonomics-check").attr('aria-checked'),
+          'presence': $("#presence-check").attr('aria-checked'),
+          'availability': $("#availability-check").attr('aria-checked'),
+          'easy': $("#easy-check").attr('aria-checked'),
+          'appname': this.app,
+          'evaluatorId' : this.currentUserId
+        }
+      });
+      return await modal.present();
+    }
+
+  }
+
+  async showError(error,header='Error'){
+     const alert = await this.alertController.create({
+      header: header,
+      message: error,
+      buttons: ['OK']
     });
-    return await modal.present();
+
+    await alert.present();
   }
 }

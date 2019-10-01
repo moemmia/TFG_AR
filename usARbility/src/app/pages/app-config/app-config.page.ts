@@ -261,18 +261,33 @@ export class AppConfigPage implements OnInit, OnDestroy {
         }, {
           text: 'Confirm',
           handler: (ref) => {
-            let criteria = {
-              perception: ref.indexOf("perception") > -1,
-              ergonomics: ref.indexOf("ergonomics") > -1,
-              presence: ref.indexOf("presence") > -1,
-              availability: ref.indexOf("availability") > -1,
-              easy: ref.indexOf("easy") > -1,
-            };
-            this.appfacade.changeAppActiveCriteria(this.app.id,criteria);
+            if(ref.indexOf("perception") + ref.indexOf("ergonomics") + ref.indexOf("presence") + ref.indexOf("availability") + ref.indexOf("easy") < 0){
+              this.showError("You must select at least one criteria");
+            }else{
+              let criteria = {
+                perception: ref.indexOf("perception") > -1,
+                ergonomics: ref.indexOf("ergonomics") > -1,
+                presence: ref.indexOf("presence") > -1,
+                availability: ref.indexOf("availability") > -1,
+                easy: ref.indexOf("easy") > -1,
+              };
+              this.appfacade.changeAppActiveCriteria(this.app.id,criteria);
+            }
+
           }
         }
       ]
     });
+    await alert.present();
+  }
+
+  async showError(error,header='Error'){
+     const alert = await this.alertController.create({
+      header: header,
+      message: error,
+      buttons: ['OK']
+    });
+
     await alert.present();
   }
 
