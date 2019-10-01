@@ -84,31 +84,33 @@ export class AppConfigPage implements OnInit, OnDestroy {
           this.comments = [];
           let criteria = this.arraykit.objectToArray(data.criteria);
           let hasComment  = [];
-          criteria.forEach(
-            cr => {
-              if(cr.active){
-                this.activeCriteria.push(cr.name);
-                let value=0;
-                let number=0;
-                let evaluations = this.arraykit.objectToArray(data.evaluation);
-                evaluations.forEach(
-                  ev => {
+
+          let value = [];
+          let number = [];
+
+          let evaluations = this.arraykit.objectToArray(data.evaluation);
+          evaluations.forEach(
+            ev => {
+              criteria.forEach(
+                cr => {
                     if(ev[cr.name] > -1){
-                      value += ev[cr.name];
-                      number ++;
-                      if((hasComment.indexOf(ev['name'] + ev['date'].seconds) == -1) && ev['comment'] != "") {
-                        this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
-                        hasComment.push(ev['name'] + ev['date'].seconds);
-                      }
+                      value[cr.name] = value[cr.name]? value[cr.name] + ev[cr.name]: ev[cr.name];
+                      number[cr.name] = number[cr.name]? number[cr.name]+1:1;
                     }
-                  }
-                );
-                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value/number,this.isValueValid(cr.name, value)))
-                this.activeCriteriaValues.push(value/number);
-              }
+                }
+              )
+              this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
             }
           );
+          criteria.forEach(
+            cr => {
+              this.activeCriteria.push(cr.name);
+              this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],this.isValueValid(cr.name, value[cr.name])))
+              this.activeCriteriaValues.push(value[cr.name]/number[cr.name]);
+            }
+          )
           this.chartLoader();
+
       });
   }
 
