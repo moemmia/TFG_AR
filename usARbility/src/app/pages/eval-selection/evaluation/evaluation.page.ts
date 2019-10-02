@@ -178,12 +178,12 @@ export class EvaluationPage implements OnInit {
         }
       ).catch((error: any) => {
 
-        let error;
+        let err;
 
         this.translate.get('EVAL_SELECTION.error_no_id').subscribe(t => {
-          error = t;
+          err = t;
         });
-        this.showError(error);
+        this.showError(err);
         this.router.navigateByUrl("/home");
         this.dismiss();
 
