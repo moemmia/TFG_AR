@@ -32,7 +32,7 @@ export class OptionsPage implements OnInit {
   }
 
   setLanguage(lang){
-    console.log("good")
-    this.translate.setLanguage(lang);
+    this.translate.setLanguage(lang.detail.value);
+    this.currentlang = lang.detail.value;
   }
 }

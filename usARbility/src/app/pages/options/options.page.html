@@ -14,8 +14,13 @@
   </ion-item>
   <ion-item lines="none">
           <ion-label>{{ 'SETTINGS.lang' | translate }}</ion-label>
-          <ion-select value="{{currentlang}}">
-            <ion-select-option *ngFor="let e of languages" value=e.value (ionChange)="setLanguage($event)">{{ 'SETTINGS.lang_'+e.value | translate }}</ion-select-option>
+          <ion-select *ngIf="currentlang == 'en'" ok-text="Ok" cancel-text="Cancel" (ionChange)="setLanguage($event)">
+            <ion-select-option value="en" selected>{{ 'SETTINGS.lang_en' | translate}}</ion-select-option>
+            <ion-select-option value="es" >{{ 'SETTINGS.lang_es' | translate}}</ion-select-option>
+          </ion-select>
+          <ion-select *ngIf="currentlang == 'es'" ok-text="Aceptar" cancel-text="Cancelar" (ionChange)="setLanguage($event)">
+            <ion-select-option value="en" >{{ 'SETTINGS.lang_en' | translate}}</ion-select-option>
+            <ion-select-option value="es" selected>{{ 'SETTINGS.lang_es' | translate}}</ion-select-option>
           </ion-select>
   </ion-item>
 </ion-content>
