@@ -169,7 +169,7 @@ export class CriteriaDetail
   valid: boolean;
   num: number;
 
-  public constructor(name,value,valid,number){
+  public constructor(name,value,valid,number=0){
     this.value = value;
     this.name = name;
     this.valid = valid;

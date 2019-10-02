@@ -9,6 +9,9 @@ import { takeWhile } from 'rxjs/operators';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import * as $ from 'jquery';
 
+import {TranslateService} from '@ngx-translate/core';
+
+
 @Component({
   selector: 'app-evaluation',
   templateUrl: './evaluation.page.html',
@@ -26,6 +29,8 @@ export class EvaluationPage implements OnInit {
   @Input() appname: App;
   @Input() evaluatorId: string;
 
+
+  lang:string;
   app: App;
   activeCriteria = [];
   current: EvaluationPart;
@@ -36,7 +41,7 @@ export class EvaluationPage implements OnInit {
 
   private alive = true;
 
-  constructor(private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
+  constructor(private translate: TranslateService, private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
     this.start();
   }
 
@@ -51,6 +56,10 @@ export class EvaluationPage implements OnInit {
   }
 
   start(){
+
+    console.log( this.translate)
+    this.lang = this.translate.currentLang? this.translate.currentLang: this.translate.defaultLang;
+
     this.app = this.navParams.get('appname');
     if(this.navParams.get('perception') == "true") this.activeCriteria.push('perception');
     if(this.navParams.get('ergonomics') == "true") this.activeCriteria.push('ergonomics');
@@ -60,6 +69,7 @@ export class EvaluationPage implements OnInit {
 
     this.hasPrev = false;
     this.hasNext = this.activeCriteria.length > 1;
+
     this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
         this.evaluations = [];
@@ -70,7 +80,7 @@ export class EvaluationPage implements OnInit {
           let num = 0;
           questions.forEach(
             q => {
-              qs.push(new Question( q["text"], q["weight"],num));
+              qs.push(new Question( q["text"], q["text_es"], q["weight"],num));
               num++;
             }
           );
@@ -100,24 +110,43 @@ export class EvaluationPage implements OnInit {
   }
 
   async send(){
+
+    let a: any = {};
+
+    this.translate.get('EVAL_SELECTION.send_evaluation').subscribe(t => {
+      a.send_evaluation = t;
+    });
+
+    this.translate.get('EVAL_SELECTION.comment_placeholder').subscribe(t => {
+      a.comment_placeholder = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.send').subscribe(t => {
+      a.send = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Send Your Evaluation',
+      header: a.send_evaluation,
       inputs: [
         {
           name: 'comment',
           type: 'text',
-          placeholder: 'Write a comment...'
+          placeholder: a.comment_placeholder
         }],
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Send',
+          text: a.send ,
           handler: (ref) => {
             this.saveData(ref.comment);
           }
@@ -183,13 +212,15 @@ export class EvaluationPart
 export class Question
 {
   text: string;
+  text_es: string;
   num: number;
   weight: number;
   response: number;
 
 
-  public constructor(text,weight,num){
+  public constructor(text,textes,weight,num){
     this.text= text;
+    this.text_es= textes;
     this.weight= weight;
     this.num = num;
     this.response=50;

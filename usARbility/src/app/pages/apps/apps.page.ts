@@ -7,6 +7,8 @@ import * as $ from 'jquery';
 import {LoaderController} from '../../tools/loadercontroller';
 import { takeWhile } from 'rxjs/operators';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-apps',
   templateUrl: './apps.page.html',
@@ -20,7 +22,7 @@ export class AppsPage implements OnInit, OnDestroy {
   private alive = true;
   private isLoaded:boolean = false;
 
-  constructor(private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
+  constructor(private translate: TranslateService,private loaderController: LoaderController, private appfacade:AppFacade, public alertController: AlertController, private router: Router, private fireAuth: AngularFireAuth) {
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.currentUserId = this.fireAuth.auth.currentUser.uid;
@@ -57,30 +59,78 @@ export class AppsPage implements OnInit, OnDestroy {
   }
 
   async openAdd(){
+
+    let a: any = {};
+
+    this.translate.get('MY_APPS.alert_title').subscribe(t => {
+      a.title = t;
+    });
+
+    this.translate.get('MY_APPS.alert_palceholder').subscribe(t => {
+      a.placeholder = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.ok').subscribe(t => {
+      a.ok = t;
+    });
+
+    this.translate.get('MY_APPS.error_header').subscribe(t => {
+      a.error_header = t;
+    });
+
+    this.translate.get('MY_APPS.error_message').subscribe(t => {
+      a.error_message = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Create a new App',
+      header: a.title,
       inputs: [
         {
           name: 'name',
           type: 'text',
-          placeholder: 'Name'
+          placeholder: a.placeholder
         }],
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Ok',
+          text: a.ok,
           handler: (ref) => {
-            this.appfacade.addApp(ref.name,this.currentUserId);
+            if(ref.name != ""){
+              this.appfacade.addApp(ref.name,this.currentUserId);
+            }else{
+              this.showMessage(a.error_message,a.error_header);
+            }
           }
         }
       ]
     });
+    await alert.present();
+  }
+
+  async showMessage(error,header){
+
+    let a: any = {};
+
+    this.translate.get('ALERT.ok').subscribe(t => {
+      a.ok = t;
+    });
+
+     const alert = await this.alertController.create({
+      header: header,
+      message: error,
+      buttons: [a.ok]
+    });
+
     await alert.present();
   }
 

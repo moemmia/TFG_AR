@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="main"></ion-back-button>
     </ion-buttons>
-    <ion-title>My Apps</ion-title>
+    <ion-title>{{ 'MY_APPS.name' | translate}}</ion-title>
     <ion-buttons slot="secondary" class="loader">
       <ion-spinner *ngIf="isLoaded == false" name="crescent"></ion-spinner>
     </ion-buttons>

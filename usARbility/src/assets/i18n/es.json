@@ -1,0 +1,147 @@
+{
+  "HOME": {
+    "EVALUATE":{
+      "button": "Evaluar",
+      "name": "Evaluar",
+      "placeholder": "Introduce el código de la app aquí",
+      "error_no_code": "Debes introducir un codigo de una app para continuar",
+      "error_no_app": "No existe App para este codigo",
+      "error_get_doc": "Ha surgido un error al recuperar la app:"
+    },
+    "LOGIN":{
+      "button": "Iniciar sesión",
+      "name": "Iniciar sesión",
+      "label_email": "Email",
+      "label_pass": "Contraseña",
+      "placeholder_email": "example@domain.com",
+      "placeholder_pass": "contraseña",
+      "forgot_pass": "¿Has olvidado tu contraseña?",
+      "error_invalid_email": "The email address is badly formatted",
+      "error_wrong_password": "The password is invalid or the user does not have a password.",
+      "error_user_not_found": "There is no user record corresponding to this identifier. The user may have been deleted.",
+      "pass_header" : "Recuperar Contraseña",
+      "sended_email": "Se ha enviado un correo a ",
+      "thanks": "Gracias"
+    },
+    "REGISTER":{
+      "button": "Registro",
+      "name": "Registro",
+      "label_email": "Email",
+      "label_pass1": "Contraseña",
+      "label_pass2": "Repita su contraseña",
+      "placeholder_email": "example@domain.com",
+      "placeholder_pass1": "contraseña",
+      "placeholder_pass2": "contraseña",
+      "no_equal_pass":"'password' and 'repeated password' must be equal",
+      "error_invalid_email": "The email address is badly formatted",
+      "error_weak_password": "Password should be at least 6 characters",
+      "error_email_already_used": "The email address is already in use by another account."
+    }
+  },
+  "MAIN":{
+    "menu": "Menu",
+    "name": "Inicio",
+    "eval": "Evaluar",
+    "my_apps": "Mis Apps",
+    "my_eval": "Mis Evaluaciones",
+    "profile": "Perfil",
+    "settings": "Ajustes",
+    "sign_out": "Cerrar sesión"
+  },
+  "SETTINGS":{
+    "name": "Ajustes",
+    "dark": "Modo oscuro",
+    "lang": "Lenguaje",
+    "lang_en": "English",
+    "lang_es": "Spanish"
+  },
+  "PROFILE":{
+    "name":"Perfil",
+    "label_email": "Email",
+    "reset_pass":"Cambiar contraseña",
+    "delete_account":"Borrar cuenta",
+    "sended_email": "Se ha enviado un correo a ",
+    "well": "Buen trabajo",
+    "deletion_header": "Borrado de cuenta",
+    "deletion_message": "¿Estas seguro de querer borrar esta cuenta?"
+  },
+  "EVAL_APP":{
+    "name": "Selección App",
+    "placeholder": "Introduce el código de la app aquí",
+    "button_ya": "Tus Apps",
+    "button_next": "Siguiente"
+  },
+  "MY_APPS":{
+    "name": "Mis Apps",
+    "alert_title": "Crear una nueva App",
+    "alert_palceholder": "Nombre",
+    "error_header": "Error",
+    "error_message": "Debes indicar un nombre para crear la App."
+  },
+  "MY_EVAL":{
+    "name": "Mis Evaluaciones",
+    "error_no_code": "Debes introducir un codigo de una app para continuar",
+    "error_get_doc": "Ha surgido un error al recuperar la app:",
+    "error_no_app": "No existe App para este codigo"
+  },
+  "APP_CONFIG":{
+    "config": "Config",
+    "change_name": "Change Name",
+    "change_criteria": "Change Criteria",
+    "delete": "Delete",
+    "app_id": "App id",
+    "details": "Details",
+    "criteria": "Criteria",
+    "value": "Value",
+    "pass": "Pass",
+    "num": "Num",
+    "comments": "Comments",
+    "perception": "perception",
+    "ergonomics": "ergonomics",
+    "presence": "presence",
+    "availability": "availability",
+    "easy": "easy to use",
+    "copied": "Id Copied to clipboard.",
+    "error_no_select": "You must select at least one criteria",
+    "change_name_header": "Change Name",
+    "delete_app_header": "App Deletion",
+    "delete_app_text": "Are you sure you want to delete "
+  },
+  "EVAL_CONFIG":{
+    "redo": "Redo Evaluation",
+    "change_comment": "Change Comment",
+    "delete": "Delete",
+    "date": "Date of Evaluation",
+    "comment": "Comment",
+    "comment_name_header": "Change Comment",
+    "comment_placeholder": "Write a comment...",
+    "delete_eval_header": "Evaluation Deletion",
+    "delete_eval_text": "Are you sure you want to delete your evaluation of "
+  },
+  "EVAL_SELECTION":{
+    "name": "Criteria Selection",
+    "start": "Start Evaluation",
+    "perception": "perception",
+    "ergonomics": "ergonomics",
+    "presence": "presence",
+    "availability": "availability",
+    "easy": "easy to use",
+    "perception_text": "perception",
+    "ergonomics_text": "ergonomics",
+    "presence_text": "presence",
+    "availability_text": "availability",
+    "easy_text": "easy to use",
+    "error_no_select": "You must select at least one criteria",
+    "send_evaluation": "Send Your Evaluation",
+    "comment_placeholder": "Write a comment..."
+  },
+  "ALERT":{
+    "ok": "Aceptar",
+    "cancel": "Cancelar",
+    "next": "Siguiente",
+    "select": "Seleccionar",
+    "error": "Error",
+    "confirm": "Confirmar",
+    "send": "Enviar"
+  }
+}

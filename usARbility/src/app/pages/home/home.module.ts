@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { HomeRoutingPage } from './home-routing.module';
 import { HomePage } from './home.page';
 
+import {TranslateModule} from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
+    TranslateModule
   ],
   declarations: [HomePage]
 })

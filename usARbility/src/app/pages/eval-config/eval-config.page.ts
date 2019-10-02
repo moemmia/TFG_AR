@@ -12,7 +12,7 @@ import { Chart } from 'chart.js';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { takeWhile } from 'rxjs/operators';
 
-
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-eval-config',
@@ -35,7 +35,7 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
 
   private alive = true;
 
-  constructor(private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController, private fireAuth: AngularFireAuth) {
+  constructor(private translate: TranslateService, private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController, private fireAuth: AngularFireAuth) {
     this.loaderController.show();
 
     Chart.Legend.prototype.afterFit = function() {
@@ -98,7 +98,10 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
                   criteria.forEach(
                   cr => {
                     if(ev[cr.name] > -1){
-                      this.criteria.push(cr.name);
+                      this.translate.get('APP_CONFIG.'+cr.name).subscribe(t => {
+                        this.criteria.push(t);
+                      });
+
                       this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name],this.isValueValid(cr.name, ev[cr.name])));
                       this.criteriaValues.push(ev[cr.name]);
                     }
@@ -126,19 +129,6 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
 
   openMenu() {
     this.menu.open('end');
-  }
-
-  copy(){
-    this.clipboard.copy(this.app.id);
-    this.presentToast();
-  }
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Id Copied to clipboard.',
-      duration: 1500
-    });
-    toast.present();
   }
 
   marksData:any;
@@ -215,26 +205,46 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
   }
 
   async commentChange(){
+
+    let a: any = {};
+
+    this.translate.get('EVAL_CONFIG.comment_name_header').subscribe(t => {
+      a.comment_name_header = t;
+    });
+
+    this.translate.get('EVAL_CONFIG.comment_placeholder').subscribe(t => {
+      a.comment_placeholder = t;
+    });
+
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+
     let comment = this.comment? this.comment.comment:"";
     const alert = await this.alertController.create({
-      header: 'Change Comment',
+      header: a.comment_name_header,
       inputs: [
         {
           name: 'comment',
           type: 'text',
           value: comment,
-          placeholder: "Write a comment..."
+          placeholder: a.comment_placeholder
         }],
       buttons: [
         {
-          text: 'Cancel',
+          text:  a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             this.appfacade.changeEvalComment(this.app.id,this.currentUserId,ref.comment);
           }
@@ -245,19 +255,38 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
   }
 
   async deleteEval(){
+
+    let a: any = {};
+
+    this.translate.get('EVAL_CONFIG.delete_eval_header').subscribe(t => {
+      a.delete_eval_header = t;
+    });
+
+    this.translate.get('EVAL_CONFIG.delete_eval_text').subscribe(t => {
+      a.delete_eval_text = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Evaluation Deletion',
-      message: 'Are you sure you want to delete your "'+ this.app.name +'" evaluation?',
+      header: a.delete_eval_header,
+      message: a.delete_eval_text+ this.app.name +'?',
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             this.appfacade.removeEvaluation(this.app.id,this.currentUserId);
             this.router.navigateByUrl("/my-evaluations");

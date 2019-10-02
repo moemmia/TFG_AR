@@ -13,17 +13,17 @@ export class MainPage implements OnInit {
 
   menuitems= [
     {
-      name:'Profile',
+      name:'profile',
       icon:'person',
       click: ()=>{this.navigate("/profile")}
     },
     {
-      name:'Settings',
+      name:'settings',
       icon:'settings',
       click: ()=>{this.navigate("/options")}
     },
     {
-      name:'Sign out',
+      name:'sign_out',
       icon:'exit',
       click: ()=>{this.logout()}
     }

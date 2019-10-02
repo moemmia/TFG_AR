@@ -12,6 +12,8 @@ import { Chart } from 'chart.js';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { takeWhile } from 'rxjs/operators';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-app-config',
   templateUrl: './app-config.page.html',
@@ -23,6 +25,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   id: any;
   app: App;
+  charCriteria: Array<string> = [];
   activeCriteria: Array<string> = [];
   activeCriteriaValues: Array<number> = [];
   activeCriteriaDetails: Array<CriteriaDetail> = [];
@@ -30,7 +33,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   private alive = true;
 
-  constructor(private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private translate: TranslateService, private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     this.loaderController.show();
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
@@ -78,6 +81,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
           let data:any = app.payload.data();
           this.isUserPropietary(data.creator);
           this.app = new App(app.payload.id, data.name, data.creator);
+          this.charCriteria = [];
           this.activeCriteria = [];
           this.activeCriteriaValues = [];
           this.activeCriteriaDetails = [];
@@ -105,9 +109,15 @@ export class AppConfigPage implements OnInit, OnDestroy {
           );
           criteria.forEach(
             cr => {
-              this.activeCriteria.push(cr.name);
-              this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],this.isValueValid(cr.name, value[cr.name]),number[cr.name]))
-              this.activeCriteriaValues.push(value[cr.name]/number[cr.name]);
+              if(cr.active){
+                this.translate.get('APP_CONFIG.'+cr.name).subscribe(t => {
+                  this.charCriteria.push(t);
+                });
+
+                this.activeCriteria.push(cr.name);
+                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],this.isValueValid(cr.name, value[cr.name]),number[cr.name]))
+                this.activeCriteriaValues.push(value[cr.name]/number[cr.name]);
+              }
             }
           )
           this.chartLoader();
@@ -139,8 +149,15 @@ export class AppConfigPage implements OnInit, OnDestroy {
   }
 
   async presentToast() {
+
+    let copied;
+
+    this.translate.get('APP_CONFIG.copied').subscribe(t => {
+      copied = t;
+    });
+
     const toast = await this.toastController.create({
-      message: 'Id Copied to clipboard.',
+      message: copied,
       duration: 1500
     });
     toast.present();
@@ -150,7 +167,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   chartLoader() {
     this.marksData = {
-      labels: this.activeCriteria,
+      labels: this.charCriteria,
       datasets: [{
         label: this.app.name,
         radius: 0,
@@ -214,58 +231,87 @@ export class AppConfigPage implements OnInit, OnDestroy {
   }
 
   async criteriaChange(){
+
+    let a: any = {};
+
+    this.translate.get('APP_CONFIG.perception').subscribe(t => {
+      a.perception = t;
+    });
+    this.translate.get('APP_CONFIG.ergonomics').subscribe(t => {
+      a.ergonomics = t;
+    });
+    this.translate.get('APP_CONFIG.presence').subscribe(t => {
+      a.presence = t;
+    });
+    this.translate.get('APP_CONFIG.availability').subscribe(t => {
+      a.availability = t;
+    });
+    this.translate.get('APP_CONFIG.easy').subscribe(t => {
+      a.easy = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+    this.translate.get('APP_CONFIG.error_no_select').subscribe(t => {
+      a.error_no_select = t;
+    });
+
     const alert = await this.alertController.create({
       header: 'Change Criteria',
       inputs: [
         {
           name: 'perception',
           type: 'checkbox',
-          label: 'Perception',
+          label: a.perception,
           value: 'perception',
           checked: (this.activeCriteria.indexOf("perception") > -1)
         },
         {
           name: 'ergonomics',
           type: 'checkbox',
-          label: 'Ergonomics',
+          label: a.ergonomics,
           value: 'ergonomics',
           checked: (this.activeCriteria.indexOf("ergonomics") > -1)
         },
         {
           name: 'presence',
           type: 'checkbox',
-          label: 'Presence',
+          label: a.presence,
           value: 'presence',
           checked: (this.activeCriteria.indexOf("presence") > -1)
         },
         {
           name: 'availability',
           type: 'checkbox',
-          label: 'Availability',
+          label: a.availability,
           value: 'availability',
           checked: (this.activeCriteria.indexOf("availability") > -1)
         },
         {
           name: 'easy',
           type: 'checkbox',
-          label: 'Easy to use',
+          label: a.easy,
           value: 'easy',
           checked: (this.activeCriteria.indexOf("easy") > -1)
         }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             if(ref.indexOf("perception") + ref.indexOf("ergonomics") + ref.indexOf("presence") + ref.indexOf("availability") + ref.indexOf("easy") < 0){
-              this.showError("You must select at least one criteria");
+              this.showError(a.error_no_select);
             }else{
               let criteria = {
                 perception: ref.indexOf("perception") > -1,
@@ -284,19 +330,47 @@ export class AppConfigPage implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  async showError(error,header='Error'){
+  async showError(error,header=''){
+
+      let a: any = {};
+
+      this.translate.get('ALERT.ok').subscribe(t => {
+        a.ok = t;
+      });
+
+      if(header == ""){
+        this.translate.get('ALERT.error').subscribe(t => {
+          header = t;
+        });
+      }
+
      const alert = await this.alertController.create({
       header: header,
       message: error,
-      buttons: ['OK']
+      buttons: [a.ok]
     });
 
     await alert.present();
   }
 
   async nameChange(){
+
+    let a: any = {};
+
+    this.translate.get('APP_CONFIG.change_name_header').subscribe(t => {
+      a.change_name_header = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Change Name',
+      header: a.change_name_header,
       inputs: [
         {
           name: 'name',
@@ -305,14 +379,14 @@ export class AppConfigPage implements OnInit, OnDestroy {
         }],
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             this.appfacade.changeAppName(this.app.id,ref.name);
           }
@@ -323,19 +397,38 @@ export class AppConfigPage implements OnInit, OnDestroy {
   }
 
   async deleteApp(){
+
+    let a: any = {};
+
+    this.translate.get('APP_CONFIG.delete_app_header').subscribe(t => {
+      a.delete_app_header = t;
+    });
+
+    this.translate.get('APP_CONFIG.delete_app_text').subscribe(t => {
+      a.delete_app_text = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'App Deletion',
-      message: 'Are you sure you want to delete "'+ this.app.name +'"?',
+      header: a.delete_app_header,
+      message: a.delete_app_text+ this.app.name +'?',
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             this.appfacade.removeApp(this.app.id);
             this.router.navigateByUrl("/apps");

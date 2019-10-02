@@ -2,7 +2,7 @@
 <ion-menu side="end">
   <ion-header>
     <ion-toolbar translucent>
-      <ion-title>Config</ion-title>
+      <ion-title>{{ 'APP_CONFIG.config' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 <ion-content>
@@ -10,19 +10,19 @@
     <div *ngIf="app">
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="nameChange()">
         <ion-ripple-effect></ion-ripple-effect>
-        <ion-label> Change Name </ion-label>
+        <ion-label> {{ 'APP_CONFIG.change_name' | translate }} </ion-label>
         <ion-icon color="primary" name="create" slot="start"></ion-icon>
       </ion-item>
 
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="criteriaChange()">
         <ion-ripple-effect></ion-ripple-effect>
-        <ion-label> Change Criteria </ion-label>
+        <ion-label> {{ 'APP_CONFIG.change_criteria' | translate }} </ion-label>
         <ion-icon color="primary" name="clipboard" slot="start"></ion-icon>
       </ion-item>
 
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="deleteApp()">
         <ion-ripple-effect></ion-ripple-effect>
-        <ion-label> Delete </ion-label>
+        <ion-label> {{ 'APP_CONFIG.delete' | translate }} </ion-label>
         <ion-icon color="danger" name="trash" slot="start"></ion-icon>
       </ion-item>
     </div>
@@ -48,7 +48,7 @@
 <ion-content  center text-center>
   <ion-item *ngIf="app" lines="none" id="app-id" class="ion-activatable" (click)="copy()">
       <ion-ripple-effect></ion-ripple-effect>
-      <ion-label position="floating"> App id </ion-label>
+      <ion-label position="floating"> {{ 'APP_CONFIG.app_id' | translate }} </ion-label>
       <ion-input readonly value={{app.id}}></ion-input>
       <ion-icon  id="app-share" color="primary" name="share" slot="end"></ion-icon>
   </ion-item>
@@ -58,7 +58,7 @@
 
   <ion-item lines="none" class="ion-activatable" (click)="show('info')">
     <ion-ripple-effect></ion-ripple-effect>
-    <ion-label id="name"> Details </ion-label>
+    <ion-label id="name"> {{ 'APP_CONFIG.details' | translate }} </ion-label>
     <ion-icon id="info-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
   </ion-item>
   <ion-list id="info-text">
@@ -66,21 +66,21 @@
       <ion-grid>
         <ion-row>
           <ion-col size="6">
-            Criteria
+            {{ 'APP_CONFIG.criteria' | translate }}
           </ion-col>
           <ion-col>
-            Value
+            {{ 'APP_CONFIG.value' | translate }}
           </ion-col>
           <ion-col>
-            Pass
+            {{ 'APP_CONFIG.pass' | translate }}
           </ion-col>
           <ion-col>
-            Num
+            {{ 'APP_CONFIG.num' | translate }}
           </ion-col>
         </ion-row>
         <ion-row *ngFor="let a of activeCriteriaDetails">
           <ion-col size="6">
-            {{a.name}}
+            {{ 'APP_CONFIG.'+a.name | translate }}
           </ion-col>
           <ion-col>
             {{a.value}}
@@ -102,7 +102,7 @@
 
   <ion-item lines="none" class="ion-activatable" (click)="show('comment')">
     <ion-ripple-effect></ion-ripple-effect>
-    <ion-label id="name"> Comments </ion-label>
+    <ion-label id="name"> {{ 'APP_CONFIG.comments' | translate }} </ion-label>
     <ion-icon id="comment-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>
   </ion-item>
   <ion-list id="comment-text">

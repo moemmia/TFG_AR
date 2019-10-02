@@ -5,6 +5,8 @@ import {AppFacade} from '../../../tools/appfacade';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-evaluate',
   templateUrl: './evaluate.page.html',
@@ -12,35 +14,61 @@ import * as $ from 'jquery';
 })
 export class EvaluatePage implements OnInit {
 
-  constructor(private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController, private router: Router) { }
+  constructor(private translate: TranslateService,private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }
 
   async showError(error){
+
+    let a: any = {};
+
+    this.translate.get('ALERT.ok').subscribe(t => {
+      a.ok = t;
+    });
+
+    this.translate.get('ALERT.error').subscribe(t => {
+      a.error = t;
+    });
+
      const alert = await this.alertController.create({
-      header: 'Error',
+      header: a.error,
       message: error,
-      buttons: ['OK']
+      buttons: [a.ok]
     });
 
     await alert.present();
   }
 
   evaluate(){
+
+    let a: any = {};
+
+    this.translate.get('HOME.EVALUATE.error_no_code').subscribe(t => {
+      a.error_no_code = t;
+    });
+
+    this.translate.get('HOME.EVALUATE.error_no_app').subscribe(t => {
+      a.error_no_app = t;
+    });
+
+    this.translate.get('HOME.EVALUATE.error_get_doc').subscribe(t => {
+      a.error_get_doc = t;
+    });
+
     let id= $("#code").val();
     if(!id){
-      this.showError("you must input the code for the app");
+      this.showError(a.error_no_code);
     }else{
       let context = this;
       this.appfacade.getAppById(id).ref.get().then(function(doc) {
           if (doc.exists) {
               context.router.navigate(["/eval-selection", {id:id}]);
           } else {
-              context.showError("there is no app for this code");
+              context.showError(a.error_no_app);
           }
       }).catch(function(error) {
-          console.log("Error getting document:", error);
+          console.log(a.error_get_doc, error);
       });
     }
   }

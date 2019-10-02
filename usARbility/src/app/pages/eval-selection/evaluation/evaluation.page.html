@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title *ngIf="current">{{current.name}}</ion-title>
+    <ion-title *ngIf="current">  {{ 'EVAL_SELECTION.'+current.name | translate }}</ion-title>
     <ion-buttons slot="start">
       <ion-button fill="clear" (click)="dismiss()">
         <ion-icon slot="icon-only" name="return-left"></ion-icon>
@@ -13,7 +13,8 @@
   <ion-list *ngIf="current">
     <div *ngFor=" let e of current.questions">
       <ion-item  class="ion-no-padding" lines="none">
-        <ion-text>{{e.text}}</ion-text>
+        <ion-text *ngIf="lang == 'en'" >{{e.text}}</ion-text>
+        <ion-text *ngIf="lang == 'es'" >{{e.text_es}}</ion-text>
       </ion-item>
       <ion-item>
         <ion-range color="primary" [(ngModel)]="e.response" id="{{e.num}}-result" min="0" max="100" step="25" snaps="true" pin="true" ticks="false">

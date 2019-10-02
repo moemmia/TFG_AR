@@ -1,7 +1,7 @@
 <ion-menu side="start">
   <ion-header>
     <ion-toolbar translucent>
-      <ion-title>Menu</ion-title>
+      <ion-title>{{ 'MAIN.menu' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -9,7 +9,7 @@
       <div *ngFor="let m of menuitems">
         <ion-item lines="none" class="ion-activatable" (click)="m.click()">
             <ion-ripple-effect></ion-ripple-effect>
-          <ion-label> {{m.name}} </ion-label>
+          <ion-label> {{ 'MAIN.'+m.name | translate }}  </ion-label>
           <ion-icon color="primary" name={{m.icon}} slot="start"></ion-icon>
         </ion-item>
       </div>
@@ -24,7 +24,7 @@
       <ion-menu-button>
       </ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-title>{{ 'MAIN.name' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -33,7 +33,7 @@
     <ion-item lines="none" class="ion-activatable" (click)="navigate('/eval-app')">
       <ion-ripple-effect></ion-ripple-effect>
       <ion-label>
-        Evaluate
+        {{ 'MAIN.eval' | translate }}
       </ion-label>
       <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>
     </ion-item>
@@ -41,7 +41,7 @@
     <ion-item lines="none" class="ion-activatable" (click)="navigate('/apps')">
       <ion-ripple-effect></ion-ripple-effect>
       <ion-label>
-        My Apps
+        {{ 'MAIN.my_apps' | translate }}
       </ion-label>
       <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>
     </ion-item>
@@ -49,7 +49,7 @@
     <ion-item lines="none" class="ion-activatable" (click)="navigate('/my-evaluations')">
       <ion-ripple-effect></ion-ripple-effect>
       <ion-label>
-        My Evaluations
+        {{ 'MAIN.my_eval' | translate }}
       </ion-label>
       <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>
     </ion-item>

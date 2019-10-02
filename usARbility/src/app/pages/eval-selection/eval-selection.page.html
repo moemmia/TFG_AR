@@ -4,7 +4,7 @@
       <ion-back-button *ngIf="currentUserId" defaultHref="eval-app"></ion-back-button>
       <ion-back-button *ngIf="!(currentUserId)" defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Criteria Selection</ion-title>
+    <ion-title>{{ 'EVAL_SELECTION.name' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -23,16 +23,16 @@
         <ion-item  lines="none" (click)="show(e.name)" class="ion-activatable ion-no-padding" >
                 <ion-ripple-effect></ion-ripple-effect>
                 <ion-label id="{{e.name}}-name" class="name">
-                  {{e.title}}
+                  {{ 'EVAL_SELECTION.'+e.name | translate }}
                 </ion-label>
                 <ion-icon id="{{e.name}}-arrow" slot="end" color="primary" name="arrow-dropdown"></ion-icon>
           </ion-item>
       </ion-col>
     </ion-row></ion-grid>
-      <p hide="true" class="description" id="{{e.name}}-text"> <br>{{e.text}}<br>&nbsp; </p>
+      <p hide="true" class="description" id="{{e.name}}-text"> <br>{{ 'EVAL_SELECTION.'+e.name+'_text' | translate }}<br>&nbsp; </p>
     </div>
   </ion-list>
   <ion-item  class="ion-no-padding" lines="none">
   </ion-item>
-        <ion-button id="eval-button" shape="poly" strong size="large" fill="solid" expand="full" (click)="startEvaluation()"> Start Evaluation </ion-button>
+        <ion-button id="eval-button" shape="poly" strong size="large" fill="solid" expand="full" (click)="startEvaluation()"> {{ 'EVAL_SELECTION.start' | translate }} </ion-button>
 </ion-content>

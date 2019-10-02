@@ -3,13 +3,19 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="main"></ion-back-button>
     </ion-buttons>
-    <ion-title>Settings</ion-title>
+    <ion-title>{{ 'SETTINGS.name' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item lines="none">
-          <ion-label>Dark mode</ion-label>
-          <ion-toggle slot="start" color="primary" checked={{darkmode}}  (ionChange)="SetDarkMode($event)"></ion-toggle>
+          <ion-label>{{ 'SETTINGS.dark' | translate }}</ion-label>
+          <ion-toggle slot="start" color="primary" checked={{darkmode}}  (ionChange)="setDarkMode($event)"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none">
+          <ion-label>{{ 'SETTINGS.lang' | translate }}</ion-label>
+          <ion-select value="{{currentlang}}">
+            <ion-select-option *ngFor="let e of languages" value=e.value (ionChange)="setLanguage($event)">{{ 'SETTINGS.lang_'+e.value | translate }}</ion-select-option>
+          </ion-select>
   </ion-item>
 </ion-content>

@@ -20,6 +20,14 @@ import { ArrayKit } from './tools/arraykit';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader, TranslateService  } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 const firebaseConfig = {
     apiKey: "AIzaSyAq8hqdgiy5IZbpJ9BhLhlQUYt9VW0kqRU",
     authDomain: "usarbility.firebaseapp.com",
@@ -39,7 +47,15 @@ const firebaseConfig = {
     IonicStorageModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ], providers: [
     StatusBar,
     SplashScreen,

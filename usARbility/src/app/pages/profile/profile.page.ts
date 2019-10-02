@@ -5,6 +5,8 @@ import {AppFacade} from '../../tools/appfacade';
 import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -14,7 +16,7 @@ export class ProfilePage implements OnInit {
 
   private alive = true;
 
-  constructor(private fireAuth: AngularFireAuth, private alertController: AlertController, private appfacade:AppFacade, private router: Router) {
+  constructor(private translate: TranslateService,private fireAuth: AngularFireAuth, private alertController: AlertController, private appfacade:AppFacade, private router: Router) {
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.email = this.fireAuth.auth.currentUser.email;
@@ -38,37 +40,74 @@ export class ProfilePage implements OnInit {
   }
 
   resetPassword(){
+
+    let a: any = {};
+
+    this.translate.get('PROFILE.sended_email').subscribe(t => {
+      a.text = t;
+    });
+
+    this.translate.get('PROFILE.well').subscribe(t => {
+      a.well = t;
+    });
+
     let user=this.fireAuth.auth.currentUser;
     if(user){
       this.fireAuth.auth.sendPasswordResetEmail(user.email);
-      this.showMessage("An email has been sended to "+ this.email,"Well Done");
+      this.showMessage(a.text+ this.email,a.well);
     }
   }
 
   async showMessage(error,header){
+
+    let a: any = {};
+
+    this.translate.get('ALERT.ok').subscribe(t => {
+      a.ok = t;
+    });
+
      const alert = await this.alertController.create({
       header: header,
       message: error,
-      buttons: ['OK']
+      buttons: [a.ok]
     });
 
     await alert.present();
   }
 
   async deleteAccount(){
+
+    let a: any = {};
+
+    this.translate.get('PROFILE.deletion_header').subscribe(t => {
+      a.header = t;
+    });
+
+    this.translate.get('PROFILE.deletion_message').subscribe(t => {
+      a.message = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Account Deletion',
-      message: 'Are you sure you want to delete your account?',
+      header: a.header,
+      message: a.message,
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             this.appfacade.getAppsCreatedByCurrentUser(this.fireAuth.auth.currentUser.uid).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
               x => {

@@ -8,6 +8,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as $ from 'jquery';
 import { takeWhile } from 'rxjs/operators';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-eval-app',
   templateUrl: './eval-app.page.html',
@@ -22,7 +24,7 @@ export class EvalAppPage implements OnInit, OnDestroy {
   private alive = true;
   private isLoaded:boolean = false;
 
-  constructor(private route: ActivatedRoute, private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController) {
+  constructor(private translate: TranslateService, private route: ActivatedRoute, private pickerCtrl: PickerController, private router: Router,private appfacade:AppFacade, private fireAuth: AngularFireAuth, public alertController: AlertController) {
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
       this.currentUserId = this.fireAuth.auth.currentUser.uid;
@@ -69,32 +71,59 @@ export class EvalAppPage implements OnInit, OnDestroy {
   }
 
   next(){
+
+    let a: any = {};
+
+    this.translate.get('MY_EVAL.error_no_code').subscribe(t => {
+      a.error_no_code = t;
+    });
+
+    this.translate.get('MY_EVAL.error_get_doc').subscribe(t => {
+      a.error_get_doc = t;
+    });
+
+    this.translate.get('MY_EVAL.error_no_app').subscribe(t => {
+      a.error_no_app = t;
+    });
+
     let id= $("#appId").val();
     if(!id){
-      this.showError("you must input the code for the app");
+      this.showError(a.error_no_code);
     }else{
       let context = this;
       this.appfacade.getAppById(id).ref.get().then(function(doc) {
           if (doc.exists) {
               context.router.navigate(["/eval-selection", {id:id}]);
           } else {
-              context.showError("there is no app for this code");
+              context.showError(a.error_no_app);
           }
       }).catch(function(error) {
-          console.log("Error getting document:", error);
+          console.log(a.error_get_doc, error);
       });
     }
   }
 
   async search(){
+
+    let a: any = {};
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.select').subscribe(t => {
+      a.select = t;
+    });
+
+
     let opts: PickerOptions = {
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel'
         },
         {
-          text: 'Select',
+          text: a.select,
           handler: (selected) => {
                 $("#appId").val(selected.apps.value);
           }
@@ -112,10 +141,21 @@ export class EvalAppPage implements OnInit, OnDestroy {
   }
 
   async showError(error){
+
+    let a: any = {};
+
+    this.translate.get('ALERT.ok').subscribe(t => {
+      a.ok = t;
+    });
+
+    this.translate.get('ALERT.error').subscribe(t => {
+      a.error = t;
+    });
+
      const alert = await this.alertController.create({
-      header: 'Error',
+      header: a.error,
       message: error,
-      buttons: ['OK']
+      buttons: [a.ok]
     });
 
     await alert.present();

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import {LoaderController} from '../../../tools/loadercontroller';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,7 +14,7 @@ import {LoaderController} from '../../../tools/loadercontroller';
 })
 export class LogInPage implements OnInit {
 
-  constructor(private loaderController: LoaderController, private fireAuth: AngularFireAuth, private alertController: AlertController, private router: Router) { }
+  constructor(private translate: TranslateService, private loaderController: LoaderController, private fireAuth: AngularFireAuth, private alertController: AlertController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,15 +28,48 @@ export class LogInPage implements OnInit {
       })
       .catch( error => {
         this.loaderController.hide();
-        this.showError(error.message);
+        let err;
+        switch(error.code){
+          case "auth/invalid-email" :
+            this.translate.get('HOME.LOGIN.error_invalid_email').subscribe(t => {
+              err = t;
+            });
+            break;
+          case "auth/wrong-password":
+            this.translate.get('HOME.LOGIN.error_wrong_password').subscribe(t => {
+              err = t;
+            });
+            break;
+          case "auth/user-not-found":
+            this.translate.get('HOME.LOGIN.error_user_not_found').subscribe(t => {
+              err = t;
+            });
+            break;
+          default:
+            err = error.message;
+        }
+        this.showError(err);
       });
   }
 
-  async showError(error,header='Error'){
+  async showError(error,header=''){
+
+      let a: any = {};
+
+      this.translate.get('ALERT.ok').subscribe(t => {
+        a.ok = t;
+      });
+
+      if(header == ""){
+        this.translate.get('ALERT.error').subscribe(t => {
+          header = t;
+        });
+      }
+
      const alert = await this.alertController.create({
       header: header,
       message: error,
-      buttons: ['OK']
+      buttons: [a.ok]
     });
 
     await alert.present();
@@ -51,30 +86,72 @@ export class LogInPage implements OnInit {
   }
 
   async fpass(){
+
+    let a: any = {};
+
+    this.translate.get('HOME.LOGIN.pass_header').subscribe(t => {
+      a.header = t;
+    });
+
+    this.translate.get('HOME.LOGIN.sended_email').subscribe(t => {
+      a.sended = t;
+    });
+
+    this.translate.get('HOME.LOGIN.thanks').subscribe(t => {
+      a.thanks = t;
+    });
+
+    this.translate.get('HOME.LOGIN.placeholder_email').subscribe(t => {
+      a.placeholder = t;
+    });
+
+    this.translate.get('ALERT.cancel').subscribe(t => {
+      a.cancel = t;
+    });
+
+    this.translate.get('ALERT.confirm').subscribe(t => {
+      a.confirm = t;
+    });
+
     const alert = await this.alertController.create({
-      header: 'Password Reset',
+      header: a.header,
       inputs: [
         {
-          name: 'email',
+          name: "email",
           type: 'text',
-          placeholder: 'example@domain.com'
+          placeholder: a.placeholder
         }],
       buttons: [
         {
-          text: 'Cancel',
+          text: a.cancel,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
 
           }
         }, {
-          text: 'Confirm',
+          text: a.confirm,
           handler: (ref) => {
             this.fireAuth.auth.sendPasswordResetEmail(ref.email).then( data => {
-                this.showError("email sent successfully to "+ref.email,"Thank you");
+                this.showError(a.sended+ref.email,a.thanks);
             })
             .catch( error => {
-                this.showError(error.message);
+              let err;
+              switch(error.code){
+                case "auth/invalid-email" :
+                  this.translate.get('HOME.LOGIN.error_invalid_email').subscribe(t => {
+                    err = t;
+                  });
+                  break;
+                case "auth/user-not-found":
+                  this.translate.get('HOME.LOGIN.error_user_not_found').subscribe(t => {
+                    err = t;
+                  });
+                  break;
+                default:
+                  err = error.message;
+              }
+              this.showError(err);
             });
           }
         }

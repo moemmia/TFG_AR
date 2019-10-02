@@ -10,6 +10,8 @@ import { EvaluationPage } from './evaluation/evaluation.page';
 import * as $ from 'jquery';
 import { takeWhile } from 'rxjs/operators';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @Component({
   selector: 'app-eval-selection',
   templateUrl: './eval-selection.page.html',
@@ -17,34 +19,7 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class EvalSelectionPage implements OnInit, OnDestroy {
 
-  lorem = "Lorem ipsum dolor sit amet consectetur adipiscing elit class metus aliquet, platea ullamcorper nibh aptent placerat varius sociis lobortis. Euismod volutpat sollicitudin ultricies donec nec eu tincidunt proin senectus, cum conubia fusce himenaeos faucibus mattis risus iaculis, ut litora netus suscipit ac sagittis potenti vulputate.";
-
-  list = [
-    {
-      title: 'perception',
-      name: 'perception',
-      text: this.lorem
-    },
-    {
-      title: 'ergonomics',
-      name: 'ergonomics',
-      text: this.lorem
-    },
-    {
-      title: 'presence',
-      name: 'presence',
-      text: this.lorem
-    },
-    {
-      title: 'availability',
-      name: 'availability',
-      text: this.lorem
-    },
-    {
-      title: 'easy to use',
-      name: 'easy',
-      text: this.lorem
-    }];
+  list =[ {name:'perception'},{name:'ergonomics'},{name:'presence'},{name:'availability'},{name:'easy'} ];
 
   id: any;
   currentUserId:string;
@@ -52,7 +27,7 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
 
   private alive = true;
 
-  constructor(private modalController: ModalController, private loaderController: LoaderController, private router: Router,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute, private alertController: AlertController) {
+  constructor(private translate: TranslateService, private modalController: ModalController, private loaderController: LoaderController, private router: Router,private arraykit: ArrayKit,private appfacade:AppFacade, private fireAuth: AngularFireAuth, private route: ActivatedRoute, private alertController: AlertController) {
     this.loaderController.show();
     let user=this.fireAuth.auth.currentUser;
     if(user!=null){
@@ -118,7 +93,12 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
 
   async startEvaluation(){
     if( !( ($("#perception-check").attr('aria-checked')== 'true') || ($("#ergonomics-check").attr('aria-checked')== 'true') || ($("#presence-check").attr('aria-checked')== 'true') || ($("#availability-check").attr('aria-checked')== 'true') || ($("#easy-check").attr('aria-checked')== 'true'))){
-      this.showError("You must select at least one criteria");
+
+      let err;
+      this.translate.get('EVAL_SELECTION.error_no_select').subscribe(t => {
+        err = t;
+      });
+      this.showError(err);
     }else{
       this.alive = false;
       const modal = await this.modalController.create({
@@ -138,13 +118,27 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
 
   }
 
-  async showError(error,header='Error'){
-     const alert = await this.alertController.create({
-      header: header,
-      message: error,
-      buttons: ['OK']
-    });
 
-    await alert.present();
-  }
+    async showError(error,header=''){
+
+        let a: any = {};
+
+        this.translate.get('ALERT.ok').subscribe(t => {
+          a.ok = t;
+        });
+
+        if(header == ""){
+          this.translate.get('ALERT.error').subscribe(t => {
+            header = t;
+          });
+        }
+
+       const alert = await this.alertController.create({
+        header: header,
+        message: error,
+        buttons: [a.ok]
+      });
+
+      await alert.present();
+    }
 }
