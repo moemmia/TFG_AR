@@ -108,7 +108,7 @@
   <ion-list id="comment-text">
     <ion-item *ngFor="let e of comments"  class="ion-no-padding">
       <ion-label color="primary" position="floating">{{e.name}}</ion-label>
-      <ion-label color="primary" position="floating"><ion-datetime displayFormat="DDDD MMM D, YYYY" value={{e.date}}></ion-datetime></ion-label>
+      <ion-label color="primary" position="floating"><ion-datetime displayFormat="DD/MM/YYYY" value={{e.date}}></ion-datetime></ion-label>
       <ion-textarea autoGrow readonly value={{e.comment}}></ion-textarea>
 
       <br>
