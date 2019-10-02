@@ -176,9 +176,43 @@ export class EvaluationPage implements OnInit {
           this.router.navigateByUrl("/home");
           this.dismiss();
         }
-      )
+      ).catch((error: any) => {
+
+        let error;
+
+        this.translate.get('EVAL_SELECTION.error_no_id').subscribe(t => {
+          error = t;
+        });
+        this.showError(error);
+        this.router.navigateByUrl("/home");
+        this.dismiss();
+
+      });
     }
 
+  }
+
+  async showError(error,header=''){
+
+      let a: any = {};
+
+      this.translate.get('ALERT.ok').subscribe(t => {
+        a.ok = t;
+      });
+
+      if(header == ""){
+        this.translate.get('ALERT.error').subscribe(t => {
+          header = t;
+        });
+      }
+
+     const alert = await this.alertController.create({
+      header: header,
+      message: error,
+      buttons: [a.ok]
+    });
+
+    await alert.present();
   }
 
   getResult(from){

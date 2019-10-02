@@ -132,7 +132,8 @@
     "easy_text": "",
     "error_no_select": "You must select at least one criteria",
     "send_evaluation": "Send Your Evaluation",
-    "comment_placeholder": "Write a comment..."
+    "comment_placeholder": "Write a comment...",
+    "error_no_id": "Something has gone wrong, your evaluation has been dismissed"
   },
   "ALERT":{
     "ok": "Ok",

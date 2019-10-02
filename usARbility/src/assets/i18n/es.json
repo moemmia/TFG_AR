@@ -133,7 +133,8 @@
     "easy_text": "",
     "error_no_select": "Debe seleccionar al menos un criterio",
     "send_evaluation": "Enviar tu Evaluación",
-    "comment_placeholder": "Escribe un comentario..."
+    "comment_placeholder": "Escribe un comentario...",
+    "error_no_id": "Algo ha salido mal, tu evaluación no se ha podido enviar"
   },
   "ALERT":{
     "ok": "Aceptar",
