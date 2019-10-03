@@ -47,8 +47,8 @@
 
 <ion-content  center text-center>
   <ion-item *ngIf="date" lines="none" id="app-id">
-      <ion-label position="floating"> {{ 'EVAL_CONFIG.date' | translate }} </ion-label>
-      <ion-text readonly ><ion-datetime displayFormat="DD/MM/YYYY" value={{date}}></ion-datetime></ion-text>
+      <ion-label> {{ 'EVAL_CONFIG.date' | translate }} </ion-label>
+      <ion-text readonly >{{date | date :  "dd/MM/y"}}</ion-text>
   </ion-item>
 
   <ion-item lines="none"  class="ion-no-padding">
