@@ -16,7 +16,7 @@
             <ion-text> {{ 'STATISTICS.total' | translate }}</ion-text>
         </ion-col>
         <ion-col size="2">
-            <ion-text>{{total | number:'2.0-0'}}</ion-text>
+            <ion-text>{{total | number:'1.0-0'}}</ion-text>
         </ion-col>
         <ion-col>
             <ion-icon *ngIf="total>60" color="success" name="checkmark"></ion-icon>
@@ -32,7 +32,7 @@
       </ion-col>
 
       <ion-col size="2">
-        <ion-text>{{e.value | number:'2.0-0'}}</ion-text>
+        <ion-text>{{e.value | number:'1.0-0'}}</ion-text>
       </ion-col>
 
       <ion-col>
