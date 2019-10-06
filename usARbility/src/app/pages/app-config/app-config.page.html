@@ -77,6 +77,9 @@
           <ion-col>
             {{ 'APP_CONFIG.num' | translate }}
           </ion-col>
+          <ion-col>
+
+          </ion-col>
         </ion-row>
         <ion-row *ngFor="let a of activeCriteriaDetails" (click)="openStatistics(a.name)">
           <ion-col size="6">
@@ -96,6 +99,9 @@
           </ion-col>
           <ion-col>
             {{a.num}}
+          </ion-col>
+          <ion-col>
+              <ion-icon color="primary" name="list"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>

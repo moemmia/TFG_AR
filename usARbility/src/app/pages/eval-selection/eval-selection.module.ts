@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EvalSelectionPage } from './eval-selection.page';
-import { EvaluationPage } from './evaluation/evaluation.page';
+import { AEvaluationPage } from './evaluation/evaluation.page';
 
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -25,7 +25,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule
   ],
-  declarations: [EvalSelectionPage, EvaluationPage],
-  entryComponents: [EvaluationPage]
+  declarations: [EvalSelectionPage, AEvaluationPage],
+  entryComponents: [AEvaluationPage]
 })
 export class EvalSelectionPageModule {}

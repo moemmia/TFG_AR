@@ -315,3 +315,6 @@ export class Question
     this.response=response;
   }
 }
+
+
+export class AEvaluationPage extends EvaluationPage {}

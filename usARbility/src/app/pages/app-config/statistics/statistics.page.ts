@@ -29,6 +29,7 @@ export class StatisticsPage implements OnInit {
   app: App;
   criteria: string
   results: Array<QuestionDetail> = [];
+  total: number;
 
   private alive = true;
 
@@ -57,23 +58,30 @@ export class StatisticsPage implements OnInit {
           let values = this.arraykit.objectToArray(data.evaluation);
 
           let totalVal = [];
-          let num;
+          let num = 0;
+          let total;
           values.forEach(
             val =>{
                 let crt = val[this.criteria]
                 Object.keys( crt ).forEach(function(key,index){
-                  totalVal[key] = totalVal[key]? totalVal[key] + crt[key]: crt[key];
+                  let k:any = key;
+                  if(k > 0){
+                    totalVal[k-1] = totalVal[k-1]? totalVal[k-1] + crt[k]: crt[k];
+                  }else{
+                    total = total? total + crt[k]:crt[k];
+                  }
+
                 });
                 num++;
             }
           )
-
+          this.total = total/num;
           this.loadData(totalVal,num);
         }
     );
   }
 
-  loadData(values){
+  loadData(values,n){
         this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
           x => {
               this.results = [];
@@ -88,7 +96,7 @@ export class StatisticsPage implements OnInit {
                 if(ev.payload.doc.id == this.criteria)
                 questions.forEach(
                   q => {
-                    this.results.push(new QuestionDetail( ( this.lang == 'es'? q["text_es"]: q["text"] ), values[num]/num));
+                    this.results.push(new QuestionDetail( ( this.lang == 'es'? q["text_es"]: q["text"] ), values[num]/n));
                     num++;
                   }
                 );
@@ -99,3 +107,5 @@ export class StatisticsPage implements OnInit {
 
 
 }
+
+export class AStatisticsPage extends StatisticsPage {}

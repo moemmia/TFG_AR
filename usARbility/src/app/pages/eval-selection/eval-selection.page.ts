@@ -5,7 +5,7 @@ import {LoaderController} from '../../tools/loadercontroller';
 import { ArrayKit } from '../../tools/arraykit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ModalController, AlertController } from '@ionic/angular';
-import { EvaluationPage } from './evaluation/evaluation.page';
+import { AEvaluationPage } from './evaluation/evaluation.page';
 
 import * as $ from 'jquery';
 import { takeWhile } from 'rxjs/operators';
@@ -102,7 +102,7 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
     }else{
       this.alive = false;
       const modal = await this.modalController.create({
-        component: EvaluationPage,
+        component: AEvaluationPage,
         componentProps: {
           'perception': $("#perception-check").attr('aria-checked'),
           'ergonomics': $("#ergonomics-check").attr('aria-checked'),

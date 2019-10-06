@@ -14,7 +14,7 @@ import { takeWhile } from 'rxjs/operators';
 
 import {TranslateService} from '@ngx-translate/core';
 
-import { StatisticsPage } from './statistics/statistics.page';
+import { AStatisticsPage } from './statistics/statistics.page';
 
 @Component({
   selector: 'app-app-config',
@@ -441,7 +441,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
       this.alive = false;
       const modal = await this.modalController.create({
-        component: StatisticsPage,
+        component: AStatisticsPage,
         componentProps: {
           'criteriai': criteria,
           'appi': this.app

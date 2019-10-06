@@ -11,9 +11,38 @@
 
 <ion-content>
   <ion-list *ngIf="results.length">
-    <div *ngFor=" let e of results">
-      <ion-item  class="ion-no-padding" lines="none">
-        <ion-text>{{e.text}}</ion-text>
+    <ion-item  class="ion-no-padding" >
+        <ion-col size="9">
+            <ion-text> {{ 'STATISTICS.total' | translate }}</ion-text>
+        </ion-col>
+        <ion-col>
+            <ion-text>{{total | number:'1.0-1'}}</ion-text>
+        </ion-col>
+        <ion-col>
+            <ion-icon *ngIf="total>60" color="success" name="checkmark"></ion-icon>
+            <ion-icon *ngIf="total>=40 && total <=60"  color="warning" name="remove"></ion-icon>
+            <ion-icon *ngIf="total < 40" color="danger" name="close"></ion-icon>
+        </ion-col>
+    </ion-item>
+
+
+
+    <div *ngFor=" let e of results" >
+      <ion-item  class="ion-no-padding" >
+
+        <ion-col size="9">
+          <ion-text>{{e.text}}</ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text>{{e.value | number:'1.0-1'}}</ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-icon *ngIf="e.valid == 2" color="success" name="checkmark"></ion-icon>
+          <ion-icon *ngIf="e.valid == 1"  color="warning" name="remove"></ion-icon>
+          <ion-icon *ngIf="e.valid == 0" color="danger" name="close"></ion-icon>
+        </ion-col>
 
       </ion-item>
     </div>

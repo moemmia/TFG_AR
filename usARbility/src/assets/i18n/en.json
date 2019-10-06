@@ -135,6 +135,9 @@
     "comment_placeholder": "Write a comment...",
     "error_no_id": "Something has gone wrong, your evaluation has been dismissed"
   },
+  "STATISTICS":{
+    "total":"Total"
+  },
   "ALERT":{
     "ok": "Ok",
     "cancel": "Cancel",

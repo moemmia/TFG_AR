@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AppConfigPage } from './app-config.page';
-import { StatisticsPage } from './statistics/statistics.page';
+import { AStatisticsPage } from './statistics/statistics.page';
 
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -25,7 +25,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule
   ],
-  declarations: [AppConfigPage, StatisticsPage],
-  entryComponents: [StatisticsPage]
+  declarations: [AppConfigPage, AStatisticsPage],
+  entryComponents: [AStatisticsPage]
 })
 export class AppConfigPageModule {}

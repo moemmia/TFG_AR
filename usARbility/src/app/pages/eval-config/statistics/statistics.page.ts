@@ -30,6 +30,7 @@ export class StatisticsPage implements OnInit {
   app: App;
   criteria: string
   results: Array<QuestionDetail> = [];
+  total: number;
 
   private alive = true;
 
@@ -78,10 +79,11 @@ export class StatisticsPage implements OnInit {
                 if(ev.payload.doc.id == this.criteria)
                 questions.forEach(
                   q => {
-                    this.results.push(new QuestionDetail( ( this.lang == 'es'? q["text_es"]: q["text"] ), values[this.criteria][num]));
+                    this.results.push(new QuestionDetail( ( this.lang == 'es'? q["text_es"]: q["text"] ), values[this.criteria][num+1]));
                     num++;
                   }
                 );
+                this.total = values[this.criteria][0];
               });
           }
         );
@@ -89,3 +91,6 @@ export class StatisticsPage implements OnInit {
 
 
 }
+
+
+export class AStatisticsPage extends StatisticsPage {}

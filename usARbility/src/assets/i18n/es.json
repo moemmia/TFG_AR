@@ -136,6 +136,9 @@
     "comment_placeholder": "Escribe un comentario...",
     "error_no_id": "Algo ha salido mal, tu evaluación no se ha podido enviar"
   },
+  "STATISTICS":{
+    "total":"Total"
+  },
   "ALERT":{
     "ok": "Aceptar",
     "cancel": "Cancelar",
