@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="criteria">  {{ 'EVAL_SELECTION.'+ criteria | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="return-left"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="results.length">
+    <div *ngFor=" let e of results">
+      <ion-item  class="ion-no-padding" lines="none">
+        <ion-text>{{e.text}}</ion-text>
+
+      </ion-item>
+    </div>
+    <ion-item  class="ion-no-padding" lines="none">
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

@@ -42,7 +42,19 @@ export class EvaluationPage implements OnInit {
   private alive = true;
 
   constructor(private translate: TranslateService, private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
-    this.start();
+
+    if(this.navParams.get('evaluatorId')){
+      this.start(this.navParams.get('evaluatorId'));
+    }else{
+      this.uniqueDeviceID.get().then(
+        uuid => {
+          this.start(uuid);
+        }
+      )
+    }
+
+
+
   }
 
   ngOnInit() {
@@ -55,9 +67,7 @@ export class EvaluationPage implements OnInit {
     });
   }
 
-  start(){
-
-    console.log( this.translate)
+  start(id){
     this.lang = this.translate.currentLang? this.translate.currentLang: this.translate.defaultLang;
 
     this.app = this.navParams.get('appname');
@@ -70,26 +80,63 @@ export class EvaluationPage implements OnInit {
     this.hasPrev = false;
     this.hasNext = this.activeCriteria.length > 1;
 
-    this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
-      x => {
-        this.evaluations = [];
-        x.forEach( ev => {
-          let qs: Array<Question> = [];
-          let data:any = ev.payload.doc.data();
-          let questions = this.arraykit.objectToArray(data);
-          let num = 0;
-          questions.forEach(
-            q => {
-              qs.push(new Question( q["text"], q["text_es"], q["weight"],num));
-              num++;
-            }
-          );
-          this.evaluations[ev.payload.doc.id]= qs;
-        });
-        this.next();
-      }
-    );
+    this.appfacade.getAppById(this.app.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
+        app => {
+          let data:any = app.payload.data();
+          let values =  data.evaluation[id]
+          if(values){
+            this.loadDataRewrite(values);
 
+          }else{
+            this.loadDataNoRewrite();
+          }
+        }
+    );
+  }
+
+  loadDataRewrite(values){
+        this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
+          x => {
+            this.evaluations = [];
+            x.forEach( ev => {
+              let qs: Array<Question> = [];
+              let data:any = ev.payload.doc.data();
+              let questions = this.arraykit.objectToArray(data);
+              let num = 0;
+              questions.forEach(
+                q => {
+                  qs.push(new Question( q["text"], q["text_es"], q["weight"],num,values[ev.payload.doc.id][num]));
+                  num++;
+                }
+              );
+              this.evaluations[ev.payload.doc.id]= qs;
+            });
+            this.next();
+          }
+        );
+  }
+
+
+  loadDataNoRewrite(){
+        this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
+          x => {
+            this.evaluations = [];
+            x.forEach( ev => {
+              let qs: Array<Question> = [];
+              let data:any = ev.payload.doc.data();
+              let questions = this.arraykit.objectToArray(data);
+              let num = 0;
+              questions.forEach(
+                q => {
+                  qs.push(new Question( q["text"], q["text_es"], q["weight"],num));
+                  num++;
+                }
+              );
+              this.evaluations[ev.payload.doc.id]= qs;
+            });
+            this.next();
+          }
+        );
   }
 
   next(){
@@ -260,11 +307,11 @@ export class Question
   response: number;
 
 
-  public constructor(text,textes,weight,num){
+  public constructor(text,textes,weight,num,response=50){
     this.text= text;
     this.text_es= textes;
     this.weight= weight;
     this.num = num;
-    this.response=50;
+    this.response=response;
   }
 }

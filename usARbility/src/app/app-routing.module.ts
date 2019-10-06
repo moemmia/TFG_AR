@@ -6,8 +6,6 @@ const routes: Routes = [
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
   { path: 'main', loadChildren: './pages/main/main.module#MainPageModule' },
   { path: 'eval-selection', loadChildren: './pages/eval-selection/eval-selection.module#EvalSelectionPageModule' },
-  { path: 'evaluation', loadChildren: './pages/evaluation/evaluation.module#EvaluationPageModule' },
-  { path: 'statistics', loadChildren: './pages/statistics/statistics.module#StatisticsPageModule' },
   { path: 'options', loadChildren: './pages/options/options.module#OptionsPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'eval-app', loadChildren: './pages/eval-app/eval-app.module#EvalAppPageModule' },
@@ -18,6 +16,8 @@ const routes: Routes = [
   { path: 'app-config', loadChildren: './pages/app-config/app-config.module#AppConfigPageModule' },
   { path: 'my-evaluations', loadChildren: './pages/my-evaluations/my-evaluations.module#MyEvaluationsPageModule' },
   { path: 'eval-config', loadChildren: './pages/eval-config/eval-config.module#EvalConfigPageModule' },
+  { path: 'statistics', loadChildren: './pages/eval-config/statistics/statistics.module#StatisticsPageModule' },
+  { path: 'statistics', loadChildren: './pages/app-config/statistics/statistics.module#StatisticsPageModule' },
   { path: 'evaluation', loadChildren: './pages/eval-selection/evaluation/evaluation.module#EvaluationPageModule' },
 ];
 

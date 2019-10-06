@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {AppFacade, App, Comment, CriteriaDetail} from '../../tools/appfacade';
-import { MenuController, AlertController, ToastController  } from '@ionic/angular';
+import { MenuController, AlertController, ToastController, ModalController  } from '@ionic/angular';
 import {DarkThemer} from '../../tools/darkthemer';
 import { ArrayKit } from '../../tools/arraykit';
 import {LoaderController} from '../../tools/loadercontroller';
@@ -13,6 +13,8 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { takeWhile } from 'rxjs/operators';
 
 import {TranslateService} from '@ngx-translate/core';
+
+import { StatisticsPage } from './statistics/statistics.page';
 
 @Component({
   selector: 'app-app-config',
@@ -33,7 +35,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   private alive = true;
 
-  constructor(private translate: TranslateService, private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private translate: TranslateService, private modalController: ModalController, private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     this.loaderController.show();
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
@@ -433,6 +435,19 @@ export class AppConfigPage implements OnInit, OnDestroy {
       ]
     });
     await alert.present();
+  }
+
+  async openStatistics(criteria){
+
+      this.alive = false;
+      const modal = await this.modalController.create({
+        component: StatisticsPage,
+        componentProps: {
+          'criteriai': criteria,
+          'appi': this.app
+        }
+      });
+      return await modal.present();
   }
 
 }

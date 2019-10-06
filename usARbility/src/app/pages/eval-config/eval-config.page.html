@@ -74,7 +74,7 @@
             {{ 'APP_CONFIG.pass' | translate }}
           </ion-col>
         </ion-row>
-        <ion-row *ngFor="let a of criteriaDetails">
+        <ion-row *ngFor="let a of criteriaDetails" (click)="openStatistics(a.name)">
           <ion-col size="6">
             {{ 'APP_CONFIG.'+a.name | translate }}
           </ion-col>
