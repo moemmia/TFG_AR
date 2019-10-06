@@ -34,6 +34,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
   comments: Array<Comment> = [];
 
   total: number = 0;
+  totalNum: number = 0;
 
   private alive = true;
 
@@ -109,6 +110,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
               )
               if(ev['comment'] != "")
                 this.comments.push( new Comment(ev['name'],ev['comment'],new Date(ev['date'].seconds* 1000)));
+              this.totalNum++;
             }
           );
           criteria.forEach(

@@ -10,3 +10,13 @@ ion-title{
 ion-col ion-text{
   padding: 0;
 }
+
+
+ion-col{
+  padding: 1em 1em;
+}
+
+
+#total{
+    border-bottom: ridge var(--ion-color-primary);
+}
