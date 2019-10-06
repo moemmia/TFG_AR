@@ -97,8 +97,8 @@ export class AppConfigPage implements OnInit, OnDestroy {
             ev => {
               criteria.forEach(
                 cr => {
-                    if(ev[cr.name] > -1){
-                      value[cr.name] = value[cr.name]? value[cr.name] + ev[cr.name]: ev[cr.name];
+                    if(ev[cr.name][0]){
+                      value[cr.name] = value[cr.name]? value[cr.name] + ev[cr.name][0]: ev[cr.name][0];
                       number[cr.name] = number[cr.name]? number[cr.name]+1:1;
                     }
                 }
@@ -115,7 +115,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
                 });
 
                 this.activeCriteria.push(cr.name);
-                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],this.isValueValid(cr.name, value[cr.name]/number[cr.name]),number[cr.name]))
+                this.activeCriteriaDetails.push(new CriteriaDetail(cr.name,value[cr.name]/number[cr.name],number[cr.name]));
                 this.activeCriteriaValues.push(value[cr.name]/number[cr.name]);
               }
             }
@@ -129,10 +129,6 @@ export class AppConfigPage implements OnInit, OnDestroy {
     if(this.fireAuth.auth.currentUser.uid != creator){
         this.router.navigateByUrl('/main');
     }
-  }
-
-  isValueValid(name,value){
-    return value >= 50;
   }
 
   ngOnInit() {

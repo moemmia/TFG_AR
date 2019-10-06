@@ -33,6 +33,7 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
   comment: Comment;
   date: Date;
 
+
   private alive = true;
 
   constructor(private translate: TranslateService, private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController, private fireAuth: AngularFireAuth) {
@@ -92,18 +93,18 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
           let criteria = this.arraykit.objectToArray(data.criteria);
           let hasComment=false;
           let evaluations = this.arraykit.objectToArray(data.evaluation);
+
           evaluations.forEach(
               ev => {
                 if(ev['name'] == this.fireAuth.auth.currentUser.email){
                   criteria.forEach(
                   cr => {
-                    if(ev[cr.name] > -1){
+                    if(ev[cr.name][0]){
                       this.translate.get('APP_CONFIG.'+cr.name).subscribe(t => {
                         this.criteria.push(t);
                       });
-
-                      this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name],this.isValueValid(cr.name, ev[cr.name])));
-                      this.criteriaValues.push(ev[cr.name]);
+                      this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name][0]));
+                      this.criteriaValues.push(ev[cr.name][0]);
                     }
                   });
                   this.date = new Date(ev['date'].seconds* 1000);
@@ -119,9 +120,6 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
       });
   }
 
-  isValueValid(name,value){
-    return value >= 50;
-  }
 
   ngOnInit() {
 

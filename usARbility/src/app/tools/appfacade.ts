@@ -95,7 +95,7 @@ export class AppFacade{
 
     public getAppsEvaluatedByCurrentUser(currentUserId){
       return this.firestore.collection('apps/', ref =>
-        ref.where('evaluation.'+ currentUserId+".easy", ">", -1)
+        ref.where('evaluation.'+ currentUserId+".date", "<=", new Date())
       );
     }
 
@@ -130,7 +130,9 @@ export class AppFacade{
         });
     }
 
-
+    public getQuestionsByCriteria(criteria){
+      return this.firestore.doc('evaluation/'+criteria);
+    }
 
 }
 
@@ -166,13 +168,28 @@ export class CriteriaDetail
 {
   name: string;
   value: number;
-  valid: boolean;
+  valid: number;
   num: number;
 
-  public constructor(name,value,valid,number=0){
+  public constructor(name,value,number=0){
     this.value = value;
     this.name = name;
-    this.valid = valid;
+    this.valid = value <40? 0: value<61? 1: 2;
     this.num = number;
+  }
+}
+
+export class QuestionDetail
+{
+  text: string;
+  value: number;
+  valid: number;
+  num: number;
+
+  public constructor(text,value,num=0){
+    this.value = value;
+    this.valid = value <40? 0: value<61? 1: 2;
+    this.num = num;
+    this.text = text;
   }
 }

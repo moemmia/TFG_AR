@@ -217,17 +217,25 @@ export class EvaluationPage implements OnInit {
 
   getResult(from){
     if(this.activeCriteria.indexOf(from) > -1){
+      let result = [];
       let total=0;
       this.evaluations[from].forEach(
         q => {
           total += q.weight * (q.response/100);
-        });
-      return total;
+      });
+      result.push(total);
+      this.evaluations[from].forEach(
+          q => {
+            result.push(q.response);
+      });
+      return result;
     }else{
       return -1;
     }
 
   }
+
+
 
 }
 
