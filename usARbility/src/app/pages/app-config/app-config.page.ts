@@ -33,6 +33,8 @@ export class AppConfigPage implements OnInit, OnDestroy {
   activeCriteriaDetails: Array<CriteriaDetail> = [];
   comments: Array<Comment> = [];
 
+  total: number = 0;
+
   private alive = true;
 
   constructor(private translate: TranslateService, private modalController: ModalController, private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
@@ -122,6 +124,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
               }
             }
           )
+          this.calculateTotal();
           this.chartLoader();
 
       });
@@ -162,6 +165,32 @@ export class AppConfigPage implements OnInit, OnDestroy {
   }
 
   marksData:any;
+
+  calculateTotal(){
+    let of = 0;
+    if(this.activeCriteria.indexOf("perception") > -1){
+      this.total += this.activeCriteriaDetails[this.activeCriteria.indexOf("perception")].value * 0.3 * 0.7;
+      of +=  3  * 7;
+    }
+    if(this.activeCriteria.indexOf("ergonomics") > -1){
+      this.total += this.activeCriteriaDetails[this.activeCriteria.indexOf("ergonomics")].value * 0.3 * 0.7;
+      of +=  3  * 7;
+    }
+    if(this.activeCriteria.indexOf("presence") > -1){
+      this.total += this.activeCriteriaDetails[this.activeCriteria.indexOf("presence")].value * 0.4  * 0.3;
+      of +=  4 * 3;
+    }
+    if(this.activeCriteria.indexOf("availability") > -1){
+      this.total += this.activeCriteriaDetails[this.activeCriteria.indexOf("availability")].value * 0.6 * 0.3;
+      of +=  6 * 3;
+    }
+    if(this.activeCriteria.indexOf("easy") > -1){
+      this.total += this.activeCriteriaDetails[this.activeCriteria.indexOf("easy")].value * 0.4 * 0.7;
+      of +=  4  * 7;
+    }
+    this.total *= 100/of;
+
+  }
 
   chartLoader() {
     this.marksData = {

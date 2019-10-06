@@ -52,6 +52,7 @@
       <ion-input readonly value={{app.id}}></ion-input>
       <ion-icon  id="app-share" color="primary" name="share" slot="end"></ion-icon>
   </ion-item>
+
   <ion-item lines="none"  class="ion-no-padding">
     <canvas #doughnutCanvas></canvas>
   </ion-item>
@@ -81,6 +82,26 @@
 
           </ion-col>
         </ion-row>
+
+        <ion-row>
+          <ion-col size="6">
+            {{ 'STATISTICS.total' | translate }}
+          </ion-col>
+          <ion-col>
+            {{total | number:'1.0-1'}}
+          </ion-col>
+          <ion-col>
+            <ion-icon *ngIf="total>60" color="success" name="checkmark"></ion-icon>
+            <ion-icon *ngIf="total>=40 && total <=60"  color="warning" name="remove"></ion-icon>
+            <ion-icon *ngIf="total < 40" color="danger" name="close"></ion-icon>
+          </ion-col>
+          <ion-col>
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+        </ion-row>
+
         <ion-row *ngFor="let a of activeCriteriaDetails" (click)="openStatistics(a.name)">
           <ion-col size="6">
             {{ 'APP_CONFIG.'+a.name | translate }}
