@@ -81,7 +81,8 @@
     "name": "My Evaluations",
     "error_no_code": "You must input the code for the app",
     "error_get_doc": "Error getting document:",
-    "error_no_app": "there is no app for this code"
+    "error_no_app": "there is no app for this code",
+    "error_special_char": "App code should not contain special characters"
   },
   "APP_CONFIG":{
     "config": "Config",

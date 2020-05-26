@@ -1,0 +1,469 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>usARbility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">usARbility documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>AEvaluationPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/pages/eval-selection/evaluation/evaluation.page.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../components/EvaluationPage.html" target="_self" >EvaluationPage</a></code>
+            </p>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild  } from &#x27;@angular/core&#x27;;
+import { NavParams } from &#x27;@ionic/angular&#x27;;
+import { ModalController, AlertController, IonContent   } from &#x27;@ionic/angular&#x27;;
+import {AppFacade, App} from &#x27;../../../tools/appfacade&#x27;;
+import { ArrayKit } from &#x27;../../../tools/arraykit&#x27;;
+import { AngularFireAuth } from &#x27;angularfire2/auth&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { takeWhile } from &#x27;rxjs/operators&#x27;;
+import { UniqueDeviceID } from &#x27;@ionic-native/unique-device-id/ngx&#x27;;
+import * as $ from &#x27;jquery&#x27;;
+
+import {TranslateService} from &#x27;@ngx-translate/core&#x27;;
+
+
+@Component({
+  selector: &#x27;app-evaluation&#x27;,
+  templateUrl: &#x27;./evaluation.page.html&#x27;,
+  styleUrls: [&#x27;./evaluation.page.scss&#x27;],
+})
+export class EvaluationPage implements OnInit {
+
+  @ViewChild(IonContent ) content: IonContent ;
+
+  @Input() perception: boolean;
+  @Input() ergonomics: boolean;
+  @Input() presence: boolean;
+  @Input() availability: boolean;
+  @Input() easy: boolean;
+  @Input() appname: App;
+  @Input() evaluatorId: string;
+
+
+  lang:string;
+  app: App;
+  activeCriteria &#x3D; [];
+  current: EvaluationPart;
+  currentNum: number &#x3D; -1;
+  evaluations &#x3D; [];
+  hasPrev:boolean;
+  hasNext:boolean;
+
+  private alive &#x3D; true;
+
+  constructor(private translate: TranslateService, private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
+
+    if(this.navParams.get(&#x27;evaluatorId&#x27;)){
+      this.start(this.navParams.get(&#x27;evaluatorId&#x27;));
+    }else{
+      this.uniqueDeviceID.get().then(
+        uuid &#x3D;&gt; {
+          this.start(uuid);
+        }
+      )
+    }
+
+
+
+  }
+
+  ngOnInit() {
+  }
+
+  dismiss() {
+    this.alive &#x3D; false;
+    this.modalController.dismiss({
+      &#x27;dismissed&#x27;: true
+    });
+  }
+
+  start(id){
+    this.lang &#x3D; this.translate.currentLang? this.translate.currentLang: this.translate.defaultLang;
+
+    this.app &#x3D; this.navParams.get(&#x27;appname&#x27;);
+    if(this.navParams.get(&#x27;perception&#x27;) &#x3D;&#x3D; &quot;true&quot;) this.activeCriteria.push(&#x27;perception&#x27;);
+    if(this.navParams.get(&#x27;ergonomics&#x27;) &#x3D;&#x3D; &quot;true&quot;) this.activeCriteria.push(&#x27;ergonomics&#x27;);
+    if(this.navParams.get(&#x27;presence&#x27;) &#x3D;&#x3D; &quot;true&quot;) this.activeCriteria.push(&#x27;presence&#x27;);
+    if(this.navParams.get(&#x27;availability&#x27;) &#x3D;&#x3D; &quot;true&quot;) this.activeCriteria.push(&#x27;availability&#x27;);
+    if(this.navParams.get(&#x27;easy&#x27;) &#x3D;&#x3D; &quot;true&quot;) this.activeCriteria.push(&#x27;easy&#x27;);
+
+    this.hasPrev &#x3D; false;
+    this.hasNext &#x3D; this.activeCriteria.length &gt; 1;
+
+    this.appfacade.getAppById(this.app.id).snapshotChanges().pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+        app &#x3D;&gt; {
+          let data:any &#x3D; app.payload.data();
+          let values &#x3D;  data.evaluation[id]
+          if(values){
+            this.loadDataRewrite(values);
+
+          }else{
+            this.loadDataNoRewrite();
+          }
+        }
+    );
+  }
+
+  loadDataRewrite(values){
+        this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+          x &#x3D;&gt; {
+            this.evaluations &#x3D; [];
+            x.forEach( ev &#x3D;&gt; {
+              let qs: Array&lt;Question&gt; &#x3D; [];
+              let data:any &#x3D; ev.payload.doc.data();
+              let questions &#x3D; this.arraykit.objectToArray(data);
+              let num &#x3D; 0;
+              questions.forEach(
+                q &#x3D;&gt; {
+                  qs.push(new Question( q[&quot;text&quot;], q[&quot;text_es&quot;], q[&quot;weight&quot;],num,values[ev.payload.doc.id][num]));
+                  num++;
+                }
+              );
+              this.evaluations[ev.payload.doc.id]&#x3D; qs;
+            });
+            this.next();
+          }
+        );
+  }
+
+
+  loadDataNoRewrite(){
+        this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+          x &#x3D;&gt; {
+            this.evaluations &#x3D; [];
+            x.forEach( ev &#x3D;&gt; {
+              let qs: Array&lt;Question&gt; &#x3D; [];
+              let data:any &#x3D; ev.payload.doc.data();
+              let questions &#x3D; this.arraykit.objectToArray(data);
+              let num &#x3D; 0;
+              questions.forEach(
+                q &#x3D;&gt; {
+                  qs.push(new Question( q[&quot;text&quot;], q[&quot;text_es&quot;], q[&quot;weight&quot;],num));
+                  num++;
+                }
+              );
+              this.evaluations[ev.payload.doc.id]&#x3D; qs;
+            });
+            this.next();
+          }
+        );
+  }
+
+  next(){
+    this.currentNum++;
+    this.current &#x3D; new EvaluationPart(this.activeCriteria[this.currentNum],this.evaluations[this.activeCriteria[this.currentNum]]);
+
+    this.hasNext &#x3D; this.currentNum &lt; this.activeCriteria.length - 1;
+    this.hasPrev &#x3D; this.currentNum &gt; 0;
+    this.content.scrollToTop();
+  }
+
+  prev(){
+    this.currentNum--;
+    this.current &#x3D; new EvaluationPart(this.activeCriteria[this.currentNum],this.evaluations[this.activeCriteria[this.currentNum]]);
+
+    this.hasNext &#x3D; true;
+    this.hasPrev &#x3D; this.currentNum &gt; 0;
+  }
+
+  async send(){
+
+    let a: any &#x3D; {};
+
+    this.translate.get(&#x27;EVAL_SELECTION.send_evaluation&#x27;).subscribe(t &#x3D;&gt; {
+      a.send_evaluation &#x3D; t;
+    });
+
+    this.translate.get(&#x27;EVAL_SELECTION.comment_placeholder&#x27;).subscribe(t &#x3D;&gt; {
+      a.comment_placeholder &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.cancel&#x27;).subscribe(t &#x3D;&gt; {
+      a.cancel &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.send&#x27;).subscribe(t &#x3D;&gt; {
+      a.send &#x3D; t;
+    });
+
+    const alert &#x3D; await this.alertController.create({
+      header: a.send_evaluation,
+      inputs: [
+        {
+          name: &#x27;comment&#x27;,
+          type: &#x27;text&#x27;,
+          placeholder: a.comment_placeholder
+        }],
+      buttons: [
+        {
+          text: a.cancel,
+          role: &#x27;cancel&#x27;,
+          cssClass: &#x27;secondary&#x27;,
+          handler: () &#x3D;&gt; {
+
+          }
+        }, {
+          text: a.send ,
+          handler: (ref) &#x3D;&gt; {
+            this.saveData(ref.comment);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async saveData(comment){
+    let results &#x3D; {
+        perception: this.getResult(&quot;perception&quot;),
+        ergonomics: this.getResult(&quot;ergonomics&quot;),
+        presence: this.getResult(&quot;presence&quot;),
+        availability: this.getResult(&quot;availability&quot;),
+        easy: this.getResult(&quot;easy&quot;),
+        comment: comment
+    };
+    if(this.fireAuth.auth.currentUser){
+      this.appfacade.addEvaluation(this.app.id, results, this.fireAuth.auth.currentUser.uid, this.fireAuth.auth.currentUser.email);
+      this.router.navigateByUrl(&quot;/main&quot;);
+      this.dismiss();
+    }else{
+      this.uniqueDeviceID.get().then(
+        uuid &#x3D;&gt; {
+          this.appfacade.addEvaluation(this.app.id, results, uuid ,&#x27;anonymous&#x27;);
+          this.router.navigateByUrl(&quot;/home&quot;);
+          this.dismiss();
+        }
+      ).catch((error: any) &#x3D;&gt; {
+
+        let err;
+
+        this.translate.get(&#x27;EVAL_SELECTION.error_no_id&#x27;).subscribe(t &#x3D;&gt; {
+          err &#x3D; t;
+        });
+        this.showError(err);
+        this.router.navigateByUrl(&quot;/home&quot;);
+        this.dismiss();
+
+      });
+    }
+
+  }
+
+  async showError(error,header&#x3D;&#x27;&#x27;){
+
+      let a: any &#x3D; {};
+
+      this.translate.get(&#x27;ALERT.ok&#x27;).subscribe(t &#x3D;&gt; {
+        a.ok &#x3D; t;
+      });
+
+      if(header &#x3D;&#x3D; &quot;&quot;){
+        this.translate.get(&#x27;ALERT.error&#x27;).subscribe(t &#x3D;&gt; {
+          header &#x3D; t;
+        });
+      }
+
+     const alert &#x3D; await this.alertController.create({
+      header: header,
+      message: error,
+      buttons: [a.ok]
+    });
+
+    await alert.present();
+  }
+
+  getResult(from){
+    if(this.activeCriteria.indexOf(from) &gt; -1){
+      let result &#x3D; [];
+      let total&#x3D;0;
+      this.evaluations[from].forEach(
+        q &#x3D;&gt; {
+          total +&#x3D; q.weight * (q.response/100);
+      });
+      result.push(total);
+      this.evaluations[from].forEach(
+          q &#x3D;&gt; {
+            result.push(q.response);
+      });
+      return result;
+    }else{
+      return -1;
+    }
+
+  }
+
+
+
+}
+
+export class EvaluationPart
+{
+  name: string;
+  questions: Array&lt;Question&gt;;
+
+
+  public constructor(name,questions){
+    this.questions&#x3D; questions;
+    this.name&#x3D; name;
+  }
+}
+
+export class Question
+{
+  text: string;
+  text_es: string;
+  num: number;
+  weight: number;
+  response: number;
+
+
+  public constructor(text,textes,weight,num,response&#x3D;50){
+    this.text&#x3D; text;
+    this.text_es&#x3D; textes;
+    this.weight&#x3D; weight;
+    this.num &#x3D; num;
+    this.response&#x3D;response;
+  }
+}
+
+
+export class AEvaluationPage extends EvaluationPage {}
+</code></pre>
+    </div>
+</div>
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'AEvaluationPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

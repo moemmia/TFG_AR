@@ -66,7 +66,6 @@ export class EvalAppPage implements OnInit, OnDestroy {
     );
   }
 
-
   ngOnInit() {
   }
 
@@ -76,6 +75,10 @@ export class EvalAppPage implements OnInit, OnDestroy {
 
     this.translate.get('MY_EVAL.error_no_code').subscribe(t => {
       a.error_no_code = t;
+    });
+
+    this.translate.get('MY_EVAL.error_special_char').subscribe(t => {
+      a.error_special_char = t;
     });
 
     this.translate.get('MY_EVAL.error_get_doc').subscribe(t => {
@@ -89,7 +92,9 @@ export class EvalAppPage implements OnInit, OnDestroy {
     let id= $("#appId").val();
     if(!id){
       this.showError(a.error_no_code);
-    }else{
+    } else if (id.match(/^[\W_]/)) {
+      this.showError(a.error_special_char);
+    } else{
       let context = this;
       this.appfacade.getAppById(id).ref.get().then(function(doc) {
           if (doc.exists) {

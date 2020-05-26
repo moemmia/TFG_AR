@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+import { foundation } from '../../environments/environment';
 
 @Injectable()
 export class AppFacade{
@@ -16,23 +17,23 @@ export class AppFacade{
         name: name,
         criteria: {
           0: {
-            name: "perception",
+            name: foundation.perception,
             active: true
           },
           1: {
-            name: "ergonomics",
+            name: foundation.ergonomics,
             active: true
           },
           2: {
-            name: "presence",
+            name: foundation.presence,
             active: true
           },
           3: {
-            name: "availability",
+            name: foundation.availability,
             active: true
           },
           4: {
-            name: "easy",
+            name: foundation.easy,
             active: true
           }
         },
@@ -70,24 +71,24 @@ export class AppFacade{
         {
           criteria: {
             0: {
-              name: "perception",
-              active: criteria["perception"]
+              name: foundation.perception,
+              active: criteria[foundation.perception]
             },
             1: {
-              name: "ergonomics",
-              active: criteria["ergonomics"]
+              name: foundation.ergonomics,
+              active: criteria[foundation.ergonomics]
             },
             2: {
-              name: "presence",
-              active: criteria["presence"]
+              name: foundation.presence,
+              active: criteria[foundation.presence]
             },
             3: {
-              name: "availability",
-              active: criteria["availability"]
+              name: foundation.availability,
+              active: criteria[foundation.availability]
             },
             4: {
-              name: "easy",
-              active: criteria["easy"]
+              name: foundation.easy,
+              active: criteria[foundation.easy]
             }
           }
         });
@@ -103,13 +104,13 @@ export class AppFacade{
       this.firestore.doc('apps/'+appID).update(
         {
           ['evaluation.'+currentUserId]: {
-              perception: results["perception"],
-              ergonomics: results["ergonomics"],
-              presence: results["presence"],
-              availability: results["availability"],
-              easy: results["easy"],
+              perception: results[foundation.perception],
+              ergonomics: results[foundation.ergonomics],
+              presence: results[foundation.presence],
+              availability: results[foundation.availability],
+              easy: results[foundation.easy],
               name: currentUserName,
-              comment: results["comment"],
+              comment: results[foundation.comment],
               date: firebase.firestore.FieldValue.serverTimestamp()
             }
           }

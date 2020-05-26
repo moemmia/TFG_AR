@@ -15,7 +15,6 @@
   <ion-list>
     <ion-item id="text" lines="full">
       <ion-input value={{id}} id="appId" clearOnEdit="false" placeholder="{{ 'EVAL_APP.placeholder' | translate }}" type="text"> </ion-input>
-      <!--<ion-icon (click)="search()"  id="search"  slot="end" name="arrow-dropdown"></ion-icon>-->
     </ion-item>
     <ion-item id="button-left" lines="none">
       <ion-button *ngIf="(userApps?.length > 0) == false" disabled> {{ 'EVAL_APP.button_ya' | translate }} </ion-button>

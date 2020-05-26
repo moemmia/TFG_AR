@@ -1,0 +1,852 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>usARbility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">usARbility documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>LogInPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/home/login/login.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-login</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./login.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./login.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#fpass">fpass</a>
+                            </li>
+                            <li>
+                                <a href="#login">login</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#showError">showError</a>
+                            </li>
+                            <li>
+                                <a href="#showHide">showHide</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(translate: <a href="../injectables/Translate.html">TranslateService</a>, loaderController: <a href="../injectables/LoaderController.html">LoaderController</a>, fireAuth: AngularFireAuth, alertController: AlertController, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/home/login/login.page.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Translate.html" target="_self" >TranslateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loaderController</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LoaderController.html" target="_self" >LoaderController</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fireAuth</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFireAuth</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertController</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fpass"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            fpass
+                        </b>
+                        <a href="#fpass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fpass()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/app/pages/home/login/login.page.ts:88</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                        <b>
+                            login
+                        </b>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>login()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/pages/home/login/login.page.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/app/pages/home/login/login.page.ts:19</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showError"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            showError
+                        </b>
+                        <a href="#showError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showError(error, header: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/pages/home/login/login.page.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>error</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>header</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showHide"></a>
+                    <span class="name">
+                        <b>
+                            showHide
+                        </b>
+                        <a href="#showHide"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showHide(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/pages/home/login/login.page.ts:78</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { AlertController } from &#x27;@ionic/angular&#x27;;
+import { AngularFireAuth } from &#x27;angularfire2/auth&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import * as $ from &#x27;jquery&#x27;;
+import {LoaderController} from &#x27;../../../tools/loadercontroller&#x27;;
+
+import {TranslateService} from &#x27;@ngx-translate/core&#x27;;
+
+@Component({
+  selector: &#x27;app-login&#x27;,
+  templateUrl: &#x27;./login.page.html&#x27;,
+  styleUrls: [&#x27;./login.page.scss&#x27;],
+})
+export class LogInPage implements OnInit {
+
+  constructor(private translate: TranslateService, private loaderController: LoaderController, private fireAuth: AngularFireAuth, private alertController: AlertController, private router: Router) { }
+
+  ngOnInit() {
+  }
+
+  login() {
+      this.loaderController.show();
+      this.fireAuth.auth.signInWithEmailAndPassword($(&quot;#log_email&quot;).val(),$(&quot;#log_password&quot;).val())
+      .then( data &#x3D;&gt; {
+          this.loaderController.hide();
+          this.router.navigateByUrl(&#x27;/main&#x27;);
+      })
+      .catch( error &#x3D;&gt; {
+        this.loaderController.hide();
+        let err;
+        switch(error.code){
+          case &quot;auth/invalid-email&quot; :
+            this.translate.get(&#x27;HOME.LOGIN.error_invalid_email&#x27;).subscribe(t &#x3D;&gt; {
+              err &#x3D; t;
+            });
+            break;
+          case &quot;auth/wrong-password&quot;:
+            this.translate.get(&#x27;HOME.LOGIN.error_wrong_password&#x27;).subscribe(t &#x3D;&gt; {
+              err &#x3D; t;
+            });
+            break;
+          case &quot;auth/user-not-found&quot;:
+            this.translate.get(&#x27;HOME.LOGIN.error_user_not_found&#x27;).subscribe(t &#x3D;&gt; {
+              err &#x3D; t;
+            });
+            break;
+          default:
+            err &#x3D; error.message;
+        }
+        this.showError(err);
+      });
+  }
+
+  async showError(error,header&#x3D;&#x27;&#x27;){
+
+      let a: any &#x3D; {};
+
+      this.translate.get(&#x27;ALERT.ok&#x27;).subscribe(t &#x3D;&gt; {
+        a.ok &#x3D; t;
+      });
+
+      if(header &#x3D;&#x3D; &quot;&quot;){
+        this.translate.get(&#x27;ALERT.error&#x27;).subscribe(t &#x3D;&gt; {
+          header &#x3D; t;
+        });
+      }
+
+     const alert &#x3D; await this.alertController.create({
+      header: header,
+      message: error,
+      buttons: [a.ok]
+    });
+
+    await alert.present();
+  }
+
+  showHide(id){
+    if($(&quot;#&quot;+id).attr(&quot;type&quot;) &#x3D;&#x3D; &quot;password&quot;){
+      $(&quot;#&quot;+id).attr(&quot;type&quot;,&quot;text&quot;);
+      $(&quot;#&quot;+id+&quot;_eye&quot;).attr(&quot;name&quot;,&quot;eye&quot;);
+    }else{
+      $(&quot;#&quot;+id).attr(&quot;type&quot;,&quot;password&quot;);
+      $(&quot;#&quot;+id+&quot;_eye&quot;).attr(&quot;name&quot;,&quot;eye-off&quot;);
+    }
+  }
+
+  async fpass(){
+
+    let a: any &#x3D; {};
+
+    this.translate.get(&#x27;HOME.LOGIN.pass_header&#x27;).subscribe(t &#x3D;&gt; {
+      a.header &#x3D; t;
+    });
+
+    this.translate.get(&#x27;HOME.LOGIN.sended_email&#x27;).subscribe(t &#x3D;&gt; {
+      a.sended &#x3D; t;
+    });
+
+    this.translate.get(&#x27;HOME.LOGIN.thanks&#x27;).subscribe(t &#x3D;&gt; {
+      a.thanks &#x3D; t;
+    });
+
+    this.translate.get(&#x27;HOME.LOGIN.placeholder_email&#x27;).subscribe(t &#x3D;&gt; {
+      a.placeholder &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.cancel&#x27;).subscribe(t &#x3D;&gt; {
+      a.cancel &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.confirm&#x27;).subscribe(t &#x3D;&gt; {
+      a.confirm &#x3D; t;
+    });
+
+    const alert &#x3D; await this.alertController.create({
+      header: a.header,
+      inputs: [
+        {
+          name: &quot;email&quot;,
+          type: &#x27;text&#x27;,
+          placeholder: a.placeholder
+        }],
+      buttons: [
+        {
+          text: a.cancel,
+          role: &#x27;cancel&#x27;,
+          cssClass: &#x27;secondary&#x27;,
+          handler: () &#x3D;&gt; {
+
+          }
+        }, {
+          text: a.confirm,
+          handler: (ref) &#x3D;&gt; {
+            this.fireAuth.auth.sendPasswordResetEmail(ref.email).then( data &#x3D;&gt; {
+                this.showError(a.sended+ref.email,a.thanks);
+            })
+            .catch( error &#x3D;&gt; {
+              let err;
+              switch(error.code){
+                case &quot;auth/invalid-email&quot; :
+                  this.translate.get(&#x27;HOME.LOGIN.error_invalid_email&#x27;).subscribe(t &#x3D;&gt; {
+                    err &#x3D; t;
+                  });
+                  break;
+                case &quot;auth/user-not-found&quot;:
+                  this.translate.get(&#x27;HOME.LOGIN.error_user_not_found&#x27;).subscribe(t &#x3D;&gt; {
+                    err &#x3D; t;
+                  });
+                  break;
+                default:
+                  err &#x3D; error.message;
+              }
+              this.showError(err);
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">
+&lt;ion-content&gt;
+  &lt;div class&#x3D;&quot;content&quot; id&#x3D;&quot;log-in&quot;&gt;
+    &lt;ion-title&gt;&lt;/ion-title&gt;
+    &lt;ion-list&gt;
+      &lt;ion-item&gt;
+        &lt;ion-label position&#x3D;&quot;floating&quot;&gt; {{&#x27;HOME.LOGIN.label_email&#x27; | translate}} &lt;/ion-label&gt;
+        &lt;ion-input clearOnEdit&#x3D;&quot;false&quot; placeholder&#x3D;&quot;{{&#x27;HOME.LOGIN.placeholder_email&#x27; | translate}}&quot; pattern&#x3D;&quot;email&quot;  id&#x3D;&quot;log_email&quot;&gt;&lt;/ion-input&gt;
+      &lt;/ion-item&gt;
+      &lt;ion-item&gt;
+        &lt;ion-label position&#x3D;&quot;floating&quot;&gt; {{&#x27;HOME.LOGIN.label_pass&#x27; | translate}} &lt;/ion-label&gt;
+        &lt;ion-input clearOnEdit&#x3D;&quot;false&quot; placeholder&#x3D;&quot;{{&#x27;HOME.LOGIN.placeholder_pass&#x27; | translate}}&quot; type&#x3D;&quot;password&quot; id&#x3D;&quot;log_password&quot;&gt;&lt;/ion-input&gt;
+        &lt;ion-icon color&#x3D;&quot;primary&quot; name&#x3D;&quot;eye-off&quot; slot&#x3D;&quot;end&quot; id&#x3D;&quot;log_password_eye&quot; (click)&#x3D;&quot;showHide(&#x27;log_password&#x27;)&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-item&gt;
+    &lt;/ion-list&gt;
+
+    &lt;ion-button expand&#x3D;&quot;block&quot; (click)&#x3D;&quot;login()&quot;&gt; {{&#x27;HOME.LOGIN.button&#x27; | translate}} &lt;/ion-button&gt;
+    &lt;ion-item text-center lines&#x3D;&quot;none&quot; (click)&#x3D;&quot;fpass();&quot; tappable&gt;&lt;ion-label id&#x3D;&quot;fpass&quot; color&#x3D;&quot;primary&quot;&gt; {{&#x27;HOME.LOGIN.forgot_pass&#x27; | translate}} &lt;/ion-label&gt;&lt;/ion-item&gt;
+  &lt;/div&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./login.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">div{
+  padding: 0 5%
+}
+ion-icon{
+  padding-top: 6%;
+  margin-bottom: 2%;
+}
+
+#fpass{
+  text-decoration: underline;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-content>  <div class="content" id="log-in">    <ion-title></ion-title>    <ion-list>      <ion-item>        <ion-label position="floating"> {{\'HOME.LOGIN.label_email\' | translate}} </ion-label>        <ion-input clearOnEdit="false" placeholder="{{\'HOME.LOGIN.placeholder_email\' | translate}}" pattern="email"  id="log_email"></ion-input>      </ion-item>      <ion-item>        <ion-label position="floating"> {{\'HOME.LOGIN.label_pass\' | translate}} </ion-label>        <ion-input clearOnEdit="false" placeholder="{{\'HOME.LOGIN.placeholder_pass\' | translate}}" type="password" id="log_password"></ion-input>        <ion-icon color="primary" name="eye-off" slot="end" id="log_password_eye" (click)="showHide(\'log_password\')"></ion-icon>      </ion-item>    </ion-list>    <ion-button expand="block" (click)="login()"> {{\'HOME.LOGIN.button\' | translate}} </ion-button>    <ion-item text-center lines="none" (click)="fpass();" tappable><ion-label id="fpass" color="primary"> {{\'HOME.LOGIN.forgot_pass\' | translate}} </ion-label></ion-item>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'LogInPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LogInPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

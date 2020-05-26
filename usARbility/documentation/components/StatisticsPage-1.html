@@ -1,0 +1,1169 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>usARbility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">usARbility documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>StatisticsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/eval-config/statistics/statistics.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-statistics</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./statistics.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./statistics.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#alive">alive</a>
+                            </li>
+                            <li>
+                                <a href="#app">app</a>
+                            </li>
+                            <li>
+                                <a href="#content">content</a>
+                            </li>
+                            <li>
+                                <a href="#criteria">criteria</a>
+                            </li>
+                            <li>
+                                <a href="#lang">lang</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalController">modalController</a>
+                            </li>
+                            <li>
+                                <a href="#results">results</a>
+                            </li>
+                            <li>
+                                <a href="#total">total</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dismiss">dismiss</a>
+                            </li>
+                            <li>
+                                <a href="#loadData">loadData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#start">start</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appi">appi</a>
+                            </li>
+                            <li>
+                                <a href="#criteriai">criteriai</a>
+                            </li>
+                            <li>
+                                <a href="#evaluatorId">evaluatorId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(translate: <a href="../injectables/Translate.html">TranslateService</a>, uniqueDeviceID: UniqueDeviceID, fireAuth: AngularFireAuth, modalController: ModalController, alertController: AlertController, arraykit: <a href="../injectables/ArrayKit.html">ArrayKit</a>, navParams: NavParams, appfacade: <a href="../injectables/AppFacade.html">AppFacade</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Translate.html" target="_self" >TranslateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>uniqueDeviceID</td>
+                                                  
+                                                        <td>
+                                                                    <code>UniqueDeviceID</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fireAuth</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFireAuth</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertController</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>arraykit</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ArrayKit.html" target="_self" >ArrayKit</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navParams</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavParams</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>appfacade</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AppFacade.html" target="_self" >AppFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appi"></a>
+                        <b>appi</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/App.html" target="_self" >App</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="criteriai"></a>
+                        <b>criteriai</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="evaluatorId"></a>
+                        <b>evaluatorId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dismiss"></a>
+                    <span class="name">
+                        <b>
+                            dismiss
+                        </b>
+                        <a href="#dismiss"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dismiss()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadData"></a>
+                    <span class="name">
+                        <b>
+                            loadData
+                        </b>
+                        <a href="#loadData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadData(values)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>values</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="start"></a>
+                    <span class="name">
+                        <b>
+                            start
+                        </b>
+                        <a href="#start"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>start(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alive"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            alive</b>
+                            <a href="#alive"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="app"></a>
+                        <span class="name">
+                            <b>
+                            app</b>
+                            <a href="#app"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/App.html" target="_self" >App</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="content"></a>
+                        <span class="name">
+                            <b>
+                            content</b>
+                            <a href="#content"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>IonContent</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(IonContent)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="criteria"></a>
+                        <span class="name">
+                            <b>
+                            criteria</b>
+                            <a href="#criteria"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lang"></a>
+                        <span class="name">
+                            <b>
+                            lang</b>
+                            <a href="#lang"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalController"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalController</b>
+                            <a href="#modalController"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ModalController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="results"></a>
+                        <span class="name">
+                            <b>
+                            results</b>
+                            <a href="#results"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Array&lt;QuestionDetail&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="total"></a>
+                        <span class="name">
+                            <b>
+                            total</b>
+                            <a href="#total"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/eval-config/statistics/statistics.page.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild  } from &#x27;@angular/core&#x27;;
+import { NavParams } from &#x27;@ionic/angular&#x27;;
+import { ModalController, AlertController, IonContent   } from &#x27;@ionic/angular&#x27;;
+import {AppFacade, App, QuestionDetail} from &#x27;../../../tools/appfacade&#x27;;
+import { ArrayKit } from &#x27;../../../tools/arraykit&#x27;;
+import { AngularFireAuth } from &#x27;angularfire2/auth&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { takeWhile } from &#x27;rxjs/operators&#x27;;
+import { UniqueDeviceID } from &#x27;@ionic-native/unique-device-id/ngx&#x27;;
+import * as $ from &#x27;jquery&#x27;;
+
+import {TranslateService} from &#x27;@ngx-translate/core&#x27;;
+
+@Component({
+  selector: &#x27;app-statistics&#x27;,
+  templateUrl: &#x27;./statistics.page.html&#x27;,
+  styleUrls: [&#x27;./statistics.page.scss&#x27;],
+})
+export class StatisticsPage implements OnInit {
+
+  @ViewChild(IonContent ) content: IonContent ;
+
+
+  @Input() criteriai: string;
+  @Input() appi: App;
+  @Input() evaluatorId: string;
+
+
+  lang:string;
+  app: App;
+  criteria: string
+  results: Array&lt;QuestionDetail&gt; &#x3D; [];
+  total: number;
+
+  private alive &#x3D; true;
+
+  constructor(private translate: TranslateService, private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
+    this.criteria &#x3D; this.navParams.get(&#x27;criteriai&#x27;);
+    this.lang &#x3D; this.translate.currentLang? this.translate.currentLang: this.translate.defaultLang;
+    this.app &#x3D; this.navParams.get(&#x27;appi&#x27;);
+    this.start(this.navParams.get(&#x27;evaluatorId&#x27;));
+  }
+
+  dismiss() {
+    this.alive &#x3D; false;
+    this.modalController.dismiss({
+      &#x27;dismissed&#x27;: true
+    });
+  }
+
+  ngOnInit() {
+  }
+
+
+  start(id){
+    this.appfacade.getAppById(this.app.id).snapshotChanges().pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+        app &#x3D;&gt; {
+          let data:any &#x3D; app.payload.data();
+          let values &#x3D; data.evaluation[id]
+          if(values){
+            this.loadData(values);
+          }
+        }
+    );
+  }
+
+  loadData(values){
+        this.appfacade.getEvaluation().snapshotChanges().pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+          x &#x3D;&gt; {
+              this.results &#x3D; [];
+              let questions &#x3D; this.arraykit.objectToArray(x[this.criteria]);
+              let num &#x3D; 0;
+
+              x.forEach( ev &#x3D;&gt; {
+                let qs: Array&lt;QuestionDetail&gt; &#x3D; [];
+                let data:any &#x3D; ev.payload.doc.data();
+                let questions &#x3D; this.arraykit.objectToArray(data);
+                let num &#x3D; 0;
+                if(ev.payload.doc.id &#x3D;&#x3D; this.criteria)
+                questions.forEach(
+                  q &#x3D;&gt; {
+                    this.results.push(new QuestionDetail( ( this.lang &#x3D;&#x3D; &#x27;es&#x27;? q[&quot;text_es&quot;]: q[&quot;text&quot;] ), values[this.criteria][num+1]));
+                    num++;
+                  }
+                );
+                this.total &#x3D; values[this.criteria][0];
+              });
+          }
+        );
+  }
+
+
+}
+
+
+export class AStatisticsPage extends StatisticsPage {}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-title *ngIf&#x3D;&quot;criteria&quot;&gt;  {{ &#x27;EVAL_SELECTION.&#x27;+ criteria | translate }}&lt;/ion-title&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-button fill&#x3D;&quot;clear&quot; (click)&#x3D;&quot;dismiss()&quot;&gt;
+        &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;return-left&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-button&gt;
+    &lt;/ion-buttons&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content center text-center&gt;
+  &lt;ion-list *ngIf&#x3D;&quot;results.length&quot;&gt;
+    &lt;ion-item id&#x3D;&quot;total&quot; class&#x3D;&quot;ion-no-padding&quot; lines&#x3D;&quot;none&quot; &gt;
+        &lt;ion-col class&#x3D;&quot;text&quot; size&#x3D;&quot;9&quot;&gt;
+            &lt;ion-text&gt; {{ &#x27;STATISTICS.total&#x27; | translate }}&lt;/ion-text&gt;
+        &lt;/ion-col&gt;
+        &lt;ion-col size&#x3D;&quot;2&quot;&gt;
+            &lt;ion-text&gt;{{total | number:&#x27;1.0-0&#x27;}}&lt;/ion-text&gt;
+        &lt;/ion-col&gt;
+        &lt;ion-col&gt;
+            &lt;ion-icon *ngIf&#x3D;&quot;total&gt;60&quot; color&#x3D;&quot;success&quot; name&#x3D;&quot;checkmark&quot;&gt;&lt;/ion-icon&gt;
+            &lt;ion-icon *ngIf&#x3D;&quot;total&gt;&#x3D;40 &amp;&amp; total &lt;&#x3D;60&quot;  color&#x3D;&quot;warning&quot; name&#x3D;&quot;remove&quot;&gt;&lt;/ion-icon&gt;
+            &lt;ion-icon *ngIf&#x3D;&quot;total &lt; 40&quot; color&#x3D;&quot;danger&quot; name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;
+        &lt;/ion-col&gt;
+    &lt;/ion-item&gt;
+
+    &lt;ion-item *ngFor&#x3D;&quot; let e of results&quot;  class&#x3D;&quot;ion-no-padding&quot; &gt;
+
+      &lt;ion-col class&#x3D;&quot;text&quot; size&#x3D;&quot;9&quot;&gt;
+        &lt;ion-text&gt;{{e.text}}&lt;/ion-text&gt;
+      &lt;/ion-col&gt;
+
+      &lt;ion-col size&#x3D;&quot;2&quot;&gt;
+        &lt;ion-text&gt;{{e.value | number:&#x27;1.0-0&#x27;}}&lt;/ion-text&gt;
+      &lt;/ion-col&gt;
+
+      &lt;ion-col&gt;
+        &lt;ion-icon *ngIf&#x3D;&quot;e.valid &#x3D;&#x3D; 2&quot; color&#x3D;&quot;success&quot; name&#x3D;&quot;checkmark&quot;&gt;&lt;/ion-icon&gt;
+        &lt;ion-icon *ngIf&#x3D;&quot;e.valid &#x3D;&#x3D; 1&quot;  color&#x3D;&quot;warning&quot; name&#x3D;&quot;remove&quot;&gt;&lt;/ion-icon&gt;
+        &lt;ion-icon *ngIf&#x3D;&quot;e.valid &#x3D;&#x3D; 0&quot; color&#x3D;&quot;danger&quot; name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-col&gt;
+
+    &lt;/ion-item&gt;
+
+  &lt;/ion-list&gt;
+
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./statistics.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ion-list ion-text{
+  padding-left: 9vw;
+  padding-top: 2vh;
+}
+
+ion-title{
+  text-transform: uppercase;
+}
+
+
+ion-col ion-text{
+  padding: 0;
+}
+
+ion-col{
+  padding: 1em 0.5em;
+  text-align: right;
+}
+
+#total{
+    border-bottom: ridge var(--ion-color-primary);
+}
+
+.text{
+    text-align: left;
+}
+
+ion-list{
+  padding: 0;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-title *ngIf="criteria">  {{ \'EVAL_SELECTION.\'+ criteria | translate }}</ion-title>    <ion-buttons slot="start">      <ion-button fill="clear" (click)="dismiss()">        <ion-icon slot="icon-only" name="return-left"></ion-icon>      </ion-button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content center text-center>  <ion-list *ngIf="results.length">    <ion-item id="total" class="ion-no-padding" lines="none" >        <ion-col class="text" size="9">            <ion-text> {{ \'STATISTICS.total\' | translate }}</ion-text>        </ion-col>        <ion-col size="2">            <ion-text>{{total | number:\'1.0-0\'}}</ion-text>        </ion-col>        <ion-col>            <ion-icon *ngIf="total>60" color="success" name="checkmark"></ion-icon>            <ion-icon *ngIf="total>=40 && total <=60"  color="warning" name="remove"></ion-icon>            <ion-icon *ngIf="total < 40" color="danger" name="close"></ion-icon>        </ion-col>    </ion-item>    <ion-item *ngFor=" let e of results"  class="ion-no-padding" >      <ion-col class="text" size="9">        <ion-text>{{e.text}}</ion-text>      </ion-col>      <ion-col size="2">        <ion-text>{{e.value | number:\'1.0-0\'}}</ion-text>      </ion-col>      <ion-col>        <ion-icon *ngIf="e.valid == 2" color="success" name="checkmark"></ion-icon>        <ion-icon *ngIf="e.valid == 1"  color="warning" name="remove"></ion-icon>        <ion-icon *ngIf="e.valid == 0" color="danger" name="close"></ion-icon>      </ion-col>    </ion-item>  </ion-list></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'StatisticsPage-1'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'StatisticsPage-1.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

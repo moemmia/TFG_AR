@@ -82,7 +82,8 @@
     "name": "Mis Evaluaciones",
     "error_no_code": "Debes introducir un codigo de una app para continuar",
     "error_get_doc": "Ha surgido un error al recuperar la app:",
-    "error_no_app": "No existe App para este codigo"
+    "error_no_app": "No existe App para este codigo",
+    "error_special_char": "El código de la aplicación no debe contener caracteres especiales"
   },
   "APP_CONFIG":{
     "config": "Config",

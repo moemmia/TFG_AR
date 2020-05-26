@@ -83,6 +83,9 @@ export class AppConfigPage implements OnInit, OnDestroy {
   loadInfo(){
     this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       app => {
+          if (!app.payload.exists) {
+            return;
+          }
           let data:any = app.payload.data();
           this.isUserPropietary(data.creator);
           this.app = new App(app.payload.id, data.name, data.creator);

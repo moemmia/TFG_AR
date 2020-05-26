@@ -23,19 +23,20 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader, TranslateService  } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { firebaseEnvConfig } from '../environments/environment';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAq8hqdgiy5IZbpJ9BhLhlQUYt9VW0kqRU",
-    authDomain: "usarbility.firebaseapp.com",
-    databaseURL: "https://usarbility.firebaseio.com",
-    projectId: "usarbility",
-    storageBucket: "",
-    messagingSenderId: "254079320190",
-    appId: "1:254079320190:web:f29e90250f13460c"
+    apiKey: firebaseEnvConfig.apiKey,
+    authDomain:  firebaseEnvConfig.authDomain,
+    databaseURL:  firebaseEnvConfig.databaseURL,
+    projectId:  firebaseEnvConfig.projectId,
+    storageBucket:  firebaseEnvConfig.storageBucket,
+    messagingSenderId:  firebaseEnvConfig.messagingSenderId,
+    appId:  firebaseEnvConfig.appId
   };
 
 

@@ -1,0 +1,1910 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>usARbility documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">usARbility documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>EvalConfigPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/eval-config/eval-config.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-eval-config</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./eval-config.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./eval-config.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#alive">alive</a>
+                            </li>
+                            <li>
+                                <a href="#app">app</a>
+                            </li>
+                            <li>
+                                <a href="#comment">comment</a>
+                            </li>
+                            <li>
+                                <a href="#criteria">criteria</a>
+                            </li>
+                            <li>
+                                <a href="#criteriaDetails">criteriaDetails</a>
+                            </li>
+                            <li>
+                                <a href="#criteriaValues">criteriaValues</a>
+                            </li>
+                            <li>
+                                <a href="#currentUserId">currentUserId</a>
+                            </li>
+                            <li>
+                                <a href="#date">date</a>
+                            </li>
+                            <li>
+                                <a href="#doughnutCanvas">doughnutCanvas</a>
+                            </li>
+                            <li>
+                                <a href="#doughnutChart">doughnutChart</a>
+                            </li>
+                            <li>
+                                <a href="#id">id</a>
+                            </li>
+                            <li>
+                                <a href="#marksData">marksData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#chartLoader">chartLoader</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#commentChange">commentChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#deleteEval">deleteEval</a>
+                            </li>
+                            <li>
+                                <a href="#loadAll">loadAll</a>
+                            </li>
+                            <li>
+                                <a href="#loadInfo">loadInfo</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openMenu">openMenu</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#openStatistics">openStatistics</a>
+                            </li>
+                            <li>
+                                <a href="#redoEval">redoEval</a>
+                            </li>
+                            <li>
+                                <a href="#show">show</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(translate: <a href="../injectables/Translate.html">TranslateService</a>, modalController: ModalController, loaderController: <a href="../injectables/LoaderController.html">LoaderController</a>, arraykit: <a href="../injectables/ArrayKit.html">ArrayKit</a>, clipboard: Clipboard, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, toastController: ToastController, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, appfacade: <a href="../injectables/AppFacade.html">AppFacade</a>, darkthemer: <a href="../injectables/DarkThemer.html">DarkThemer</a>, menu: MenuController, alertController: AlertController, fireAuth: AngularFireAuth)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>translate</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Translate.html" target="_self" >TranslateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ModalController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loaderController</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LoaderController.html" target="_self" >LoaderController</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>arraykit</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ArrayKit.html" target="_self" >ArrayKit</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>clipboard</td>
+                                                  
+                                                        <td>
+                                                                    <code>Clipboard</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>appfacade</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AppFacade.html" target="_self" >AppFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>darkthemer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DarkThemer.html" target="_self" >DarkThemer</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>menu</td>
+                                                  
+                                                        <td>
+                                                                    <code>MenuController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertController</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fireAuth</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFireAuth</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chartLoader"></a>
+                    <span class="name">
+                        <b>
+                            chartLoader
+                        </b>
+                        <a href="#chartLoader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>chartLoader()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commentChange"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            commentChange
+                        </b>
+                        <a href="#commentChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>commentChange()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteEval"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            deleteEval
+                        </b>
+                        <a href="#deleteEval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>deleteEval()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="256"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:256</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadAll"></a>
+                    <span class="name">
+                        <b>
+                            loadAll
+                        </b>
+                        <a href="#loadAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadAll()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadInfo"></a>
+                    <span class="name">
+                        <b>
+                            loadInfo
+                        </b>
+                        <a href="#loadInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadInfo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openMenu"></a>
+                    <span class="name">
+                        <b>
+                            openMenu
+                        </b>
+                        <a href="#openMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openMenu()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openStatistics"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            openStatistics
+                        </b>
+                        <a href="#openStatistics"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openStatistics(criteria)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="300"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:300</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>criteria</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="redoEval"></a>
+                    <span class="name">
+                        <b>
+                            redoEval
+                        </b>
+                        <a href="#redoEval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>redoEval()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:201</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="show"></a>
+                    <span class="name">
+                        <b>
+                            show
+                        </b>
+                        <a href="#show"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>show(id)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alive"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            alive</b>
+                            <a href="#alive"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="app"></a>
+                        <span class="name">
+                            <b>
+                            app</b>
+                            <a href="#app"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/App.html" target="_self" >App</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="comment"></a>
+                        <span class="name">
+                            <b>
+                            comment</b>
+                            <a href="#comment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Comment.html" target="_self" >Comment</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="criteria"></a>
+                        <span class="name">
+                            <b>
+                            criteria</b>
+                            <a href="#criteria"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Array&lt;string&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="criteriaDetails"></a>
+                        <span class="name">
+                            <b>
+                            criteriaDetails</b>
+                            <a href="#criteriaDetails"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/CriteriaDetail.html" target="_self" >Array&lt;CriteriaDetail&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="criteriaValues"></a>
+                        <span class="name">
+                            <b>
+                            criteriaValues</b>
+                            <a href="#criteriaValues"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Array&lt;number&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentUserId"></a>
+                        <span class="name">
+                            <b>
+                            currentUserId</b>
+                            <a href="#currentUserId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="date"></a>
+                        <span class="name">
+                            <b>
+                            date</b>
+                            <a href="#date"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="doughnutCanvas"></a>
+                        <span class="name">
+                            <b>
+                            doughnutCanvas</b>
+                            <a href="#doughnutCanvas"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;doughnutCanvas&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="doughnutChart"></a>
+                        <span class="name">
+                            <b>
+                            doughnutChart</b>
+                            <a href="#doughnutChart"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <span class="name">
+                            <b>
+                            id</b>
+                            <a href="#id"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="marksData"></a>
+                        <span class="name">
+                            <b>
+                            marksData</b>
+                            <a href="#marksData"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/app/pages/eval-config/eval-config.page.ts:133</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, OnDestroy , ViewChild  } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import {AppFacade, App, Comment, CriteriaDetail} from &#x27;../../tools/appfacade&#x27;;
+import { MenuController, AlertController, ToastController, ModalController  } from &#x27;@ionic/angular&#x27;;
+import {DarkThemer} from &#x27;../../tools/darkthemer&#x27;;
+import { ArrayKit } from &#x27;../../tools/arraykit&#x27;;
+import {LoaderController} from &#x27;../../tools/loadercontroller&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { AngularFireAuth } from &#x27;angularfire2/auth&#x27;;
+import * as $ from &#x27;jquery&#x27;;
+import { Chart } from &#x27;chart.js&#x27;;
+import { Clipboard } from &#x27;@ionic-native/clipboard/ngx&#x27;;
+import { takeWhile } from &#x27;rxjs/operators&#x27;;
+
+import {TranslateService} from &#x27;@ngx-translate/core&#x27;;
+
+import { AStatisticsPage } from &#x27;./statistics/statistics.page&#x27;;
+
+@Component({
+  selector: &#x27;app-eval-config&#x27;,
+  templateUrl: &#x27;./eval-config.page.html&#x27;,
+  styleUrls: [&#x27;./eval-config.page.scss&#x27;],
+})
+export class EvalConfigPage implements OnInit, OnDestroy  {
+
+  currentUserId:string;
+  @ViewChild(&#x27;doughnutCanvas&#x27;) doughnutCanvas;
+  doughnutChart: any;
+
+  id: any;
+  app: App;
+  criteria: Array&lt;string&gt; &#x3D; [];
+  criteriaValues: Array&lt;number&gt; &#x3D; [];
+  criteriaDetails: Array&lt;CriteriaDetail&gt; &#x3D; [];
+  comment: Comment;
+  date: Date;
+
+
+  private alive &#x3D; true;
+
+  constructor(private translate: TranslateService, private modalController: ModalController, private loaderController: LoaderController,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController, private fireAuth: AngularFireAuth) {
+    this.loaderController.show();
+
+    Chart.Legend.prototype.afterFit &#x3D; function() {
+        this.height &#x3D; this.height + 25;
+    };
+
+    let user&#x3D;this.fireAuth.auth.currentUser;
+    if(user!&#x3D;null){
+      this.currentUserId &#x3D; this.fireAuth.auth.currentUser.uid;
+      this.loadAll();
+    }else{
+      this.fireAuth.auth.onAuthStateChanged((user) &#x3D;&gt; {
+       if (user) {
+         this.currentUserId &#x3D; user.uid;
+         this.loadAll();
+       }
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    this.alive &#x3D; false;
+  }
+
+  loadAll(){
+    this.route.params.pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+      (params) &#x3D;&gt; {
+        this.id &#x3D; params[&#x27;id&#x27;];
+        if(this.id){
+          this.loadInfo();
+        }else{
+          this.loaderController.hide();
+          if(this.fireAuth.auth.currentUser) this.router.navigateByUrl(&quot;/main&quot;);
+          else  this.router.navigateByUrl(&quot;/home&quot;);
+        }
+      },
+    );
+  }
+
+
+  show(id){
+      $(&quot;#&quot;+id+&quot;-text&quot;).attr(&quot;hide&quot;,$(&quot;#&quot;+id+&quot;-text&quot;).attr(&quot;hide&quot;)&#x3D;&#x3D;&quot;true&quot;?false:true);
+      $(&quot;#&quot;+id+&quot;-arrow&quot;).attr(&quot;name&quot;,$(&quot;#&quot;+id+&quot;-text&quot;).attr(&quot;hide&quot;)&#x3D;&#x3D;&quot;true&quot;?&quot;arrow-dropdown&quot;:&quot;arrow-dropup&quot;);
+  }
+
+  loadInfo(){
+    this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() &#x3D;&gt; this.alive)).subscribe(
+      app &#x3D;&gt; {
+          let data:any &#x3D; app.payload.data();
+          this.app &#x3D; new App(app.payload.id, data.name, data.creator);
+          this.criteria &#x3D; [];
+          this.criteriaValues &#x3D; [];
+          this.criteriaDetails &#x3D; [];
+          let criteria &#x3D; this.arraykit.objectToArray(data.criteria);
+          let evaluations &#x3D; this.arraykit.objectToArray(data.evaluation);
+
+          evaluations.forEach(
+              ev &#x3D;&gt; {
+                if(ev[&#x27;name&#x27;] &#x3D;&#x3D; this.fireAuth.auth.currentUser.email){
+                  criteria.forEach(
+                  cr &#x3D;&gt; {
+                    if(ev[cr.name][0]){
+                      this.translate.get(&#x27;APP_CONFIG.&#x27;+cr.name).subscribe(t &#x3D;&gt; {
+                        this.criteria.push(t);
+                      });
+                      this.criteriaDetails.push(new CriteriaDetail(cr.name,ev[cr.name][0]));
+                      this.criteriaValues.push(ev[cr.name][0]);
+                    }
+                  });
+                  this.date &#x3D; new Date(ev[&#x27;date&#x27;].seconds* 1000);
+                  if(ev[&#x27;comment&#x27;] !&#x3D; &quot;&quot;){
+                    this.comment &#x3D; new Comment(ev[&#x27;name&#x27;],ev[&#x27;comment&#x27;],this.date);
+                  }else{
+                    this.comment &#x3D; null;
+                  }
+
+                }
+          });
+          this.chartLoader();
+      });
+  }
+
+
+  ngOnInit() {
+
+  }
+
+  openMenu() {
+    this.menu.open(&#x27;end&#x27;);
+  }
+
+  marksData:any;
+
+  chartLoader() {
+    this.marksData &#x3D; {
+      labels: this.criteria,
+      datasets: [{
+        label: this.app.name,
+        radius: 0,
+        backgroundColor: &quot;#3880ff&quot;,
+        data: this.criteriaValues
+      }]
+    };
+    this.doughnutChart &#x3D; new Chart(this.doughnutCanvas.nativeElement, {
+      type: &#x27;horizontalBar&#x27;,
+      data: this.marksData,
+      options: {
+        layout: {
+            padding: {
+                left: 10,
+                right: 50,
+                top: 0,
+                bottom: 0
+            }
+        },
+        tooltips: {
+           enabled: false
+        },
+        borderSkipped: false,
+        legend: {
+          display: false,
+            labels: {
+                fontStyle: &quot;bold&quot;
+            }
+        },
+        scales: {
+            xAxes: [{
+              ticks: {
+                fontColor: this.darkthemer.isDarkScheme()? &#x27;rgb(194, 194, 194)&#x27;:&#x27;rgb(62, 62, 62)&#x27;,
+                fontStyle: &quot;bold&quot;,
+                beginAtZero: true,
+                max: 100
+              },
+              gridLines: {
+                  color: this.darkthemer.isDarkScheme()? &#x27;rgba(0, 0, 0, 0.3)&#x27;:&#x27;rgba(0, 0, 0, 0.15)&#x27;,
+              }
+            }],
+            yAxes: [{
+                barPercentage: 0.5,
+                barThickness: 16,
+                minBarLength: 2,
+                ticks: {
+                  fontColor: this.darkthemer.isDarkScheme()? &#x27;rgb(194, 194, 194)&#x27;:&#x27;rgb(62, 62, 62)&#x27;,
+                  fontStyle: &quot;bold&quot;
+                },
+                gridLines: {
+                    offsetGridLines: false,
+                    color: &quot;rgba(0, 0, 0, 0)&quot;
+                }
+            }]
+        },
+        aspectRatio: &quot;1.5&quot;,
+        pointLabelFontSize : 20
+      }
+    });
+
+    this.loaderController.hide();
+  }
+
+  redoEval(){
+    this.alive &#x3D; false;
+    this.router.navigate([&quot;/eval-app&quot;, {id:this.id}]);
+  }
+
+  async commentChange(){
+
+    let a: any &#x3D; {};
+
+    this.translate.get(&#x27;EVAL_CONFIG.comment_name_header&#x27;).subscribe(t &#x3D;&gt; {
+      a.comment_name_header &#x3D; t;
+    });
+
+    this.translate.get(&#x27;EVAL_CONFIG.comment_placeholder&#x27;).subscribe(t &#x3D;&gt; {
+      a.comment_placeholder &#x3D; t;
+    });
+
+
+    this.translate.get(&#x27;ALERT.cancel&#x27;).subscribe(t &#x3D;&gt; {
+      a.cancel &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.confirm&#x27;).subscribe(t &#x3D;&gt; {
+      a.confirm &#x3D; t;
+    });
+
+    let comment &#x3D; this.comment? this.comment.comment:&quot;&quot;;
+    const alert &#x3D; await this.alertController.create({
+      header: a.comment_name_header,
+      inputs: [
+        {
+          name: &#x27;comment&#x27;,
+          type: &#x27;text&#x27;,
+          value: comment,
+          placeholder: a.comment_placeholder
+        }],
+      buttons: [
+        {
+          text:  a.cancel,
+          role: &#x27;cancel&#x27;,
+          cssClass: &#x27;secondary&#x27;,
+          handler: () &#x3D;&gt; {
+
+          }
+        }, {
+          text: a.confirm,
+          handler: (ref) &#x3D;&gt; {
+            this.appfacade.changeEvalComment(this.app.id,this.currentUserId,ref.comment);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async deleteEval(){
+
+    let a: any &#x3D; {};
+
+    this.translate.get(&#x27;EVAL_CONFIG.delete_eval_header&#x27;).subscribe(t &#x3D;&gt; {
+      a.delete_eval_header &#x3D; t;
+    });
+
+    this.translate.get(&#x27;EVAL_CONFIG.delete_eval_text&#x27;).subscribe(t &#x3D;&gt; {
+      a.delete_eval_text &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.cancel&#x27;).subscribe(t &#x3D;&gt; {
+      a.cancel &#x3D; t;
+    });
+
+    this.translate.get(&#x27;ALERT.confirm&#x27;).subscribe(t &#x3D;&gt; {
+      a.confirm &#x3D; t;
+    });
+
+    const alert &#x3D; await this.alertController.create({
+      header: a.delete_eval_header,
+      message: a.delete_eval_text+ this.app.name +&#x27;?&#x27;,
+      buttons: [
+        {
+          text: a.cancel,
+          role: &#x27;cancel&#x27;,
+          cssClass: &#x27;secondary&#x27;,
+          handler: () &#x3D;&gt; {
+
+          }
+        }, {
+          text: a.confirm,
+          handler: (ref) &#x3D;&gt; {
+            this.appfacade.removeEvaluation(this.app.id,this.currentUserId);
+            this.router.navigateByUrl(&quot;/my-evaluations&quot;);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+
+  async openStatistics(criteria){
+
+      this.alive &#x3D; false;
+      const modal &#x3D; await this.modalController.create({
+        component: AStatisticsPage,
+        componentProps: {
+          &#x27;criteriai&#x27;: criteria,
+          &#x27;appi&#x27;: this.app,
+          &#x27;evaluatorId&#x27; : this.currentUserId
+        }
+      });
+      return await modal.present();
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">
+&lt;ion-menu side&#x3D;&quot;end&quot;&gt;
+  &lt;ion-header&gt;
+    &lt;ion-toolbar translucent&gt;
+      &lt;ion-title&gt;{{ &#x27;APP_CONFIG.config&#x27; | translate }}&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+&lt;ion-content&gt;
+  &lt;ion-list&gt;
+    &lt;div *ngIf&#x3D;&quot;app&quot;&gt;
+      &lt;ion-item lines&#x3D;&quot;none&quot; class&#x3D;&quot;ion-activatable ion-no-padding&quot; (click)&#x3D;&quot;redoEval()&quot;&gt;
+        &lt;ion-ripple-effect&gt;&lt;/ion-ripple-effect&gt;
+        &lt;ion-label&gt; {{ &#x27;EVAL_CONFIG.redo&#x27; | translate }} &lt;/ion-label&gt;
+        &lt;ion-icon color&#x3D;&quot;primary&quot; name&#x3D;&quot;redo&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-item&gt;
+
+      &lt;ion-item lines&#x3D;&quot;none&quot; class&#x3D;&quot;ion-activatable ion-no-padding&quot; (click)&#x3D;&quot;commentChange()&quot;&gt;
+        &lt;ion-ripple-effect&gt;&lt;/ion-ripple-effect&gt;
+        &lt;ion-label&gt; {{ &#x27;EVAL_CONFIG.change_comment&#x27; | translate }} &lt;/ion-label&gt;
+        &lt;ion-icon color&#x3D;&quot;primary&quot; name&#x3D;&quot;code-working&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-item&gt;
+
+      &lt;ion-item lines&#x3D;&quot;none&quot; class&#x3D;&quot;ion-activatable ion-no-padding&quot; (click)&#x3D;&quot;deleteEval()&quot;&gt;
+        &lt;ion-ripple-effect&gt;&lt;/ion-ripple-effect&gt;
+        &lt;ion-label&gt; {{ &#x27;EVAL_CONFIG.delete&#x27; | translate }} &lt;/ion-label&gt;
+        &lt;ion-icon color&#x3D;&quot;danger&quot; name&#x3D;&quot;trash&quot; slot&#x3D;&quot;start&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-item&gt;
+    &lt;/div&gt;
+  &lt;/ion-list&gt;
+&lt;/ion-content&gt;
+&lt;/ion-menu&gt;
+&lt;ion-router-outlet main&gt;&lt;/ion-router-outlet&gt;
+
+&lt;ion-header&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-back-button defaultHref&#x3D;&quot;my-evaluations&quot;&gt;&lt;/ion-back-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-title *ngIf&#x3D;&quot;app&quot;&gt;{{app.name}}&lt;/ion-title&gt;
+    &lt;ion-buttons slot&#x3D;&quot;secondary&quot;&gt;
+      &lt;ion-button fill&#x3D;&quot;clear&quot; (click)&#x3D;&quot;openMenu()&quot;&gt;
+        &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;settings&quot;&gt;&lt;/ion-icon&gt;
+      &lt;/ion-button&gt;
+    &lt;/ion-buttons&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content  center text-center&gt;
+  &lt;ion-item *ngIf&#x3D;&quot;date&quot; lines&#x3D;&quot;none&quot; id&#x3D;&quot;app-id&quot;&gt;
+      &lt;ion-label&gt; {{ &#x27;EVAL_CONFIG.date&#x27; | translate }} &lt;/ion-label&gt;
+      &lt;ion-text readonly &gt;{{date | date :  &quot;dd/MM/y&quot;}}&lt;/ion-text&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item lines&#x3D;&quot;none&quot;  class&#x3D;&quot;ion-no-padding&quot;&gt;
+    &lt;canvas #doughnutCanvas&gt;&lt;/canvas&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item lines&#x3D;&quot;none&quot; class&#x3D;&quot;ion-activatable&quot; (click)&#x3D;&quot;show(&#x27;info&#x27;)&quot;&gt;
+    &lt;ion-ripple-effect&gt;&lt;/ion-ripple-effect&gt;
+    &lt;ion-label id&#x3D;&quot;name&quot;&gt; {{ &#x27;APP_CONFIG.details&#x27; | translate }} &lt;/ion-label&gt;
+    &lt;ion-icon id&#x3D;&quot;info-arrow&quot; slot&#x3D;&quot;end&quot; color&#x3D;&quot;primary&quot; name&#x3D;&quot;arrow-dropup&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-list id&#x3D;&quot;info-text&quot;&gt;
+    &lt;ion-item  class&#x3D;&quot;ion-no-padding&quot; lines&#x3D;&quot;none&quot;&gt;
+      &lt;ion-grid&gt;
+        &lt;ion-row&gt;
+          &lt;ion-col size&#x3D;&quot;6&quot;&gt;
+            {{ &#x27;APP_CONFIG.criteria&#x27; | translate }}
+          &lt;/ion-col&gt;
+          &lt;ion-col&gt;
+            {{ &#x27;APP_CONFIG.value&#x27; | translate }}
+          &lt;/ion-col&gt;
+          &lt;ion-col&gt;
+            {{ &#x27;APP_CONFIG.pass&#x27; | translate }}
+          &lt;/ion-col&gt;
+          &lt;ion-col&gt;
+
+          &lt;/ion-col&gt;
+        &lt;/ion-row&gt;
+        &lt;ion-row *ngFor&#x3D;&quot;let a of criteriaDetails&quot; (click)&#x3D;&quot;openStatistics(a.name)&quot;&gt;
+          &lt;ion-col size&#x3D;&quot;6&quot;&gt;
+            {{ &#x27;APP_CONFIG.&#x27;+a.name | translate }}
+          &lt;/ion-col&gt;
+          &lt;ion-col&gt;
+            {{a.value  | number:&#x27;1.0-0&#x27;}}
+          &lt;/ion-col&gt;
+          &lt;ion-col *ngIf&#x3D;&quot;a.valid &#x3D;&#x3D; 2&quot;&gt;
+            &lt;ion-icon color&#x3D;&quot;success&quot; name&#x3D;&quot;checkmark&quot;&gt;&lt;/ion-icon&gt;
+          &lt;/ion-col&gt;
+          &lt;ion-col *ngIf&#x3D;&quot;a.valid  &#x3D;&#x3D; 1&quot;&gt;
+            &lt;ion-icon color&#x3D;&quot;warning&quot; name&#x3D;&quot;remove&quot;&gt;&lt;/ion-icon&gt;
+          &lt;/ion-col&gt;
+          &lt;ion-col *ngIf&#x3D;&quot;a.valid  &#x3D;&#x3D; 0&quot;&gt;
+            &lt;ion-icon color&#x3D;&quot;danger&quot; name&#x3D;&quot;close&quot;&gt;&lt;/ion-icon&gt;
+          &lt;/ion-col&gt;
+          &lt;ion-col&gt;
+              &lt;ion-icon color&#x3D;&quot;primary&quot; name&#x3D;&quot;list&quot;&gt;&lt;/ion-icon&gt;
+          &lt;/ion-col&gt;
+        &lt;/ion-row&gt;
+      &lt;/ion-grid&gt;
+    &lt;/ion-item&gt;
+  &lt;/ion-list&gt;
+
+
+  &lt;ion-item lines&#x3D;&quot;none&quot; class&#x3D;&quot;ion-activatable&quot; (click)&#x3D;&quot;show(&#x27;comment&#x27;)&quot;&gt;
+    &lt;ion-ripple-effect&gt;&lt;/ion-ripple-effect&gt;
+    &lt;ion-label id&#x3D;&quot;name&quot;&gt; {{ &#x27;EVAL_CONFIG.comment&#x27; | translate }} &lt;/ion-label&gt;
+    &lt;ion-icon id&#x3D;&quot;comment-arrow&quot; slot&#x3D;&quot;end&quot; color&#x3D;&quot;primary&quot; name&#x3D;&quot;arrow-dropup&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/ion-item&gt;
+  &lt;ion-list id&#x3D;&quot;comment-text&quot;&gt;
+    &lt;ion-item *ngIf&#x3D;&quot;comment&quot; class&#x3D;&quot;ion-no-padding&quot;&gt;
+      &lt;ion-label color&#x3D;&quot;primary&quot; position&#x3D;&quot;floating&quot;&gt; {{comment.name}} &lt;/ion-label&gt;
+      &lt;ion-textarea autoGrow readonly value&#x3D;{{comment.comment}}&gt;&lt;/ion-textarea&gt;
+      &lt;br&gt;
+    &lt;/ion-item&gt;
+  &lt;/ion-list&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./eval-config.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">canvas{
+    display: block;
+    margin: 0 auto;
+}
+
+ion-menu ion-list{
+  padding-left: 15px;
+}
+
+#app-share{
+  margin-top: 22px;
+}
+
+#app-id{
+  border-bottom: ridge var(--ion-color-primary);
+  padding-bottom: 2px;
+}
+
+#app-id ion-label{
+  color: var(--ion-color-primary);
+}
+
+#comment-text{
+  overflow: scroll;
+  margin: auto;
+  border-bottom: ridge var(--ion-color-primary);
+  transition: max-height 0.5s ease-in-out;
+  max-height: 300px;
+  padding: 0;
+}
+
+#comment-text[hide&#x3D;&quot;true&quot;] {
+    max-height: 0;
+}
+
+#comment-text ion-item *{
+    padding: 0 5vh;
+}
+
+
+#info-text{
+  overflow: scroll;
+  margin: auto;
+  border-bottom: ridge var(--ion-color-primary);
+  transition: max-height 0.5s ease-in-out;
+  max-height: 300px;
+  padding: 0;
+}
+
+#info-text[hide&#x3D;&quot;true&quot;] {
+    max-height: 0;
+}
+
+
+
+#info-text ion-row:first-child{
+  border-bottom: 2px solid var(--ion-border-color);
+  font-size: small;
+  font-style: italic;
+  box-shadow: 0px -2px 1px var(--ion-border-color);
+}
+
+#info-text ion-row {
+  font-weight: bolder;
+  font-size: 1.1em;
+}
+ion-row ion-col ion-icon{
+  font-size: 1.1em;
+}
+
+#info-text ion-row ion-col:not(:first-child){
+  text-align: center;
+}
+
+#info-text ion-row:last-child {
+  box-shadow: 0px 2px 1px var(--ion-border-color);
+}
+
+#info-text ion-item{
+  padding-left: var(--inner-padding-end)
+}
+
+#info-text ion-grid{
+  padding: 0;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+ion-datetime{
+  padding-left: 0 !important;
+}
+
+canvas{
+  max-width: 522px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-menu side="end">  <ion-header>    <ion-toolbar translucent>      <ion-title>{{ \'APP_CONFIG.config\' | translate }}</ion-title>    </ion-toolbar>  </ion-header><ion-content>  <ion-list>    <div *ngIf="app">      <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="redoEval()">        <ion-ripple-effect></ion-ripple-effect>        <ion-label> {{ \'EVAL_CONFIG.redo\' | translate }} </ion-label>        <ion-icon color="primary" name="redo" slot="start"></ion-icon>      </ion-item>      <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="commentChange()">        <ion-ripple-effect></ion-ripple-effect>        <ion-label> {{ \'EVAL_CONFIG.change_comment\' | translate }} </ion-label>        <ion-icon color="primary" name="code-working" slot="start"></ion-icon>      </ion-item>      <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="deleteEval()">        <ion-ripple-effect></ion-ripple-effect>        <ion-label> {{ \'EVAL_CONFIG.delete\' | translate }} </ion-label>        <ion-icon color="danger" name="trash" slot="start"></ion-icon>      </ion-item>    </div>  </ion-list></ion-content></ion-menu><ion-router-outlet main></ion-router-outlet><ion-header>  <ion-toolbar>    <ion-buttons slot="start">      <ion-back-button defaultHref="my-evaluations"></ion-back-button>    </ion-buttons>    <ion-title *ngIf="app">{{app.name}}</ion-title>    <ion-buttons slot="secondary">      <ion-button fill="clear" (click)="openMenu()">        <ion-icon slot="icon-only" name="settings"></ion-icon>      </ion-button>    </ion-buttons>  </ion-toolbar></ion-header><ion-content  center text-center>  <ion-item *ngIf="date" lines="none" id="app-id">      <ion-label> {{ \'EVAL_CONFIG.date\' | translate }} </ion-label>      <ion-text readonly >{{date | date :  "dd/MM/y"}}</ion-text>  </ion-item>  <ion-item lines="none"  class="ion-no-padding">    <canvas #doughnutCanvas></canvas>  </ion-item>  <ion-item lines="none" class="ion-activatable" (click)="show(\'info\')">    <ion-ripple-effect></ion-ripple-effect>    <ion-label id="name"> {{ \'APP_CONFIG.details\' | translate }} </ion-label>    <ion-icon id="info-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>  </ion-item>  <ion-list id="info-text">    <ion-item  class="ion-no-padding" lines="none">      <ion-grid>        <ion-row>          <ion-col size="6">            {{ \'APP_CONFIG.criteria\' | translate }}          </ion-col>          <ion-col>            {{ \'APP_CONFIG.value\' | translate }}          </ion-col>          <ion-col>            {{ \'APP_CONFIG.pass\' | translate }}          </ion-col>          <ion-col>          </ion-col>        </ion-row>        <ion-row *ngFor="let a of criteriaDetails" (click)="openStatistics(a.name)">          <ion-col size="6">            {{ \'APP_CONFIG.\'+a.name | translate }}          </ion-col>          <ion-col>            {{a.value  | number:\'1.0-0\'}}          </ion-col>          <ion-col *ngIf="a.valid == 2">            <ion-icon color="success" name="checkmark"></ion-icon>          </ion-col>          <ion-col *ngIf="a.valid  == 1">            <ion-icon color="warning" name="remove"></ion-icon>          </ion-col>          <ion-col *ngIf="a.valid  == 0">            <ion-icon color="danger" name="close"></ion-icon>          </ion-col>          <ion-col>              <ion-icon color="primary" name="list"></ion-icon>          </ion-col>        </ion-row>      </ion-grid>    </ion-item>  </ion-list>  <ion-item lines="none" class="ion-activatable" (click)="show(\'comment\')">    <ion-ripple-effect></ion-ripple-effect>    <ion-label id="name"> {{ \'EVAL_CONFIG.comment\' | translate }} </ion-label>    <ion-icon id="comment-arrow" slot="end" color="primary" name="arrow-dropup"></ion-icon>  </ion-item>  <ion-list id="comment-text">    <ion-item *ngIf="comment" class="ion-no-padding">      <ion-label color="primary" position="floating"> {{comment.name}} </ion-label>      <ion-textarea autoGrow readonly value={{comment.comment}}></ion-textarea>      <br>    </ion-item>  </ion-list></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EvalConfigPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EvalConfigPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
