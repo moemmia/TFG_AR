@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "254079320190",
+    "firebase_url": "https://usarbility.firebaseio.com",
+    "project_id": "usarbility",
+    "storage_bucket": "usarbility.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254079320190:android:48b1fc7de091d403cbd82f",
+        "android_client_info": {
+          "package_name": "com.moemm.usAR"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254079320190-rr79khpoausj7kelr9q115g1hvcct16b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCexg4JyDqdL_QhCju1rIUCImC3FkMC8wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254079320190-rr79khpoausj7kelr9q115g1hvcct16b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

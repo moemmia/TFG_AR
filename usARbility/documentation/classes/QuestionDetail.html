@@ -116,7 +116,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">src/app/tools/appfacade.ts:187</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/app/tools/appfacade.ts:188</a></div>
                             </td>
                         </tr>
 
@@ -201,7 +201,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">src/app/tools/appfacade.ts:187</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/app/tools/appfacade.ts:188</a></div>
                             </td>
                         </tr>
 
@@ -228,7 +228,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/app/tools/appfacade.ts:184</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/tools/appfacade.ts:185</a></div>
                             </td>
                         </tr>
 
@@ -255,7 +255,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/app/tools/appfacade.ts:186</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">src/app/tools/appfacade.ts:187</a></div>
                             </td>
                         </tr>
 
@@ -282,7 +282,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">src/app/tools/appfacade.ts:185</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/app/tools/appfacade.ts:186</a></div>
                             </td>
                         </tr>
 
@@ -307,6 +307,7 @@ import { AngularFirestore, AngularFirestoreCollection } from &#x27;angularfire2/
 import { Observable } from &#x27;rxjs&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 import * as firebase from &#x27;firebase/app&#x27;;
+import { foundation } from &#x27;../../environments/environment&#x27;;
 
 @Injectable()
 export class AppFacade{
@@ -319,23 +320,23 @@ export class AppFacade{
         name: name,
         criteria: {
           0: {
-            name: &quot;perception&quot;,
+            name: foundation.perception,
             active: true
           },
           1: {
-            name: &quot;ergonomics&quot;,
+            name: foundation.ergonomics,
             active: true
           },
           2: {
-            name: &quot;presence&quot;,
+            name: foundation.presence,
             active: true
           },
           3: {
-            name: &quot;availability&quot;,
+            name: foundation.availability,
             active: true
           },
           4: {
-            name: &quot;easy&quot;,
+            name: foundation.easy,
             active: true
           }
         },
@@ -373,24 +374,24 @@ export class AppFacade{
         {
           criteria: {
             0: {
-              name: &quot;perception&quot;,
-              active: criteria[&quot;perception&quot;]
+              name: foundation.perception,
+              active: criteria[foundation.perception]
             },
             1: {
-              name: &quot;ergonomics&quot;,
-              active: criteria[&quot;ergonomics&quot;]
+              name: foundation.ergonomics,
+              active: criteria[foundation.ergonomics]
             },
             2: {
-              name: &quot;presence&quot;,
-              active: criteria[&quot;presence&quot;]
+              name: foundation.presence,
+              active: criteria[foundation.presence]
             },
             3: {
-              name: &quot;availability&quot;,
-              active: criteria[&quot;availability&quot;]
+              name: foundation.availability,
+              active: criteria[foundation.availability]
             },
             4: {
-              name: &quot;easy&quot;,
-              active: criteria[&quot;easy&quot;]
+              name: foundation.easy,
+              active: criteria[foundation.easy]
             }
           }
         });
@@ -406,13 +407,13 @@ export class AppFacade{
       this.firestore.doc(&#x27;apps/&#x27;+appID).update(
         {
           [&#x27;evaluation.&#x27;+currentUserId]: {
-              perception: results[&quot;perception&quot;],
-              ergonomics: results[&quot;ergonomics&quot;],
-              presence: results[&quot;presence&quot;],
-              availability: results[&quot;availability&quot;],
-              easy: results[&quot;easy&quot;],
+              perception: results[foundation.perception],
+              ergonomics: results[foundation.ergonomics],
+              presence: results[foundation.presence],
+              availability: results[foundation.availability],
+              easy: results[foundation.easy],
               name: currentUserName,
-              comment: results[&quot;comment&quot;],
+              comment: results[foundation.comment],
               date: firebase.firestore.FieldValue.serverTimestamp()
             }
           }
