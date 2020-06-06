@@ -17,11 +17,11 @@
       <ion-input value={{id}} id="appId" clearOnEdit="false" placeholder="{{ 'EVAL_APP.placeholder' | translate }}" type="text"> </ion-input>
     </ion-item>
     <ion-item id="button-left" lines="none">
-      <ion-button *ngIf="(userApps?.length > 0) == false" disabled> {{ 'EVAL_APP.button_ya' | translate }} </ion-button>
-      <ion-button *ngIf="userApps?.length > 0" (click)="search()"> {{ 'EVAL_APP.button_ya' | translate }} </ion-button>
+      <ion-button class="menu-button" *ngIf="(userApps?.length > 0) == false" disabled> {{ 'EVAL_APP.button_ya' | translate }} </ion-button>
+      <ion-button class="menu-button" *ngIf="userApps?.length > 0" (click)="search()"> {{ 'EVAL_APP.button_ya' | translate }} </ion-button>
     </ion-item>
     <ion-item id="button-right" lines="none">
-      <ion-button (click)="next()"> {{ 'EVAL_APP.button_next' | translate }} </ion-button>
+      <ion-button class="menu-button" (click)="next()"> {{ 'EVAL_APP.button_next' | translate }} </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

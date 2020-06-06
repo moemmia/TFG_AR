@@ -56,10 +56,16 @@ export class EvaluatePage implements OnInit {
       a.error_get_doc = t;
     });
 
+    this.translate.get('MY_EVAL.error_special_char').subscribe(t => {
+      a.error_special_char = t;
+    });
+
     let id= $("#code").val();
     if(!id){
       this.showError(a.error_no_code);
-    }else{
+    } else if (id.match(/^[\W_]/)) {
+      this.showError(a.error_special_char);
+    } else{
       let context = this;
       this.appfacade.getAppById(id).ref.get().then(function(doc) {
           if (doc.exists) {

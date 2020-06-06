@@ -40,6 +40,7 @@ export class EvaluationPage implements OnInit {
   hasNext:boolean;
 
   private alive = true;
+  private uuid:string;
 
   constructor(private translate: TranslateService, private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
 
@@ -48,9 +49,19 @@ export class EvaluationPage implements OnInit {
     }else{
       this.uniqueDeviceID.get().then(
         uuid => {
+          this.uuid = uuid;
           this.start(uuid);
         }
-      )
+      ).catch((error: any) => {
+        let err;
+        this.translate.get('EVAL_SELECTION.error_no_id').subscribe(t => {
+          err = t;
+        });
+        this.showError(err, () => {
+          this.dismiss();
+          this.router.navigateByUrl("/home");
+        });
+      });
     }
 
 
@@ -217,29 +228,14 @@ export class EvaluationPage implements OnInit {
       this.router.navigateByUrl("/main");
       this.dismiss();
     }else{
-      this.uniqueDeviceID.get().then(
-        uuid => {
-          this.appfacade.addEvaluation(this.app.id, results, uuid ,'anonymous');
-          this.router.navigateByUrl("/home");
-          this.dismiss();
-        }
-      ).catch((error: any) => {
-
-        let err;
-
-        this.translate.get('EVAL_SELECTION.error_no_id').subscribe(t => {
-          err = t;
-        });
-        this.showError(err);
-        this.router.navigateByUrl("/home");
-        this.dismiss();
-
-      });
+      this.appfacade.addEvaluation(this.app.id, results, this.uuid ,'anonymous');
+      this.router.navigateByUrl("/home");
+      this.dismiss();
     }
 
   }
 
-  async showError(error,header=''){
+  async showError(error,onPress){
 
       let a: any = {};
 
@@ -247,16 +243,15 @@ export class EvaluationPage implements OnInit {
         a.ok = t;
       });
 
-      if(header == ""){
-        this.translate.get('ALERT.error').subscribe(t => {
-          header = t;
-        });
-      }
-
      const alert = await this.alertController.create({
-      header: header,
+      header: '',
       message: error,
-      buttons: [a.ok]
+      buttons: [{
+        text: a.ok,
+        handler: () => {
+          onPress();
+        }
+      }]
     });
 
     await alert.present();
