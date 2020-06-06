@@ -83,7 +83,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row>
+        <ion-row (click)="openExplanations()">
           <ion-col size="6">
             {{ 'STATISTICS.total' | translate }}
           </ion-col>
@@ -99,7 +99,7 @@
             {{totalNum}}
           </ion-col>
           <ion-col>
-
+            <ion-icon color="primary" name="information-circle-outline"></ion-icon>
           </ion-col>
         </ion-row>
 

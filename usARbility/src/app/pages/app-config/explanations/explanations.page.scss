@@ -1,0 +1,50 @@
+div{
+  padding-left: 4vw;
+  padding-right: 4vw;
+  padding-bottom: 2vh;
+}
+div:first-child{
+  padding-top: 2vh;
+}
+
+ion-row:first-child{
+  font-weight: bold;
+  border-bottom: 2px solid var(--ion-border-color);
+  border-top: 2px solid var(--ion-border-color);
+  font-size: small;
+  font-style: italic;
+}
+
+ion-row ion-col:first-child, ion-row ion-col:last-child{
+  font-weight: bold;
+}
+
+ion-row{
+  border-bottom: 1px solid var(--ion-border-color);
+}
+
+ion-row div{
+  padding: 0;
+}
+
+ion-row:last-child{
+  border-bottom: 2px solid var(--ion-border-color);
+  margin-bottom: 2vh;
+}
+
+.col{
+  padding: 0;
+}
+
+ion-col ion-col{
+    min-width: 100%;
+}
+
+ion-col{
+  text-align: center;
+  align-self: center;
+}
+
+ion-title{
+  text-transform: uppercase;
+}

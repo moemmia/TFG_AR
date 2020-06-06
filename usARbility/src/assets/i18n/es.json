@@ -148,5 +148,64 @@
     "error": "Error",
     "confirm": "Confirmar",
     "send": "Enviar"
+  },
+  "EXPLANATIONS":{
+    "name": "Explicaciones",
+    "text1": "El cuestionario que hemos seguido para la evaluación de la usabilidad de aplicaciones de realidad aumentada, CARUS, define una serie de metricas para realizar el cálculo del valor final de usabilidad.",
+    "text2": "Estas métricas definen una serie de pesos a cada uno de los criterios de evaluación según la importancia que tiene a nivel global en la usabilidad de una aplicación, de este modo generamos la siguiente tabla de pesos:",
+    "text3": "Haciendo uso de esta tabla de pesos hemos generado los valores que muestra en la pantalla de información de las aplicaciones.",
+    "text4": "De este modo el valor mostrado para cada criterio es la normalización del valor sobre 100 que resulta de las preguntas que componen su cuestionario con su respectivo peso cada una. Y el total esta calculado en base al peso de cada uno de estos criterios.",
+    "criteria": "Criterios",
+    "weight": "Peso",
+    "subcriteria": "Subcriterios",
+    "weight": "Peso",
+    "percepction": {
+      "name": "Percepción",
+      "subcriteria1": "Comprensión",
+      "weight1": "0.5",
+      "subcriteria2": "Interfaz",
+      "weight2": "0.5",
+      "weight": "0.3"
+    },
+    "ergonomics":{
+      "name": "Ergonomía",
+      "subcriteria1": "Física",
+      "weight1": "0.5",
+      "subcriteria2": "Dispositivo",
+      "weight2": "0.5",
+      "weight": "0.3"
+    },
+    "presence":{
+      "name": "Presencia",
+      "subcriteria1": "Realismo",
+      "weight1": "0.6",
+      "subcriteria2": "Verosimilitud",
+      "weight2": "0.4",
+      "weight": "0.4"
+    },
+    "availability":{
+      "name": "Disponibilidad",
+      "subcriteria1": "Cognitiva",
+      "weight1": "0.6",
+      "subcriteria2": "Sensible",
+      "weight2": "0.3",
+      "subcriteria3": "Física",
+      "weight3": "0.4",
+      "weight": "0.6"
+    },
+    "easy":{
+      "name": "Facilidad de uso",
+      "subcriteria1": "Operación",
+      "weight1": "0.6",
+      "subcriteria2": "Aprendizaje",
+      "weight2": "0.4",
+      "subcriteria3": "Conveniencia",
+      "weight3": "0.2",
+      "subcriteria4": "Satisfacción",
+      "weight4": "0.7",
+      "subcriteria5": "Personalización",
+      "weight5": "0.3",
+      "weight": "0.4"
+    }
   }
 }

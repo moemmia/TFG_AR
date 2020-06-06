@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'eval-config', loadChildren: './pages/eval-config/eval-config.module#EvalConfigPageModule' },
   { path: 'statistics', loadChildren: './pages/eval-config/statistics/statistics.module#StatisticsPageModule' },
   { path: 'statistics', loadChildren: './pages/app-config/statistics/statistics.module#StatisticsPageModule' },
+  { path: 'explanations', loadChildren: './pages/app-config/explanations/explanations.module#ExplanationsPageModule' },
   { path: 'evaluation', loadChildren: './pages/eval-selection/evaluation/evaluation.module#EvaluationPageModule' },
 ];
 

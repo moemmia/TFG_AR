@@ -147,5 +147,63 @@
     "error": "Error",
     "confirm": "Confirm",
     "send": "Send"
+  },
+  "EXPLANATIONS":{
+    "name": "Explanations",
+    "text1": "The questionnaire that we have followed to evaluate the usability of augmented reality applications, CARUS, defines a series of metrics for calculating the final value of usability.",
+    "text2": "These metrics define a series of weights for each of the evaluation criteria according to the importance it has at the global level in the usability of an application, in this way we generate the following table of weights:",
+    "text3": "Using this table of weights, we have generated the values shown on the information screen of the applications.",
+    "text4": "In this way, the value shown for each criterion is the normalization of the value over 100 that results from the questions that make up your questionnaire with their respective weight each. And the total is calculated based on the weight of each of these criteria.",
+    "criteria": "Criteria",
+    "weight": "Weight",
+    "subcriteria": "Subcriteria",
+    "percepction": {
+      "name": "Perception",
+      "subcriteria1": "Understanding",
+      "weight1": "0.5",
+      "subcriteria2": "Interface",
+      "weight2": "0.5",
+      "weight": "0.3"
+    },
+    "ergonomics":{
+      "name": "Ergonomics",
+      "subcriteria1": "Physical",
+      "weight1": "0.5",
+      "subcriteria2": "Device",
+      "weight2": "0.5",
+      "weight": "0.3"
+    },
+    "presence":{
+      "name": "Presence",
+      "subcriteria1": "Realism",
+      "weight1": "0.6",
+      "subcriteria2": "Verisimilitude",
+      "weight2": "0.4",
+      "weight": "0.4"
+    },
+    "availability":{
+      "name": "Availability",
+      "subcriteria1": "Cognitive",
+      "weight1": "0.6",
+      "subcriteria2": "Sensitive",
+      "weight2": "0.3",
+      "subcriteria3": "Physical",
+      "weight3": "0.4",
+      "weight": "0.6"
+    },
+    "easy":{
+      "name": "Easy to use",
+      "subcriteria1": "Operation",
+      "weight1": "0.6",
+      "subcriteria2": "Learning",
+      "weight2": "0.4",
+      "subcriteria3": "Convenience",
+      "weight3": "0.2",
+      "subcriteria4": "Satisfaction",
+      "weight4": "0.7",
+      "subcriteria5": "Personalization",
+      "weight5": "0.3",
+      "weight": "0.4"
+    }
   }
 }

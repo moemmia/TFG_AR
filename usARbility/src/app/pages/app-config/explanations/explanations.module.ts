@@ -5,16 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AppConfigPage } from './app-config.page';
-import { AStatisticsPage } from './statistics/statistics.page';
-import { AExplanationsPage } from './explanations/explanations.page';
+import { ExplanationsPage } from './explanations.page';
 
 import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppConfigPage
+    component: ExplanationsPage
   }
 ];
 
@@ -26,7 +24,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule
   ],
-  declarations: [AppConfigPage, AStatisticsPage, AExplanationsPage],
-  entryComponents: [AStatisticsPage, AExplanationsPage]
+  declarations: [ExplanationsPage]
 })
-export class AppConfigPageModule {}
+export class ExplanationsPageModule {}

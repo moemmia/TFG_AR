@@ -15,6 +15,7 @@ import { takeWhile } from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
 import { AStatisticsPage } from './statistics/statistics.page';
+import { AExplanationsPage } from './explanations/explanations.page';
 
 @Component({
   selector: 'app-app-config',
@@ -480,6 +481,15 @@ export class AppConfigPage implements OnInit, OnDestroy {
           'criteriai': criteria,
           'appi': this.app
         }
+      });
+      return await modal.present();
+  }
+
+  async openExplanations(){
+
+      this.alive = false;
+      const modal = await this.modalController.create({
+        component: AExplanationsPage,
       });
       return await modal.present();
   }
