@@ -116,7 +116,7 @@ export class EvaluationPage implements OnInit {
               let num = 0;
               questions.forEach(
                 q => {
-                  qs.push(new Question( q["text"], q["text_es"], q["weight"],num,values[ev.payload.doc.id][num]));
+                  qs.push(new Question( q["text"], q["text_es"], q["weight"],num,values[ev.payload.doc.id][num+1]));
                   num++;
                 }
               );
