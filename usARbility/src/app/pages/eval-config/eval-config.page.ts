@@ -100,7 +100,7 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
                 if(ev['name'] == this.fireAuth.auth.currentUser.email){
                   criteria.forEach(
                   cr => {
-                    if(ev[cr.name][0]){
+                    if(ev[cr.name]!==-1){
                       this.translate.get('APP_CONFIG.'+cr.name).subscribe(t => {
                         this.criteria.push(t);
                       });

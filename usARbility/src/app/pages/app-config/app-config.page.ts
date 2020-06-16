@@ -102,11 +102,12 @@ export class AppConfigPage implements OnInit, OnDestroy {
           let number = [];
 
           let evaluations = this.arraykit.objectToArray(data.evaluation);
+          this.totalNum = 0;
           evaluations.forEach(
             ev => {
               criteria.forEach(
                 cr => {
-                    if(ev[cr.name][0]){
+                    if(ev[cr.name]!==-1){
                       value[cr.name] = value[cr.name]? value[cr.name] + ev[cr.name][0]: ev[cr.name][0];
                       number[cr.name] = number[cr.name]? number[cr.name]+1:1;
                     }
@@ -343,7 +344,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
         }, {
           text: a.confirm,
           handler: (ref) => {
-            if(ref.indexOf("perception") + ref.indexOf("ergonomics") + ref.indexOf("presence") + ref.indexOf("availability") + ref.indexOf("easy") < 0){
+            if(ref.indexOf("perception") + ref.indexOf("ergonomics") + ref.indexOf("presence") + ref.indexOf("availability") + ref.indexOf("easy") <= -5){
               this.showError(a.error_no_select);
             }else{
               let criteria = {
