@@ -175,6 +175,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   calculateTotal(){
     let of = 0;
+    this.total = 0;
     if(this.activeCriteria.indexOf("perception") > -1){
       this.total += this.activeCriteriaDetails[this.activeCriteria.indexOf("perception")].value * 0.3 * 0.7;
       of +=  3  * 7;
