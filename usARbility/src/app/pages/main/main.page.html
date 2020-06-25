@@ -53,5 +53,13 @@
       </ion-label>
       <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>
     </ion-item>
+
+    <ion-item lines="none" class="ion-activatable" (click)="navigate('/public-apps')">
+      <ion-ripple-effect></ion-ripple-effect>
+      <ion-label>
+        {{ 'MAIN.all_apps' | translate }}
+      </ion-label>
+      <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>
+    </ion-item>
   </ion-list>
 </ion-content>

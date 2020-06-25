@@ -63,7 +63,7 @@ export class EvalSelectionPage implements OnInit, OnDestroy {
     this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
         let data:any =  x.payload.data();
-        this.app = new App(x.payload.id, data.name, data.creator);
+        this.app = new App(x.payload.id, data.name, data.creator, data.isPublic);
         let criteria = this.arraykit.objectToArray(data.criteria);
         criteria.forEach(
         cr => {

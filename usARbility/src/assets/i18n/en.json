@@ -44,6 +44,7 @@
     "eval": "Evaluate",
     "my_apps": "My Apps",
     "my_eval": "My Evaluations",
+    "all_apps": "Public Apps",
     "profile": "Profile",
     "settings": "Settings",
     "sign_out": "Sign out"
@@ -77,6 +78,9 @@
     "error_header": "Error",
     "error_message": "You must input a name for your App."
   },
+  "PUBLIC_APPS":{
+    "name": "Public Apps"
+  },
   "MY_EVAL":{
     "name": "My Evaluations",
     "error_no_code": "You must input the code for the app",
@@ -105,7 +109,8 @@
     "error_no_select": "You must select at least one criteria",
     "change_name_header": "Change Name",
     "delete_app_header": "App Deletion",
-    "delete_app_text": "Are you sure you want to delete "
+    "delete_app_text": "Are you sure you want to delete ",
+    "isPublic": "Set public"
   },
   "EVAL_CONFIG":{
     "redo": "Redo Evaluation",

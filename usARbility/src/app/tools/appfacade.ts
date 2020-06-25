@@ -58,12 +58,22 @@ export class AppFacade{
       );
     }
 
+    public getPublicApps() {
+      return this.firestore.collection('apps/', ref =>
+        ref.where('isPublic', '==', true)
+      );
+    }
+
     public getEvaluation() {
       return this.firestore.collection('evaluation/');
     }
 
     public changeAppName(appID, name){
       this.firestore.doc('apps/'+appID).update({ name: name });
+    }
+
+    public setAppPublic(appID, isPublic){
+      this.firestore.doc('apps/'+appID).update({ isPublic: isPublic });
     }
 
     public changeAppActiveCriteria(appID, criteria){
@@ -142,11 +152,13 @@ export class App
   name: string;
   id: string;
   creator: string;
+  isPublic: boolean;
 
-  public constructor(id,name,creator){
+  public constructor(id,name,creator,isPublic){
     this.id= id;
     this.name= name;
     this.creator= creator;
+    this.isPublic= isPublic || false;
   }
 }
 

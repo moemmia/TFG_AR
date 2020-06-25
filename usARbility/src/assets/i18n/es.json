@@ -44,6 +44,7 @@
     "eval": "Evaluar",
     "my_apps": "Mis Apps",
     "my_eval": "Mis Evaluaciones",
+    "all_apps": "Apps Públicas",
     "profile": "Perfil",
     "settings": "Ajustes",
     "sign_out": "Cerrar sesión"
@@ -78,6 +79,9 @@
     "error_header": "Error",
     "error_message": "Debes indicar un nombre para crear la App."
   },
+  "PUBLIC_APPS":{
+    "name": "Apps Públicas"
+  },
   "MY_EVAL":{
     "name": "Mis Evaluaciones",
     "error_no_code": "Debes introducir un codigo de una app para continuar",
@@ -106,7 +110,8 @@
     "error_no_select": "Debe seleccionar al menos un criterio",
     "change_name_header": "Cambiar Nombre",
     "delete_app_header": "Borrado de la App",
-    "delete_app_text": "¿Está seguro de que desea eliminar "
+    "delete_app_text": "¿Está seguro de que desea eliminar ",
+    "isPublic": "Hacer pública"
   },
   "EVAL_CONFIG":{
     "redo": "Rehacer Evaluación",
