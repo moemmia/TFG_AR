@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'statistics', loadChildren: './pages/app-config/statistics/statistics.module#StatisticsPageModule' },
   { path: 'explanations', loadChildren: './pages/app-config/explanations/explanations.module#ExplanationsPageModule' },
   { path: 'evaluation', loadChildren: './pages/eval-selection/evaluation/evaluation.module#EvaluationPageModule' },
+  { path: 'public-apps', loadChildren: './pages/public-apps/public-apps.module#PublicAppsPageModule' },
 ];
 
 @NgModule({

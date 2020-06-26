@@ -10,13 +10,13 @@ import { takeWhile } from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-apps',
-  templateUrl: './apps.page.html',
-  styleUrls: ['./apps.page.scss'],
+  selector: 'public-apps',
+  templateUrl: './public-apps.page.html',
+  styleUrls: ['./public-apps.page.scss'],
 })
-export class AppsPage implements OnInit, OnDestroy {
+export class PublicAppsPage implements OnInit, OnDestroy {
 
-  userApps: Array<App> = [];
+  publicApps: Array<App> = [];
   currentUserId:string;
 
   private alive = true;
@@ -42,13 +42,14 @@ export class AppsPage implements OnInit, OnDestroy {
   }
 
   loadData(){
-    this.appfacade.getAppsCreatedByCurrentUser(this.currentUserId).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
+    this.appfacade.getPublicApps().snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       x => {
-        this.userApps = [];
+        this.publicApps = [];
         x.forEach( app => {
           let data:any = app.payload.doc.data();
+          if( data.creator == this.currentUserId ) return;
           let obj = new App( app.payload.doc.id, data.name, data.creator, data.isPublic);
-          this.userApps.push(obj);
+          this.publicApps.push(obj);
         });
         this.isLoaded=true;
       }
@@ -134,7 +135,7 @@ export class AppsPage implements OnInit, OnDestroy {
     await alert.present();
   }
 
-  goToAppConfig(id){
+  goToAppView(id){
     this.router.navigate(["/app-config", {id:id}]);
   }
 

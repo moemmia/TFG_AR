@@ -20,6 +20,12 @@
         <ion-icon color="primary" name="clipboard" slot="start"></ion-icon>
       </ion-item>
 
+      <ion-item lines="none" class="ion-activatable ion-no-padding">
+        <ion-label> {{ 'APP_CONFIG.isPublic' | translate }} </ion-label>
+        <ion-toggle color="primary" checked={{app.isPublic}}  (ionChange)="setPublic($event)"></ion-toggle>
+        <ion-icon color="primary" name="key" slot="start"></ion-icon>
+      </ion-item>
+
       <ion-item lines="none" class="ion-activatable ion-no-padding" (click)="deleteApp()">
         <ion-ripple-effect></ion-ripple-effect>
         <ion-label> {{ 'APP_CONFIG.delete' | translate }} </ion-label>
@@ -34,10 +40,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="apps"></ion-back-button>
+      <ion-back-button defaultHref="/main"></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="app">{{app.name}}</ion-title>
-    <ion-buttons slot="secondary">
+    <ion-buttons *ngIf="isUserPropietary" slot="secondary">
       <ion-button fill="clear" (click)="openMenu()">
         <ion-icon slot="icon-only" name="settings"></ion-icon>
       </ion-button>
@@ -46,11 +52,18 @@
 </ion-header>
 
 <ion-content  center text-center>
-  <ion-item *ngIf="app" lines="none" id="app-id" class="ion-activatable" (click)="copy()">
+  <ion-item *ngIf="app && isUserPropietary" lines="none" id="app-id" class="ion-activatable" (click)="copy()">
       <ion-ripple-effect></ion-ripple-effect>
       <ion-label position="floating"> {{ 'APP_CONFIG.app_id' | translate }} </ion-label>
       <ion-input readonly value={{app.id}}></ion-input>
-      <ion-icon  id="app-share" color="primary" name="share" slot="end"></ion-icon>
+      <ion-icon id="app-share" color="primary" name="share" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item *ngIf="app && isUserPropietary == false" lines="none" id="app-id" class="ion-activatable" (click)="doEval()">
+      <ion-ripple-effect></ion-ripple-effect>
+      <ion-label position="floating"> {{ 'APP_CONFIG.app_id' | translate }} </ion-label>
+      <ion-input readonly value={{app.id}}></ion-input>
+      <ion-icon id="app-share" color="primary" name="arrow-round-forward" slot="end"></ion-icon>
   </ion-item>
 
   <ion-item lines="none"  class="ion-no-padding">

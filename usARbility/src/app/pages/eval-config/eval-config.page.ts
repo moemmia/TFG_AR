@@ -88,7 +88,7 @@ export class EvalConfigPage implements OnInit, OnDestroy  {
     this.appfacade.getAppById(this.id).snapshotChanges().pipe(takeWhile(() => this.alive)).subscribe(
       app => {
           let data:any = app.payload.data();
-          this.app = new App(app.payload.id, data.name, data.creator);
+          this.app = new App(app.payload.id, data.name, data.creator, data.isPublic);
           this.criteria = [];
           this.criteriaValues = [];
           this.criteriaDetails = [];

@@ -45,7 +45,7 @@ export class MyEvaluationsPage implements OnInit, OnDestroy {
         this.userEvaluatedApps = [];
         x.forEach( app => {
           let data:any = app.payload.doc.data();
-          let obj = new App( app.payload.doc.id, data.name, data.creator);
+          let obj = new App( app.payload.doc.id, data.name, data.creator, data.isPublic);
           this.userEvaluatedApps.push(obj);
         });
         this.isLoaded=true;

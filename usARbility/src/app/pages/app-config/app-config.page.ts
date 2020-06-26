@@ -33,6 +33,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
   activeCriteriaValues: Array<number> = [];
   activeCriteriaDetails: Array<CriteriaDetail> = [];
   comments: Array<Comment> = [];
+  isUserPropietary: boolean = false;
 
   total: number = 0;
   totalNum: number = 0;
@@ -88,8 +89,8 @@ export class AppConfigPage implements OnInit, OnDestroy {
             return;
           }
           let data:any = app.payload.data();
-          this.isUserPropietary(data.creator);
-          this.app = new App(app.payload.id, data.name, data.creator);
+          this.isUserPropietary = this.checkUserPropietary(data.creator);
+          this.app = new App(app.payload.id, data.name, data.creator, data.isPublic);
           this.charCriteria = [];
           this.activeCriteria = [];
           this.activeCriteriaValues = [];
@@ -137,10 +138,8 @@ export class AppConfigPage implements OnInit, OnDestroy {
       });
   }
 
-  isUserPropietary(creator){
-    if(this.fireAuth.auth.currentUser.uid != creator){
-        this.router.navigateByUrl('/main');
-    }
+  checkUserPropietary(creator){
+    return this.fireAuth.auth.currentUser.uid == creator;
   }
 
   ngOnInit() {
@@ -154,6 +153,11 @@ export class AppConfigPage implements OnInit, OnDestroy {
   copy(){
     this.clipboard.copy(this.app.id);
     this.presentToast();
+  }
+
+  doEval(){
+    this.alive = false;
+    this.router.navigate(["/eval-app", {id:this.id}]);
   }
 
   async presentToast() {
@@ -429,6 +433,10 @@ export class AppConfigPage implements OnInit, OnDestroy {
       ]
     });
     await alert.present();
+  }
+
+  async setPublic($event){
+    this.appfacade.setAppPublic(this.app.id, $event.detail.checked);
   }
 
   async deleteApp(){
