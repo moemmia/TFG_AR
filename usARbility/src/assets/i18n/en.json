@@ -110,7 +110,12 @@
     "change_name_header": "Change Name",
     "delete_app_header": "App Deletion",
     "delete_app_text": "Are you sure you want to delete ",
-    "isPublic": "Set public"
+    "isPublic": "Set public",
+    "shareMessage": {
+      "message1": "Evaluate ",
+      "message2": " with the code: '",
+      "message3": "' via the usAR."
+    }
   },
   "EVAL_CONFIG":{
     "redo": "Redo Evaluation",

@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 import { Chart } from 'chart.js';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { takeWhile } from 'rxjs/operators';
-
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import {TranslateService} from '@ngx-translate/core';
 
 import { AStatisticsPage } from './statistics/statistics.page';
@@ -40,7 +40,7 @@ export class AppConfigPage implements OnInit, OnDestroy {
 
   private alive = true;
 
-  constructor(private translate: TranslateService, private modalController: ModalController, private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
+  constructor(private socialSharing: SocialSharing, private translate: TranslateService, private modalController: ModalController, private loaderController: LoaderController, private fireAuth: AngularFireAuth,private arraykit: ArrayKit,private clipboard: Clipboard, private router: Router, private toastController: ToastController, private route: ActivatedRoute, private appfacade:AppFacade, private darkthemer:DarkThemer, private menu: MenuController, private alertController: AlertController) {
     this.loaderController.show();
     Chart.Legend.prototype.afterFit = function() {
         this.height = this.height + 25;
@@ -151,8 +151,15 @@ export class AppConfigPage implements OnInit, OnDestroy {
   }
 
   copy(){
-    this.clipboard.copy(this.app.id);
-    this.presentToast();
+
+    this.translate.get('APP_CONFIG.shareMessage').subscribe(t => {
+      let options = {
+        message: t.message1 + this.app.name + t.message2 + this.app.id + t.message3,
+      };
+      this.socialSharing.shareWithOptions(options);
+    });
+
+
   }
 
   doEval(){
