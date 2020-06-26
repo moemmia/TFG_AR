@@ -155,6 +155,11 @@ export class AppConfigPage implements OnInit, OnDestroy {
     this.presentToast();
   }
 
+  doEval(){
+    this.alive = false;
+    this.router.navigate(["/eval-app", {id:this.id}]);
+  }
+
   async presentToast() {
 
     let copied;
