@@ -283,6 +283,7 @@ import { LoaderController } from &#x27;./tools/loadercontroller&#x27;;
 import { ArrayKit } from &#x27;./tools/arraykit&#x27;;
 import { Clipboard } from &#x27;@ionic-native/clipboard/ngx&#x27;;
 import { UniqueDeviceID } from &#x27;@ionic-native/unique-device-id/ngx&#x27;;
+import { SocialSharing } from &#x27;@ionic-native/social-sharing/ngx&#x27;;
 
 import { HttpClientModule, HttpClient } from &#x27;@angular/common/http&#x27;;
 import { TranslateModule, TranslateLoader, TranslateService  } from &#x27;@ngx-translate/core&#x27;;
@@ -331,7 +332,8 @@ const firebaseConfig &#x3D; {
     LoaderController,
     ArrayKit,
     Clipboard,
-    UniqueDeviceID
+    UniqueDeviceID,
+    SocialSharing
   ],
   bootstrap: [AppComponent]
 })

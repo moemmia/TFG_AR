@@ -113,7 +113,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/app/tools/appfacade.ts:158</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/tools/appfacade.ts:170</a></div>
                             </td>
                         </tr>
 
@@ -190,7 +190,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">src/app/tools/appfacade.ts:157</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/app/tools/appfacade.ts:169</a></div>
                             </td>
                         </tr>
 
@@ -217,7 +217,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/app/tools/appfacade.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">src/app/tools/appfacade.ts:170</a></div>
                             </td>
                         </tr>
 
@@ -244,7 +244,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/app/tools/appfacade.ts:156</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">src/app/tools/appfacade.ts:168</a></div>
                             </td>
                         </tr>
 
@@ -323,12 +323,22 @@ export class AppFacade{
       );
     }
 
+    public getPublicApps() {
+      return this.firestore.collection(&#x27;apps/&#x27;, ref &#x3D;&gt;
+        ref.where(&#x27;isPublic&#x27;, &#x27;&#x3D;&#x3D;&#x27;, true)
+      );
+    }
+
     public getEvaluation() {
       return this.firestore.collection(&#x27;evaluation/&#x27;);
     }
 
     public changeAppName(appID, name){
       this.firestore.doc(&#x27;apps/&#x27;+appID).update({ name: name });
+    }
+
+    public setAppPublic(appID, isPublic){
+      this.firestore.doc(&#x27;apps/&#x27;+appID).update({ isPublic: isPublic });
     }
 
     public changeAppActiveCriteria(appID, criteria){
@@ -407,11 +417,13 @@ export class App
   name: string;
   id: string;
   creator: string;
+  isPublic: boolean;
 
-  public constructor(id,name,creator){
+  public constructor(id,name,creator,isPublic){
     this.id&#x3D; id;
     this.name&#x3D; name;
     this.creator&#x3D; creator;
+    this.isPublic&#x3D; isPublic || false;
   }
 }
 

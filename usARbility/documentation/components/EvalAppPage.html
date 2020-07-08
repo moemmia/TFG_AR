@@ -964,11 +964,11 @@ export class EvalAppPage implements OnInit, OnDestroy {
       &lt;ion-input value&#x3D;{{id}} id&#x3D;&quot;appId&quot; clearOnEdit&#x3D;&quot;false&quot; placeholder&#x3D;&quot;{{ &#x27;EVAL_APP.placeholder&#x27; | translate }}&quot; type&#x3D;&quot;text&quot;&gt; &lt;/ion-input&gt;
     &lt;/ion-item&gt;
     &lt;ion-item id&#x3D;&quot;button-left&quot; lines&#x3D;&quot;none&quot;&gt;
-      &lt;ion-button *ngIf&#x3D;&quot;(userApps?.length &gt; 0) &#x3D;&#x3D; false&quot; disabled&gt; {{ &#x27;EVAL_APP.button_ya&#x27; | translate }} &lt;/ion-button&gt;
-      &lt;ion-button *ngIf&#x3D;&quot;userApps?.length &gt; 0&quot; (click)&#x3D;&quot;search()&quot;&gt; {{ &#x27;EVAL_APP.button_ya&#x27; | translate }} &lt;/ion-button&gt;
+      &lt;ion-button class&#x3D;&quot;menu-button&quot; *ngIf&#x3D;&quot;(userApps?.length &gt; 0) &#x3D;&#x3D; false&quot; disabled&gt; {{ &#x27;EVAL_APP.button_ya&#x27; | translate }} &lt;/ion-button&gt;
+      &lt;ion-button class&#x3D;&quot;menu-button&quot; *ngIf&#x3D;&quot;userApps?.length &gt; 0&quot; (click)&#x3D;&quot;search()&quot;&gt; {{ &#x27;EVAL_APP.button_ya&#x27; | translate }} &lt;/ion-button&gt;
     &lt;/ion-item&gt;
     &lt;ion-item id&#x3D;&quot;button-right&quot; lines&#x3D;&quot;none&quot;&gt;
-      &lt;ion-button (click)&#x3D;&quot;next()&quot;&gt; {{ &#x27;EVAL_APP.button_next&#x27; | translate }} &lt;/ion-button&gt;
+      &lt;ion-button class&#x3D;&quot;menu-button&quot; (click)&#x3D;&quot;next()&quot;&gt; {{ &#x27;EVAL_APP.button_next&#x27; | translate }} &lt;/ion-button&gt;
     &lt;/ion-item&gt;
   &lt;/ion-list&gt;
 &lt;/ion-content&gt;
@@ -990,6 +990,11 @@ export class EvalAppPage implements OnInit, OnDestroy {
     float: right;
 }
 
+.menu-button {
+  height: 70%;
+  margin-top: 15px;
+  font-weight: bold;
+}
 
 .loader{
   margin-right: 1em;
@@ -1022,8 +1027,8 @@ export class EvalAppPage implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-buttons slot="start">      <ion-back-button defaultHref="main"></ion-back-button>    </ion-buttons>    <ion-title>{{ \'EVAL_APP.name\' | translate }}</ion-title>    <ion-buttons slot="secondary" class="loader">      <ion-spinner *ngIf="isLoaded == false" name="crescent"></ion-spinner>    </ion-buttons>  </ion-toolbar></ion-header><ion-content>  <ion-list>    <ion-item id="text" lines="full">      <ion-input value={{id}} id="appId" clearOnEdit="false" placeholder="{{ \'EVAL_APP.placeholder\' | translate }}" type="text"> </ion-input>    </ion-item>    <ion-item id="button-left" lines="none">      <ion-button *ngIf="(userApps?.length > 0) == false" disabled> {{ \'EVAL_APP.button_ya\' | translate }} </ion-button>      <ion-button *ngIf="userApps?.length > 0" (click)="search()"> {{ \'EVAL_APP.button_ya\' | translate }} </ion-button>    </ion-item>    <ion-item id="button-right" lines="none">      <ion-button (click)="next()"> {{ \'EVAL_APP.button_next\' | translate }} </ion-button>    </ion-item>  </ion-list></ion-content></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-buttons slot="start">      <ion-back-button defaultHref="main"></ion-back-button>    </ion-buttons>    <ion-title>{{ \'EVAL_APP.name\' | translate }}</ion-title>    <ion-buttons slot="secondary" class="loader">      <ion-spinner *ngIf="isLoaded == false" name="crescent"></ion-spinner>    </ion-buttons>  </ion-toolbar></ion-header><ion-content>  <ion-list>    <ion-item id="text" lines="full">      <ion-input value={{id}} id="appId" clearOnEdit="false" placeholder="{{ \'EVAL_APP.placeholder\' | translate }}" type="text"> </ion-input>    </ion-item>    <ion-item id="button-left" lines="none">      <ion-button class="menu-button" *ngIf="(userApps?.length > 0) == false" disabled> {{ \'EVAL_APP.button_ya\' | translate }} </ion-button>      <ion-button class="menu-button" *ngIf="userApps?.length > 0" (click)="search()"> {{ \'EVAL_APP.button_ya\' | translate }} </ion-button>    </ion-item>    <ion-item id="button-right" lines="none">      <ion-button class="menu-button" (click)="next()"> {{ \'EVAL_APP.button_next\' | translate }} </ion-button>    </ion-item>  </ion-list></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'ExplanationsPage', 'selector': 'app-explanations'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'PublicAppsPage', 'selector': 'public-apps'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EvalAppPage'};
 </script>

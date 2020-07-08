@@ -517,10 +517,16 @@ export class EvaluatePage implements OnInit {
       a.error_get_doc &#x3D; t;
     });
 
+    this.translate.get(&#x27;MY_EVAL.error_special_char&#x27;).subscribe(t &#x3D;&gt; {
+      a.error_special_char &#x3D; t;
+    });
+
     let id&#x3D; $(&quot;#code&quot;).val();
     if(!id){
       this.showError(a.error_no_code);
-    }else{
+    } else if (id.match(/^[\W_]/)) {
+      this.showError(a.error_special_char);
+    } else{
       let context &#x3D; this;
       this.appfacade.getAppById(id).ref.get().then(function(doc) {
           if (doc.exists) {
@@ -548,7 +554,7 @@ export class EvaluatePage implements OnInit {
         &lt;ion-input id&#x3D;&quot;code&quot; clearOnEdit&#x3D;&quot;false&quot; placeholder&#x3D;&quot;{{&#x27;HOME.EVALUATE.placeholder&#x27; | translate}}&quot; type&#x3D;&quot;text&quot;&gt; &lt;/ion-input&gt;
       &lt;/ion-item&gt;
       &lt;ion-item id&#x3D;&quot;code-buttons&quot; lines&#x3D;&quot;none&quot;&gt;
-        &lt;ion-button expand&#x3D;&quot;block&quot; (click)&#x3D;&quot;evaluate()&quot;&gt; {{ &#x27;HOME.EVALUATE.button&#x27;  | translate}} &lt;/ion-button&gt;
+        &lt;ion-button class&#x3D;&quot;menu-button&quot; expand&#x3D;&quot;block&quot; (click)&#x3D;&quot;evaluate()&quot;&gt; {{ &#x27;HOME.EVALUATE.button&#x27;  | translate}} &lt;/ion-button&gt;
       &lt;/ion-item&gt;
     &lt;/ion-list&gt;
   &lt;/div&gt;
@@ -563,8 +569,15 @@ export class EvaluatePage implements OnInit {
                 <pre class="line-numbers"><code class="language-scss">#code-buttons {
     float: right;
 }
+
 div{
   padding: 0 5%
+}
+
+.menu-button {
+  height: 70%;
+  margin-top: 15px;
+  font-weight: bold;
 }
 </code></pre>
     </div>
@@ -594,8 +607,8 @@ div{
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-content>  <div class="content" id="evaluate">    <ion-list>      <ion-item lines="full">        <ion-input id="code" clearOnEdit="false" placeholder="{{\'HOME.EVALUATE.placeholder\' | translate}}" type="text"> </ion-input>      </ion-item>      <ion-item id="code-buttons" lines="none">        <ion-button expand="block" (click)="evaluate()"> {{ \'HOME.EVALUATE.button\'  | translate}} </ion-button>      </ion-item>    </ion-list>  </div></ion-content></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
+        var COMPONENT_TEMPLATE = '<div><ion-content>  <div class="content" id="evaluate">    <ion-list>      <ion-item lines="full">        <ion-input id="code" clearOnEdit="false" placeholder="{{\'HOME.EVALUATE.placeholder\' | translate}}" type="text"> </ion-input>      </ion-item>      <ion-item id="code-buttons" lines="none">        <ion-button class="menu-button" expand="block" (click)="evaluate()"> {{ \'HOME.EVALUATE.button\'  | translate}} </ion-button>      </ion-item>    </ion-list>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'ExplanationsPage', 'selector': 'app-explanations'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'PublicAppsPage', 'selector': 'public-apps'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EvaluatePage'};
 </script>

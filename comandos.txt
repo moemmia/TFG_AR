@@ -6,3 +6,6 @@ CREAR NUEVA PAGINA
 	
 GENERAR APK ANDROID
 	> ionic cordova build android
+
+GENERAR DOCUMENTACION
+	> compodoc -p src/tsconfig.app.json -s

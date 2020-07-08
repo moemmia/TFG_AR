@@ -748,7 +748,7 @@ export class MyEvaluationsPage implements OnInit, OnDestroy {
         this.userEvaluatedApps &#x3D; [];
         x.forEach( app &#x3D;&gt; {
           let data:any &#x3D; app.payload.doc.data();
-          let obj &#x3D; new App( app.payload.doc.id, data.name, data.creator);
+          let obj &#x3D; new App( app.payload.doc.id, data.name, data.creator, data.isPublic);
           this.userEvaluatedApps.push(obj);
         });
         this.isLoaded&#x3D;true;
@@ -845,7 +845,7 @@ ion-list{
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar>    <ion-buttons slot="start">      <ion-back-button defaultHref="main"></ion-back-button>    </ion-buttons>    <ion-title>{{ \'MY_EVAL.name\' | translate}}</ion-title>    <ion-buttons slot="secondary" class="loader">      <ion-spinner *ngIf="isLoaded == false" name="crescent"></ion-spinner>    </ion-buttons>  </ion-toolbar></ion-header><ion-content text-center id="body">  <ion-list>    <div *ngFor="let e of userEvaluatedApps">      <ion-item lines="full" class="ion-activatable ion-no-padding" (click)="goToEvalConfig(e.id)">        <ion-ripple-effect></ion-ripple-effect>        <ion-label>          {{e.name}}        </ion-label>        <ion-icon slot="end" color="primary" name="arrow-round-forward"></ion-icon>      </ion-item>    </div>  </ion-list></ion-content></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfigPage', 'selector': 'app-app-config'},{'name': 'AppsPage', 'selector': 'app-apps'},{'name': 'EvalAppPage', 'selector': 'app-eval-app'},{'name': 'EvalConfigPage', 'selector': 'app-eval-config'},{'name': 'EvalSelectionPage', 'selector': 'app-eval-selection'},{'name': 'EvaluatePage', 'selector': 'app-evaluate'},{'name': 'EvaluationPage', 'selector': 'app-evaluation'},{'name': 'ExplanationsPage', 'selector': 'app-explanations'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LogInPage', 'selector': 'app-login'},{'name': 'MainPage', 'selector': 'app-main'},{'name': 'MyEvaluationsPage', 'selector': 'app-my-evaluations'},{'name': 'OptionsPage', 'selector': 'app-options'},{'name': 'ProfilePage', 'selector': 'app-profile'},{'name': 'PublicAppsPage', 'selector': 'public-apps'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatisticsPage', 'selector': 'app-statistics'},{'name': 'StatisticsPage', 'selector': 'app-statistics'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'MyEvaluationsPage'};
 </script>

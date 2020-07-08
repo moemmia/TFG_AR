@@ -22,41 +22,53 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_AppConfigPageModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="118,-70 118,-195 378,-195 378,-70 118,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="46,-70 46,-195 450,-195 450,-70 46,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_AppConfigPageModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="126,-78 126,-130 370,-130 370,-78 126,-78"/>
+<polygon fill="none" stroke="#000000" points="54,-78 54,-130 442,-130 442,-78 54,-78"/>
 </g>
-<!-- AStatisticsPage -->
+<!-- AExplanationsPage -->
 <g id="node1" class="node">
-<title>AStatisticsPage</title>
-<polygon fill="#ffffb3" stroke="#000000" points="361.8725,-122 258.1275,-122 258.1275,-86 361.8725,-86 361.8725,-122"/>
-<text text-anchor="middle" x="310" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AStatisticsPage</text>
+<title>AExplanationsPage</title>
+<polygon fill="#ffffb3" stroke="#000000" points="434.4173,-122 307.5827,-122 307.5827,-86 434.4173,-86 434.4173,-122"/>
+<text text-anchor="middle" x="371" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AExplanationsPage</text>
 </g>
 <!-- AppConfigPageModule -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>AppConfigPageModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="322.7562,-187 319.7562,-191 298.7562,-191 295.7562,-187 173.2438,-187 173.2438,-151 322.7562,-151 322.7562,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppConfigPageModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="312.7562,-187 309.7562,-191 288.7562,-191 285.7562,-187 163.2438,-187 163.2438,-151 312.7562,-151 312.7562,-187"/>
+<text text-anchor="middle" x="238" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppConfigPageModule</text>
+</g>
+<!-- AExplanationsPage&#45;&gt;AppConfigPageModule -->
+<g id="edge1" class="edge">
+<title>AExplanationsPage&#45;&gt;AppConfigPageModule</title>
+<path fill="none" stroke="#000000" d="M307.7092,-104C302.3158,-104 298.864,-104 298.864,-104 298.864,-104 298.864,-140.8939 298.864,-140.8939"/>
+<polygon fill="#000000" stroke="#000000" points="295.364,-140.8938 298.864,-150.8939 302.364,-140.8939 295.364,-140.8938"/>
+</g>
+<!-- AStatisticsPage -->
+<g id="node2" class="node">
+<title>AStatisticsPage</title>
+<polygon fill="#ffffb3" stroke="#000000" points="289.8725,-122 186.1275,-122 186.1275,-86 289.8725,-86 289.8725,-122"/>
+<text text-anchor="middle" x="238" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AStatisticsPage</text>
 </g>
 <!-- AStatisticsPage&#45;&gt;AppConfigPageModule -->
-<g id="edge1" class="edge">
+<g id="edge2" class="edge">
 <title>AStatisticsPage&#45;&gt;AppConfigPageModule</title>
-<path fill="none" stroke="#000000" d="M290.4709,-122.1061C290.4709,-122.1061 290.4709,-140.991 290.4709,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="286.971,-140.9909 290.4709,-150.991 293.971,-140.991 286.971,-140.9909"/>
+<path fill="none" stroke="#000000" d="M238,-122.1061C238,-122.1061 238,-140.991 238,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="234.5001,-140.9909 238,-150.991 241.5001,-140.991 234.5001,-140.9909"/>
 </g>
 <!-- AppConfigPage -->
-<g id="node2" class="node">
+<g id="node3" class="node">
 <title>AppConfigPage</title>
-<polygon fill="#ffffb3" stroke="#000000" points="240.2064,-122 133.7936,-122 133.7936,-86 240.2064,-86 240.2064,-122"/>
-<text text-anchor="middle" x="187" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppConfigPage</text>
+<polygon fill="#ffffb3" stroke="#000000" points="168.2064,-122 61.7936,-122 61.7936,-86 168.2064,-86 168.2064,-122"/>
+<text text-anchor="middle" x="115" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppConfigPage</text>
 </g>
 <!-- AppConfigPage&#45;&gt;AppConfigPageModule -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>AppConfigPage&#45;&gt;AppConfigPageModule</title>
-<path fill="none" stroke="#000000" d="M206.6126,-122.1061C206.6126,-122.1061 206.6126,-140.991 206.6126,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="203.1126,-140.9909 206.6126,-150.991 210.1126,-140.991 203.1126,-140.9909"/>
+<path fill="none" stroke="#000000" d="M168.1884,-104C173.5585,-104 177.0835,-104 177.0835,-104 177.0835,-104 177.0835,-140.8939 177.0835,-140.8939"/>
+<polygon fill="#000000" stroke="#000000" points="173.5835,-140.8938 177.0835,-150.8939 180.5835,-140.8939 173.5835,-140.8938"/>
 </g>
 </g>
 </svg>

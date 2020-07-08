@@ -27,91 +27,107 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content module">
+               <div class="content class">
                    <div class="content-data">
 
 
 
+
+
+
+
+
+
+
+
 <ol class="breadcrumb">
-    <li>Modules</li>
-    <li>AppRoutingModule</li>
+  <li>Classes</li>
+  <li>AExplanationsPage</li>
 </ol>
 
-
 <ul class="nav nav-tabs" role="tablist">
-    <li  class="active" >
-        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
-    </li>
-    <li >
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="c-info">
-
         <p class="comment">
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/app-routing.module.ts</code>
+            <code>src/app/pages/app-config/explanations/explanations.page.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../components/ExplanationsPage.html" target="_self" >ExplanationsPage</a></code>
+            </p>
 
 
-        <div class="container-fluid module">
-            <div class="row">
-            </div>
-        </div>
+
+
+
+
+
+
+
+
 
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { PreloadAllModules, RouterModule, Routes } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild  } from &#x27;@angular/core&#x27;;
+import { NavParams } from &#x27;@ionic/angular&#x27;;
+import { ModalController, AlertController, IonContent   } from &#x27;@ionic/angular&#x27;;
+import {AppFacade, App, QuestionDetail} from &#x27;../../../tools/appfacade&#x27;;
+import { ArrayKit } from &#x27;../../../tools/arraykit&#x27;;
+import { AngularFireAuth } from &#x27;angularfire2/auth&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { takeWhile } from &#x27;rxjs/operators&#x27;;
+import { UniqueDeviceID } from &#x27;@ionic-native/unique-device-id/ngx&#x27;;
+import * as $ from &#x27;jquery&#x27;;
 
-const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, redirectTo: &#x27;home&#x27;, pathMatch: &#x27;full&#x27; },
-  { path: &#x27;home&#x27;, loadChildren: &#x27;./pages/home/home.module#HomePageModule&#x27; },
-  { path: &#x27;main&#x27;, loadChildren: &#x27;./pages/main/main.module#MainPageModule&#x27; },
-  { path: &#x27;eval-selection&#x27;, loadChildren: &#x27;./pages/eval-selection/eval-selection.module#EvalSelectionPageModule&#x27; },
-  { path: &#x27;options&#x27;, loadChildren: &#x27;./pages/options/options.module#OptionsPageModule&#x27; },
-  { path: &#x27;profile&#x27;, loadChildren: &#x27;./pages/profile/profile.module#ProfilePageModule&#x27; },
-  { path: &#x27;eval-app&#x27;, loadChildren: &#x27;./pages/eval-app/eval-app.module#EvalAppPageModule&#x27; },
-  { path: &#x27;apps&#x27;, loadChildren: &#x27;./pages/apps/apps.module#AppsPageModule&#x27; },
-  { path: &#x27;login&#x27;, loadChildren: &#x27;./pages/home/login/login.module#LogInPageModule&#x27; },
-  { path: &#x27;register&#x27;, loadChildren: &#x27;./pages/home/register/register.module#RegisterPageModule&#x27; },
-  { path: &#x27;evaluate&#x27;, loadChildren: &#x27;./pages/home/evaluate/evaluate.module#EvaluatePageModule&#x27; },
-  { path: &#x27;app-config&#x27;, loadChildren: &#x27;./pages/app-config/app-config.module#AppConfigPageModule&#x27; },
-  { path: &#x27;my-evaluations&#x27;, loadChildren: &#x27;./pages/my-evaluations/my-evaluations.module#MyEvaluationsPageModule&#x27; },
-  { path: &#x27;eval-config&#x27;, loadChildren: &#x27;./pages/eval-config/eval-config.module#EvalConfigPageModule&#x27; },
-  { path: &#x27;statistics&#x27;, loadChildren: &#x27;./pages/eval-config/statistics/statistics.module#StatisticsPageModule&#x27; },
-  { path: &#x27;statistics&#x27;, loadChildren: &#x27;./pages/app-config/statistics/statistics.module#StatisticsPageModule&#x27; },
-  { path: &#x27;explanations&#x27;, loadChildren: &#x27;./pages/app-config/explanations/explanations.module#ExplanationsPageModule&#x27; },
-  { path: &#x27;evaluation&#x27;, loadChildren: &#x27;./pages/eval-selection/evaluation/evaluation.module#EvaluationPageModule&#x27; },
-  { path: &#x27;public-apps&#x27;, loadChildren: &#x27;./pages/public-apps/public-apps.module#PublicAppsPageModule&#x27; },
-];
+import {TranslateService} from &#x27;@ngx-translate/core&#x27;;
 
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+@Component({
+  selector: &#x27;app-explanations&#x27;,
+  templateUrl: &#x27;./explanations.page.html&#x27;,
+  styleUrls: [&#x27;./explanations.page.scss&#x27;],
 })
-export class AppRoutingModule { }
+export class ExplanationsPage implements OnInit {
+
+  @ViewChild(IonContent ) content: IonContent ;
+
+  private alive &#x3D; true;
+
+  constructor(private translate: TranslateService, public modalController: ModalController, private router: Router) {}
+
+  dismiss() {
+    this.alive &#x3D; false;
+    this.modalController.dismiss({
+      &#x27;dismissed&#x27;: true
+    });
+  }
+
+  ngOnInit() {
+  }
+
+}
+
+export class AExplanationsPage extends ExplanationsPage {}
 </code></pre>
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 
@@ -136,8 +152,8 @@ export class AppRoutingModule { }
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'AExplanationsPage.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

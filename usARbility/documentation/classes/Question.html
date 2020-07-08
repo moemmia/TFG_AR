@@ -119,7 +119,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:307</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:302</a></div>
                             </td>
                         </tr>
 
@@ -226,7 +226,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="305" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:305</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="300" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:300</a></div>
                             </td>
                         </tr>
 
@@ -253,7 +253,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="307" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:307</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="302" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:302</a></div>
                             </td>
                         </tr>
 
@@ -280,7 +280,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="303" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:303</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="298" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:298</a></div>
                             </td>
                         </tr>
 
@@ -307,7 +307,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="304" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:304</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="299" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:299</a></div>
                             </td>
                         </tr>
 
@@ -334,7 +334,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="306" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:306</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="301" class="link-to-prism">src/app/pages/eval-selection/evaluation/evaluation.page.ts:301</a></div>
                             </td>
                         </tr>
 
@@ -395,6 +395,7 @@ export class EvaluationPage implements OnInit {
   hasNext:boolean;
 
   private alive &#x3D; true;
+  private uuid:string;
 
   constructor(private translate: TranslateService, private uniqueDeviceID: UniqueDeviceID, private fireAuth: AngularFireAuth, public modalController: ModalController, private alertController: AlertController ,private arraykit: ArrayKit, private navParams: NavParams, private appfacade:AppFacade, private router: Router) {
 
@@ -403,9 +404,19 @@ export class EvaluationPage implements OnInit {
     }else{
       this.uniqueDeviceID.get().then(
         uuid &#x3D;&gt; {
+          this.uuid &#x3D; uuid;
           this.start(uuid);
         }
-      )
+      ).catch((error: any) &#x3D;&gt; {
+        let err;
+        this.translate.get(&#x27;EVAL_SELECTION.error_no_id&#x27;).subscribe(t &#x3D;&gt; {
+          err &#x3D; t;
+        });
+        this.showError(err, () &#x3D;&gt; {
+          this.dismiss();
+          this.router.navigateByUrl(&quot;/home&quot;);
+        });
+      });
     }
 
 
@@ -460,7 +471,7 @@ export class EvaluationPage implements OnInit {
               let num &#x3D; 0;
               questions.forEach(
                 q &#x3D;&gt; {
-                  qs.push(new Question( q[&quot;text&quot;], q[&quot;text_es&quot;], q[&quot;weight&quot;],num,values[ev.payload.doc.id][num]));
+                  qs.push(new Question( q[&quot;text&quot;], q[&quot;text_es&quot;], q[&quot;weight&quot;],num,values[ev.payload.doc.id][num+1]));
                   num++;
                 }
               );
@@ -572,29 +583,14 @@ export class EvaluationPage implements OnInit {
       this.router.navigateByUrl(&quot;/main&quot;);
       this.dismiss();
     }else{
-      this.uniqueDeviceID.get().then(
-        uuid &#x3D;&gt; {
-          this.appfacade.addEvaluation(this.app.id, results, uuid ,&#x27;anonymous&#x27;);
-          this.router.navigateByUrl(&quot;/home&quot;);
-          this.dismiss();
-        }
-      ).catch((error: any) &#x3D;&gt; {
-
-        let err;
-
-        this.translate.get(&#x27;EVAL_SELECTION.error_no_id&#x27;).subscribe(t &#x3D;&gt; {
-          err &#x3D; t;
-        });
-        this.showError(err);
-        this.router.navigateByUrl(&quot;/home&quot;);
-        this.dismiss();
-
-      });
+      this.appfacade.addEvaluation(this.app.id, results, this.uuid ,&#x27;anonymous&#x27;);
+      this.router.navigateByUrl(&quot;/home&quot;);
+      this.dismiss();
     }
 
   }
 
-  async showError(error,header&#x3D;&#x27;&#x27;){
+  async showError(error,onPress){
 
       let a: any &#x3D; {};
 
@@ -602,16 +598,15 @@ export class EvaluationPage implements OnInit {
         a.ok &#x3D; t;
       });
 
-      if(header &#x3D;&#x3D; &quot;&quot;){
-        this.translate.get(&#x27;ALERT.error&#x27;).subscribe(t &#x3D;&gt; {
-          header &#x3D; t;
-        });
-      }
-
      const alert &#x3D; await this.alertController.create({
-      header: header,
+      header: &#x27;&#x27;,
       message: error,
-      buttons: [a.ok]
+      buttons: [{
+        text: a.ok,
+        handler: () &#x3D;&gt; {
+          onPress();
+        }
+      }]
     });
 
     await alert.present();
