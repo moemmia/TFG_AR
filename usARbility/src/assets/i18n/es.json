@@ -111,7 +111,12 @@
     "change_name_header": "Cambiar Nombre",
     "delete_app_header": "Borrado de la App",
     "delete_app_text": "¿Está seguro de que desea eliminar ",
-    "isPublic": "Hacer pública"
+    "isPublic": "Hacer pública",
+    "shareMessage": {
+      "message1": "Evalúa ",
+      "message2": " con el código: '",
+      "message3": "' mediante la app usAR."
+    }
   },
   "EVAL_CONFIG":{
     "redo": "Rehacer Evaluación",
